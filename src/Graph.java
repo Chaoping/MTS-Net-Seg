@@ -11,9 +11,17 @@ public class Graph {
 		//TODO
 	}
 	
-	// Constructor II: 
+	static Graph symDiff(Graph G, Graph H) {
+		//TODO
+		return null;
+	}
 	
-	public double similarity(Graph H) {
+	static Graph union(Graph G, Graph H) {
+		//TODO
+		return null;
+	}
+	
+	static double distance (Graph G, Graph H) {
 		//TODO
 		return 0.0;
 	}
