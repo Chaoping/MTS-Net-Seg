@@ -1,4 +1,4 @@
-package ubco.cosc520;
+package ubco.cosc520.timeseries;
 
 import org.junit.Before;
 import org.junit.Test;

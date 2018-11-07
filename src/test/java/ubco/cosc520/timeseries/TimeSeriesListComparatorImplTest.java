@@ -1,4 +1,4 @@
-package ubco.cosc520;
+package ubco.cosc520.timeseries;
 
 import org.apache.commons.math3.linear.RealMatrix;
 import org.junit.Before;
