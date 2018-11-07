@@ -1,8 +1,12 @@
-package cosc520.project;
+package ubco.cosc520;
 
 import org.apache.commons.math3.linear.RealMatrix;
 import org.junit.Before;
 import org.junit.Test;
+import ubco.cosc520.timeseries.TimeSeriesList;
+import ubco.cosc520.timeseries.TimeSeriesListComparator;
+import ubco.cosc520.timeseries.TimeSeriesListComparatorImpl;
+import ubco.cosc520.timeseries.TimeSeriesListImpl;
 
 import java.util.Random;
 

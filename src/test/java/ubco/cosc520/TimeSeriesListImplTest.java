@@ -1,7 +1,9 @@
-package cosc520.project;
+package ubco.cosc520;
 
 import org.junit.Before;
 import org.junit.Test;
+import ubco.cosc520.timeseries.TimeSeriesList;
+import ubco.cosc520.timeseries.TimeSeriesListImpl;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;

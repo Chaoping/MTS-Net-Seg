@@ -1,8 +1,4 @@
-package cosc520.project.graph;
-
-import org.junit.Test;
-
-import static org.junit.Assert.*;
+package ubco.cosc520.graph;
 
 public class GraphTest {
 

@@ -1,14 +1,17 @@
-package cosc520.project;
+package ubco.cosc520.timeseries;
 
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.math3.linear.RealMatrix;
 import org.apache.commons.math3.stat.correlation.PearsonsCorrelation;
 
-@Slf4j
+/**
+ * A suite of methods for comparing time series.
+ */
 public class TimeSeriesListComparatorImpl implements TimeSeriesListComparator {
 
     @Override
-    public RealMatrix generateCorrelationMatrix(TimeSeriesList timeSeriesList) {
+    public final RealMatrix generateCorrelationMatrix(
+            final TimeSeriesList timeSeriesList) {
+
         double[][] doubleMatrix = timeSeriesList.toDoubleMatrix();
 
         PearsonsCorrelation pc = new PearsonsCorrelation(doubleMatrix);
@@ -16,7 +19,9 @@ public class TimeSeriesListComparatorImpl implements TimeSeriesListComparator {
     }
 
     @Override
-    public RealMatrix generateCorrelationPValues(TimeSeriesList timeSeriesList) {
+    public final RealMatrix generateCorrelationPValues(
+            final TimeSeriesList timeSeriesList) {
+
         double[][] doubleMatrix = timeSeriesList.toDoubleMatrix();
 
         PearsonsCorrelation pc = new PearsonsCorrelation(doubleMatrix);
