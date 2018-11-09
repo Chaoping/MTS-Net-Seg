@@ -8,8 +8,8 @@ import org.apache.commons.math3.linear.RealMatrix;
 public interface TimeSeriesListComparator {
 
     /**
-     * Perform the comparison
-     * @param timeSeriesList The time series list to compare
+     * Perform the comparison.
+     * @param timeSeriesList The time series list to compare.
      * @return A RealMatrix of
      */
     RealMatrix compare(TimeSeriesList timeSeriesList);

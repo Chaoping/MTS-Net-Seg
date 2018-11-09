@@ -5,6 +5,7 @@ import org.apache.commons.math3.linear.RealMatrix;
 
 /**
  * Operations which can be performed between 2 graphs.
+ * @param <T> - The return type of the operation.
  */
 public interface TwoGraphOperator<T> {
 

@@ -3,7 +3,11 @@ package ubco.cosc520.timeseries;
 import org.apache.commons.math3.linear.RealMatrix;
 import org.apache.commons.math3.stat.correlation.PearsonsCorrelation;
 
-public class CorrelationTimeSeriesListComparator implements TimeSeriesListComparator {
+/**
+ * Calculates the correlation matrix between two graphs.
+ */
+public class CorrelationTimeSeriesListComparator
+        implements TimeSeriesListComparator {
 
     /**
      * Produces the correlation matrix.

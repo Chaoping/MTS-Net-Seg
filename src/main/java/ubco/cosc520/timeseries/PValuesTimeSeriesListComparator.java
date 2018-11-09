@@ -3,7 +3,11 @@ package ubco.cosc520.timeseries;
 import org.apache.commons.math3.linear.RealMatrix;
 import org.apache.commons.math3.stat.correlation.PearsonsCorrelation;
 
-public class PValuesTimeSeriesListComparator implements TimeSeriesListComparator {
+/**
+ * Calculates the PValues matrix between two graphs.
+ */
+public class PValuesTimeSeriesListComparator
+        implements TimeSeriesListComparator {
 
     /**
      * Produces the PValues matrix.

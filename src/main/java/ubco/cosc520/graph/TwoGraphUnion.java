@@ -2,6 +2,9 @@ package ubco.cosc520.graph;
 
 import org.apache.commons.math3.linear.RealMatrix;
 
+/**
+ * Calculates the untion between two graphs.
+ */
 public class TwoGraphUnion implements TwoGraphOperator {
 
     /**
@@ -11,10 +14,10 @@ public class TwoGraphUnion implements TwoGraphOperator {
      * @return  A new graph, which is the union of G and H.
      */
     @Override
-    public RealMatrix operate(RealMatrix g, RealMatrix h) {
+    public RealMatrix operate(final RealMatrix g, final RealMatrix h) {
         TwoGraphOperator<Boolean> sizeComparator = new TwoGraphSizeComparator();
-        if (!sizeComparator.operate(g,h)) {
-            throw new IllegalArgumentException("Graphs must be of the same size");
+        if (!sizeComparator.operate(g, h)) {
+            throw new IllegalArgumentException("Graphs must be the same size");
         }
 
         return g;
