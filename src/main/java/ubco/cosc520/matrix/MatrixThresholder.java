@@ -22,8 +22,8 @@ public class MatrixThresholder
 
     /**
      *
-     * @param g The first graph
-     * @return A graph with each cell replaced:
+     * @param g The matrix
+     * @return A matrix with each cell replaced:
      *          1 if the value of the cell is >= the threshold
      *          0 otherwise.
      */

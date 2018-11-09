@@ -8,11 +8,11 @@ import org.apache.commons.math3.linear.RealMatrix;
 public class MatrixSizeComparator implements TwoMatrixOperator<Boolean> {
 
     /**
-     * Compare the size of two graphs.
-     * @param g The first graph
-     * @param h The second graph
-     * @return {@code true} if graphs have the same dimensions.
-     *         {@code false} if graphs have different dimensions.
+     * Compare the size of two matrices.
+     * @param g The first matrix
+     * @param h The second matrix
+     * @return {@code true} if matrices have the same dimensions.
+     *         {@code false} if matrices have different dimensions.
      */
     @Override
     public Boolean operate(final RealMatrix g, final RealMatrix h) {

@@ -9,8 +9,8 @@ public class MatrixAbsoluteValue
         extends BaseMatrixOperator implements SingleMatrixOperator {
 
     /**
-     * @param g The graph
-     * @return A graph with the values replaced by absolute values.
+     * @param g The matrix
+     * @return A matrix with the values replaced by absolute values.
      */
     @Override
     public RealMatrix operate(final RealMatrix g) {

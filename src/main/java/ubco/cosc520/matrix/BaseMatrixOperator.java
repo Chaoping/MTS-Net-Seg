@@ -6,13 +6,13 @@ import org.apache.commons.math3.linear.RealMatrix;
 import java.util.function.DoubleUnaryOperator;
 
 /**
- * Common lambda to apply operation to each cell in a graph.
+ * Common lambda to apply operation to each cell in a matrix.
  */
 abstract class BaseMatrixOperator {
 
     /**
-     * Performs the operation on the graph.
-     * @param g The first graph
+     * Performs the operation on the matrix.
+     * @param g The first matrix
      * @param operator The operator to be applied to each cell
      * @return The result of the operation.
      */
