@@ -1,12 +1,12 @@
-package ubco.cosc520.graph;
+package ubco.cosc520.matrix;
 
 import org.apache.commons.math3.linear.RealMatrix;
 
 /**
  * Returns a graph with the absolute value of each value in {@code g}.
  */
-public class GraphAbsoluteValue
-        extends BaseSingleGraphOperator implements SingleGraphOperator {
+public class MatrixAbsoluteValue
+        extends BaseMatrixOperator implements SingleMatrixOperator {
 
     /**
      * @param g The graph

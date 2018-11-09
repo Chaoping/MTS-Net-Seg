@@ -1,13 +1,11 @@
 package ubco.cosc520.graph;
 
 
-import org.apache.commons.math3.linear.RealMatrix;
-
 /**
  * Operations which can be performed between 2 graphs.
  * @param <T> - The return type of the operation.
  */
-public interface TwoGraphOperator<T> {
+public interface TwoAdjacencyMatrixGraphOperator<T> {
 
     /**
      * Performs the operation on the two graphs.
@@ -15,6 +13,6 @@ public interface TwoGraphOperator<T> {
      * @param h The second graph
      * @return The result of the operation.
      */
-    T operate(RealMatrix g, RealMatrix h);
+    T operate(AdjacencyMatrixGraph g, AdjacencyMatrixGraph h);
 
 }

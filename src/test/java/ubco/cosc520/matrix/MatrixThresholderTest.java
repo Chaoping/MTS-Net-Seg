@@ -1,18 +1,16 @@
-package ubco.cosc520.graph;
+package ubco.cosc520.matrix;
 
 import org.apache.commons.math3.linear.MatrixUtils;
 import org.apache.commons.math3.linear.RealMatrix;
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
-public class GraphAbsoluteValueTest {
-
+public class MatrixThresholderTest {
 
     @Test
-    public void testAbsoluteValue() {
+    public void testThreshold() {
         double[][] input = {
                 {1,0,-2,80},
                 {2,2,2,2},
@@ -20,16 +18,16 @@ public class GraphAbsoluteValueTest {
         };
 
         double[][] output = {
-                {1,0,2,80},
-                {2,2,2,2},
-                {2,3,9,0}
+                {0,0,0,1},
+                {1,1,1,1},
+                {1,1,1,0}
         };
 
         RealMatrix rm = MatrixUtils.createRealMatrix(input);
 
-        SingleGraphOperator graphAbsoluteValue = new GraphAbsoluteValue();
+        SingleMatrixOperator graphThresholder = new MatrixThresholder(2d);
 
-        RealMatrix result = graphAbsoluteValue.operate(rm);
+        RealMatrix result = graphThresholder.operate(rm);
 
         assertThat(rm, is(MatrixUtils.createRealMatrix(input)));
         assertThat(result, is(MatrixUtils.createRealMatrix(output)));

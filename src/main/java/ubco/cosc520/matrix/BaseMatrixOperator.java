@@ -1,4 +1,4 @@
-package ubco.cosc520.graph;
+package ubco.cosc520.matrix;
 
 
 import org.apache.commons.math3.linear.RealMatrix;
@@ -8,7 +8,7 @@ import java.util.function.DoubleUnaryOperator;
 /**
  * Common lambda to apply operation to each cell in a graph.
  */
-abstract class BaseSingleGraphOperator {
+abstract class BaseMatrixOperator {
 
     /**
      * Performs the operation on the graph.

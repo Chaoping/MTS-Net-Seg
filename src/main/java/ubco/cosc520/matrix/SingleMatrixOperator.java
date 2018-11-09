@@ -1,12 +1,12 @@
-package ubco.cosc520.graph;
+package ubco.cosc520.matrix;
 
 
 import org.apache.commons.math3.linear.RealMatrix;
 
 /**
- * Operation which can be performed on a graph.
+ * Operation which can be performed on a matrix.
  */
-public interface SingleGraphOperator {
+public interface SingleMatrixOperator {
 
     /**
      * Perform the operation on the matrix.

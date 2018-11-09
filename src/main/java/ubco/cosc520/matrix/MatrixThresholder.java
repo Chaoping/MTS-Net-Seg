@@ -1,12 +1,12 @@
-package ubco.cosc520.graph;
+package ubco.cosc520.matrix;
 
 import org.apache.commons.math3.linear.RealMatrix;
 
 /**
  * Produces a new graph with thresholding applied.
  */
-public class GraphThresholder
-        extends BaseSingleGraphOperator implements SingleGraphOperator  {
+public class MatrixThresholder
+        extends BaseMatrixOperator implements SingleMatrixOperator {
 
     /**
      * The threshold to compare against.
@@ -16,7 +16,7 @@ public class GraphThresholder
     /**
      * @param threshold  The threshold to compare against.
      */
-    public GraphThresholder(final double threshold) {
+    public MatrixThresholder(final double threshold) {
         this.thresh = threshold;
     }
 
