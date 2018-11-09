@@ -4,6 +4,9 @@ import org.apache.commons.math3.linear.MatrixUtils;
 import org.apache.commons.math3.linear.RealMatrix;
 import org.junit.Test;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 public class AdjacencyMatrixGraphTest {
 
     @Test
@@ -16,6 +19,19 @@ public class AdjacencyMatrixGraphTest {
         RealMatrix g = MatrixUtils.createRealMatrix(gd);
 
         new AdjacencyMatrixGraph(g);
+    }
+
+    @Test
+    public void testGetAdjacencyMatrix() {
+        double[][] gd = {
+                {0,0,1},
+                {0,0,1},
+                {1,1,0}
+        };
+        RealMatrix g = MatrixUtils.createRealMatrix(gd);
+
+        Graph graph = new AdjacencyMatrixGraph(g);
+        assertThat(graph.getAdjacencyMatrix(), is(g));
     }
 
     @Test(expected = IllegalArgumentException.class)
