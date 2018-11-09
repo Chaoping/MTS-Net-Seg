@@ -8,17 +8,10 @@ import org.apache.commons.math3.linear.RealMatrix;
 public interface TimeSeriesListComparator {
 
     /**
-     * Produces the correlation matrix.
-     * @param timeSeriesList The list of time series.
-     * @return A similarity matrix.
+     * Perform the comparison
+     * @param timeSeriesList The time series list to compare
+     * @return A RealMatrix of
      */
-    RealMatrix generateCorrelationMatrix(TimeSeriesList timeSeriesList);
-
-    /**
-     * Produces the PValues matrix.
-     * @param timeSeriesList The list of time series.
-     * @return A similarity matrix.
-     */
-    RealMatrix generateCorrelationPValues(TimeSeriesList timeSeriesList);
+    RealMatrix compare(TimeSeriesList timeSeriesList);
 
 }

@@ -3,10 +3,6 @@ package ubco.cosc520.timeseries;
 import org.apache.commons.math3.linear.RealMatrix;
 import org.junit.Before;
 import org.junit.Test;
-import ubco.cosc520.timeseries.TimeSeriesList;
-import ubco.cosc520.timeseries.TimeSeriesListComparator;
-import ubco.cosc520.timeseries.TimeSeriesListComparatorImpl;
-import ubco.cosc520.timeseries.TimeSeriesListImpl;
 
 import java.util.Random;
 
@@ -15,7 +11,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 import static org.hamcrest.Matchers.lessThanOrEqualTo;
 
-public class TimeSeriesListComparatorImplTest {
+public class CorrelationTimeSeriesListComparatorTest {
 
     private TimeSeriesList timeSeriesList;
     private Random random;
@@ -40,8 +36,8 @@ public class TimeSeriesListComparatorImplTest {
 
     @Test
     public void testGenerateCorrelationMatrix() {
-        TimeSeriesListComparator timeSeriesListComparator = new TimeSeriesListComparatorImpl();
-        RealMatrix rm = timeSeriesListComparator.generateCorrelationMatrix(timeSeriesList);
+        TimeSeriesListComparator timeSeriesListComparator = new CorrelationTimeSeriesListComparator();
+        RealMatrix rm = timeSeriesListComparator.compare(timeSeriesList);
         for(int row = 0; row < testDataSetCount; row++) {
             assertThat(rm.getEntry(row, row), is(1d));
             for (int row2 = 0; row2 < testDataSetCount; row2++) {
