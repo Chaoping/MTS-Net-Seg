@@ -1,12 +1,23 @@
 package ubco.cosc520.graph;
 
+import org.apache.commons.math3.linear.RealMatrix;
+
 /**
- * A Graph, consisting of Nodes and Edges.
+ * A graph class.
  */
 public interface Graph {
+
     /**
-     * Constructs a new graph from the Adjacency Matrix representation.
-     * @return a new Graph instance.
+     * Creates a new graph from an adjacency matrix representation.
+     * @param rm The adjacency matrix representation.
+     * @return The graph.
      */
-    Graph fromAdjacencyMatrix();
+    static Graph fromAdjacencyMatrix(RealMatrix rm) {
+        return new AdjacencyMatrixGraph(rm);
+    }
+
+    /**
+     * @return The adjacency matrix representation of the graph.
+     */
+    RealMatrix getAdjacencyMatrix();
 }
