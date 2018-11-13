@@ -27,12 +27,34 @@ public class DynamicProgramming {
 			List<Integer> optPath = new ArrayList(dptable.get(i-1).path);
 			
 			// or there is a new segment
-			for(int j = 0; i < i; j++) {
-				//opt_j + weight_ij + bp
+			for(int j = 0; j < i; j++) {
+				//opt_j + weight_ji+ bp
 				int lastSeg = dptable.get(j).path.get(dptable.get(j).path.size()-1);
-				double newSegVal = dptable.get(j).value + distance(graphs[lastSeg][j],graphs[j+1][i])
+				double newSegVal = dptable.get(j).value + 
+						TwoAdjacencyMatrixGraphDistance(graphs[lastSeg][j],graphs[j+1][i]) +
+						bp(1.0, dptable.get(j).path.size()-1, numTimePoints - 2);
 				
+				// if better value can be found with a better segmentation
+				if(newSegVal > opt) {
+					opt = newSegVal;
+					optPath = new ArrayList(dptable.get(j).path);
+					optPath.add(j);
+				}
+				
+				
+				dptable.get(i).value = opt;
+				dptable.get(i).path = optPath;
 			}
+			
+			// final weights:
+			// default:
+			double opt =dptable.get(numTimePoints -1).value +
+					TwoAdjacencyMatrixGraphDistance()
+					
+					;
+			List<Integer> optPath = new ArrayList(dptable.get(numTimePoints -1).path);
+			
+			
 			
 		}
 		
