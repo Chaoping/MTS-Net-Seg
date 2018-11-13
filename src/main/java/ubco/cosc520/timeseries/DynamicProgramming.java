@@ -38,7 +38,7 @@ public class DynamicProgramming {
 				if(newSegVal > opt) {
 					opt = newSegVal;
 					optPath = new ArrayList(dptable.get(j).path);
-					optPath.add(j);
+					optPath.add(j+1);
 				}
 				
 				
@@ -46,15 +46,7 @@ public class DynamicProgramming {
 				dptable.get(i).path = optPath;
 			}
 			
-			// final weights:
-			// default:
-			double opt =dptable.get(numTimePoints -1).value +
-					TwoAdjacencyMatrixGraphDistance()
-					
-					;
-			List<Integer> optPath = new ArrayList(dptable.get(numTimePoints -1).path);
-			
-			
+			return dptable.get(numTimePoints).path;			
 			
 		}
 		
