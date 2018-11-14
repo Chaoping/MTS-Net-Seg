@@ -1,4 +1,5 @@
 package main.java.ubco.cosc520.graph;
+//package RAT2;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -31,6 +32,7 @@ public class CreateSimulatedData {
 			simulatedData.setColumn(0, rawData.getColumn(0));
 			return simulatedData.getColumn(0);
 		}else {
+			//前一列的数据
 			double[] preceding=getSimulationColumn(columnIndex-1);
 			int lengthOfPreceding=preceding.length;
 			//create hashmap to store the value in the preceding column and its index
@@ -38,7 +40,7 @@ public class CreateSimulatedData {
 			for(int i=0;i<lengthOfPreceding;i++) 
 				storage.put(preceding[i], i);
 
-			int numOfBins=15;
+			double numOfBins=15;
 			//create bins
 			HashMap<Integer,LinkedList<Double>> bins=new HashMap<>();
 			for(int i=0;i<numOfBins;i++)
@@ -47,18 +49,18 @@ public class CreateSimulatedData {
 			double[] sortedPreceding=Arrays.copyOf(preceding, lengthOfPreceding);
 			Arrays.sort(sortedPreceding);
 			double range=sortedPreceding[lengthOfPreceding-1]-sortedPreceding[0];
-			double interval=(range/15);
+			double interval=(range/numOfBins);
 			//put each element into corresponding bin from 0 to 14
 			for(int i=0;i<lengthOfPreceding;i++) {
 				for(double s=sortedPreceding[0],key=0;s<sortedPreceding[lengthOfPreceding-1];key++,s+=interval) {
 					//if current equal to last element,which is the max element,
 					//then add it into the last bin
 					if(sortedPreceding[i]==sortedPreceding[lengthOfPreceding-1]) {
-						bins.get(numOfBins-1).add(sortedPreceding[i]);
+						bins.get((int)(numOfBins-1)).add(sortedPreceding[i]);
 						continue;
 					}//end of if
 					//if current is not the max element, add it to corresponding bin	
-					if(sortedPreceding[i]>=s&&sortedPreceding[i]<(s+interval+0.1)) {
+					if(sortedPreceding[i]>=s&&sortedPreceding[i]<(s+interval)) {
 						bins.get((int)key).add(sortedPreceding[i]);
 					}//end of if
 				}//end of inner for
@@ -69,13 +71,13 @@ public class CreateSimulatedData {
 				double[] diffColumn=D.getColumn(columnIndex-1);
 				double precedingValue=preceding[i];
 				//try to find the corresponding bin
-				int indexOfBin=-1;
+//				double indexOfBin=-1;
 				LinkedList<Double> rightBin=null;
 				for (Entry<Integer, LinkedList<Double>> entry : bins.entrySet()) {
 				    int key = entry.getKey();
 				    LinkedList<Double> list = entry.getValue();
 				    if(list.contains(precedingValue)) {
-				    	indexOfBin=key;
+//				    	indexOfBin=key;
 				    	rightBin=list;
 				    	break;
 				    }//end of if
@@ -141,3 +143,4 @@ public class CreateSimulatedData {
 	}// end of isLInked
 
 }
+
