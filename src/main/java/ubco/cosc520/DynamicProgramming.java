@@ -1,4 +1,4 @@
-package ubco.cosc520.timeseries;
+package ubco.cosc520;
 
 import ubco.cosc520.graph.Graph;
 import ubco.cosc520.graph.TwoGraphDistance;
@@ -12,52 +12,48 @@ public class DynamicProgramming {
 
         int numTimePoints = graphs.length;
 
-        // Dynamic programming table stores OPT(w), the maximum valueo up to w
+        // Dynamic programming table stores OPT(w), the maximum value up to w
         List<OPT> dptable = new ArrayList<>(numTimePoints);
 
         // OPT(0) = 0;
-        dptable.get(0).set(0.0);
-        dptable.get(0).path.add(0);
+        dptable.get(0).setValue(0.0);
+        dptable.get(0).addToPath(0);
         
         // OPT(1) = 0;
-        dptable.get(1).set(0.0);
-        dptable.get(1).path.add(0);
-        dptable.get(1).path.add(1);
+        dptable.get(1).setValue(0.0);
+        dptable.get(1).addToPath(0);
+        dptable.get(1).addToPath(1);
 
         // OPT(i) = max(weight of the last edge + OPT(before the last edge) - BP)
         for (int i = 2; i < numTimePoints; i++) {
 
             // by default, no new segments
-            double opt = dptable.get(i - 1).value;
-            List<Integer> optPath = new ArrayList<>(dptable.get(i - 1).path);
+            double opt = dptable.get(i - 1).getValue();
+            List<Integer> optPath = new ArrayList<>(dptable.get(i - 1).getPath());
             optPath.set(optPath.size()-1, i); //
 
             // or there is a new segment
             for (int j = 0; j < i; j++) {
                 //opt_j + weight_ji+ bp
-                int lastSeg = dptable.get(j).path.get(dptable.get(j).path.size() - 2);
-                double newSegVal = dptable.get(j).value +
+                int lastSeg = dptable.get(j).getPath().get(dptable.get(j).getPath().size() - 2);
+                double newSegVal = dptable.get(j).getValue() +
                         new TwoGraphDistance().operate(graphs[lastSeg][j], graphs[j + 1][i]) +
-                        bp(1.0, dptable.get(j).path.size() - 1, numTimePoints - 2);
+                        bp(1.0, dptable.get(j).getPath().size() - 1, numTimePoints - 2);
 
                 // if better value can be found with a better segmentation
                 if (newSegVal > opt) {
                     opt = newSegVal;
-                    optPath = new ArrayList<>(dptable.get(j).path);
+                    optPath = new ArrayList<>(dptable.get(j).getPath());
                     optPath.add(i);
                 }
 
 
-                dptable.get(i).value = opt;
-                dptable.get(i).path = optPath;
+                dptable.get(i).setValue(opt);
+                dptable.get(i).setPath(optPath);
             }
-
-            return dptable.get(numTimePoints).path;
-
         }
 
-
-        return null;
+        return dptable.get(numTimePoints).getPath();
     }
 
     double bp(double v, int d_w, int n) {
