@@ -5,7 +5,7 @@ import org.apache.commons.math3.linear.RealMatrix;
 /**
  * Produces a new graph with thresholding applied.
  */
-public class MatrixThresholder
+public class MatrixLessThanThresholder
         extends BaseMatrixOperator implements SingleMatrixOperator {
 
     /**
@@ -16,7 +16,7 @@ public class MatrixThresholder
     /**
      * @param threshold The threshold to compare against.
      */
-    public MatrixThresholder(final double threshold) {
+    public MatrixLessThanThresholder(final double threshold) {
         this.thresh = threshold;
     }
 
@@ -29,7 +29,7 @@ public class MatrixThresholder
     @Override
     public RealMatrix operate(final RealMatrix g) {
         return this.operate(g, (double d) -> {
-            if (d >= thresh) {
+            if (d <= thresh) {
                 return 1d;
             } else {
                 return 0d;

@@ -5,7 +5,7 @@ import org.apache.commons.math3.linear.RealMatrix;
 /**
  * A graph implementation representated as an adjacency matrix.
  */
-class UndirectedAdjacencyMatrixGraph implements Graph {
+public class UndirectedAdjacencyMatrixGraph implements Graph {
 
     /**
      * Internal representation of graph - Adjacency Matrix.
@@ -19,7 +19,7 @@ class UndirectedAdjacencyMatrixGraph implements Graph {
      *
      * @param inputMatrix The adjacency matrix representation.
      */
-    UndirectedAdjacencyMatrixGraph(final RealMatrix inputMatrix) {
+    public UndirectedAdjacencyMatrixGraph(final RealMatrix inputMatrix) {
 
         if (inputMatrix.getRowDimension() != inputMatrix.getColumnDimension()) {
             throw new IllegalArgumentException("Input matrix must be square");

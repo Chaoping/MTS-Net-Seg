@@ -24,12 +24,18 @@ public class TimeSeriesListImpl implements TimeSeriesList {
      * @param doubleList The list of doubles.
      * @return A new TimeSeriesList
      */
-    static TimeSeriesList fromDoubleList(
+    public static TimeSeriesList fromDoubleList(
             final List<double[]> doubleList) {
 
         TimeSeriesList ts = new TimeSeriesListImpl();
         doubleList.forEach(ts::add);
         return ts;
+    }
+
+    public static TimeSeriesList fromDoubleArray(
+            final double[][] doubleArray) {
+        List<double[]> doubleList = Arrays.asList(doubleArray);
+        return fromDoubleList(doubleList);
     }
 
     @Override
@@ -50,7 +56,7 @@ public class TimeSeriesListImpl implements TimeSeriesList {
     @Override
     public final TimeSeriesList truncate(final int start, final int end) {
         return TimeSeriesListImpl.fromDoubleList(seriesList.stream()
-                .map(doubles -> Arrays.copyOfRange(doubles, start, end))
+                .map(doubles -> Arrays.copyOfRange(doubles, start, end+1))
                 .collect(Collectors.toList()));
     }
 

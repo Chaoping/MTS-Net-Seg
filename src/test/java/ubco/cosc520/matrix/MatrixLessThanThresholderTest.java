@@ -7,25 +7,25 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class MatrixThresholderTest {
+public class MatrixLessThanThresholderTest {
 
     @Test
     public void testThreshold() {
         double[][] input = {
                 {1, 0, -2, 80},
                 {2, 2, 2, 2},
-                {2, 3, 9, 0}
+                {2, 3, 0.5, 0}
         };
 
         double[][] output = {
-                {0, 0, 0, 1},
+                {1, 1, 1, 0},
                 {1, 1, 1, 1},
-                {1, 1, 1, 0}
+                {1, 0, 1, 1}
         };
 
         RealMatrix rm = MatrixUtils.createRealMatrix(input);
 
-        SingleMatrixOperator graphThresholder = new MatrixThresholder(2d);
+        SingleMatrixOperator graphThresholder = new MatrixLessThanThresholder(2d);
 
         RealMatrix result = graphThresholder.operate(rm);
 
