@@ -1,11 +1,10 @@
 package ubco.cosc520.timeseries;
 
 import ubco.cosc520.graph.Graph;
+import ubco.cosc520.graph.TwoGraphDistance;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import ubco.cosc520.graph.TwoGraphDistance;
 
 public class DynamicProgramming {
     // this method
@@ -25,7 +24,7 @@ public class DynamicProgramming {
 
             // by default, no new segments
             double opt = dptable.get(i - 1).value;
-            List<Integer> optPath = new ArrayList(dptable.get(i - 1).path);
+            List<Integer> optPath = new ArrayList<>(dptable.get(i - 1).path);
 
             // or there is a new segment
             for (int j = 0; j < i; j++) {
@@ -38,7 +37,7 @@ public class DynamicProgramming {
                 // if better value can be found with a better segmentation
                 if (newSegVal > opt) {
                     opt = newSegVal;
-                    optPath = new ArrayList(dptable.get(j).path);
+                    optPath = new ArrayList<>(dptable.get(j).path);
                     optPath.add(j + 1);
                 }
 

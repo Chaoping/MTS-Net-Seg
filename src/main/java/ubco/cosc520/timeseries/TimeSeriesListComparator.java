@@ -9,6 +9,7 @@ public interface TimeSeriesListComparator {
 
     /**
      * Perform the comparison.
+     *
      * @param timeSeriesList The time series list to compare.
      * @return A RealMatrix of
      */

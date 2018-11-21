@@ -10,6 +10,7 @@ public interface SingleMatrixOperator {
 
     /**
      * Perform the operation on the matrix.
+     *
      * @param g The matrix for the operation.
      * @return A matrix with the operation applied.
      */

@@ -12,7 +12,8 @@ abstract class BaseMatrixOperator {
 
     /**
      * Performs the operation on the matrix.
-     * @param g The first matrix
+     *
+     * @param g        The first matrix
      * @param operator The operator to be applied to each cell
      * @return The result of the operation.
      */

@@ -8,9 +8,10 @@ public class TwoGraphUnion
 
     /**
      * Calculates the union between two graphs.
+     *
      * @param g The first graph
      * @param h The second graph
-     * @return  A new graph, which is the union of G and H.
+     * @return A new graph, which is the union of G and H.
      */
     @Override
     public Graph operate(

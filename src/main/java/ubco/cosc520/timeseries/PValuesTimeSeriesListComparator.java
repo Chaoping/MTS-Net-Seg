@@ -11,6 +11,7 @@ public class PValuesTimeSeriesListComparator
 
     /**
      * Produces the PValues matrix.
+     *
      * @param timeSeriesList The list of time series.
      * @return A similarity matrix.
      */

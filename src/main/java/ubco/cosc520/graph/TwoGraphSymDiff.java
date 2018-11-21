@@ -8,6 +8,7 @@ public class TwoGraphSymDiff
 
     /**
      * Calculates the symmetric difference between two Graphs.
+     *
      * @param g The first graph
      * @param h The second graph
      * @return A new graph, which is the symmetric difference of G and H.

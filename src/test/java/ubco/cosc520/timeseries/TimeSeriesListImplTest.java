@@ -2,14 +2,12 @@ package ubco.cosc520.timeseries;
 
 import org.junit.Before;
 import org.junit.Test;
-import ubco.cosc520.timeseries.TimeSeriesList;
-import ubco.cosc520.timeseries.TimeSeriesListImpl;
-
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
 
 import java.util.Arrays;
 import java.util.Random;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 public class TimeSeriesListImplTest {
 
@@ -49,7 +47,7 @@ public class TimeSeriesListImplTest {
     @Test
     public void testTruncate() {
         add();
-        TimeSeriesList truncated = timeSeriesList.truncate(10,20);
+        TimeSeriesList truncated = timeSeriesList.truncate(10, 20);
         assertThat(truncated.getList().size(), is(2));
         assertThat(truncated.getByIndex(0), is(Arrays.copyOfRange(timeSeriesList.getByIndex(0), 10, 20)));
         assertThat(truncated.getByIndex(1), is(Arrays.copyOfRange(timeSeriesList.getByIndex(1), 10, 20)));
@@ -61,7 +59,7 @@ public class TimeSeriesListImplTest {
         double[][] doubleMatrix = timeSeriesList.toDoubleMatrix();
         int rows = 2;
         int cols = 40;
-        for(int row = 0; row < rows; row++) {
+        for (int row = 0; row < rows; row++) {
             double[] ts = timeSeriesList.getByIndex(row);
             for (int col = 0; col < cols; col++) {
                 assertThat(doubleMatrix[col][row], is(ts[col]));

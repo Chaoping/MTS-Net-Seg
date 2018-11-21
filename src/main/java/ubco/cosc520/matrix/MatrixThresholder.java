@@ -14,18 +14,17 @@ public class MatrixThresholder
     private final double thresh;
 
     /**
-     * @param threshold  The threshold to compare against.
+     * @param threshold The threshold to compare against.
      */
     public MatrixThresholder(final double threshold) {
         this.thresh = threshold;
     }
 
     /**
-     *
      * @param g The matrix
      * @return A matrix with each cell replaced:
-     *          1 if the value of the cell is >= the threshold
-     *          0 otherwise.
+     * 1 if the value of the cell is >= the threshold
+     * 0 otherwise.
      */
     @Override
     public RealMatrix operate(final RealMatrix g) {
