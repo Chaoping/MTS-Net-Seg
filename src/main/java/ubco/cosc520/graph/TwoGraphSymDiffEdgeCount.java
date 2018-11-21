@@ -6,7 +6,7 @@ import org.apache.commons.math3.linear.RealMatrix;
  * Calculates the symmetric difference between two Graphs.
  */
 public class TwoGraphSymDiffEdgeCount
-        implements TwoGraphOperator<Integer> {
+        implements TwoGraphOperator<Double> {
 
     /**
      * Calculates the symmetric difference between two Graphs.
@@ -16,7 +16,7 @@ public class TwoGraphSymDiffEdgeCount
      * @return A new graph, which is the symmetric difference of G and H.
      */
     @Override
-    public Integer operate(
+    public Double operate(
             final Graph g,
             final Graph h
     ) {
@@ -25,7 +25,7 @@ public class TwoGraphSymDiffEdgeCount
 
         int size = rmg.getColumn(0).length;
 
-        int edgeNumOfSymDiff = 0;
+        double edgeNumOfSymDiff = 0;
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 //skip dignose line
