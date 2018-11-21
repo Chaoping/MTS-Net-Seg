@@ -13,7 +13,11 @@ public class DynamicProgramming {
         int numTimePoints = graphs.length;
 
         // Dynamic programming table stores OPT(w), the maximum value up to w
-        List<OPT> dptable = new ArrayList<>(numTimePoints);
+        List<OPT> dptable = new ArrayList<>();
+
+        for (int i = 0; i < numTimePoints; i++) {
+            dptable.add(new OPT());
+        }
 
         // OPT(0) = 0;
         dptable.get(0).setValue(0.0);

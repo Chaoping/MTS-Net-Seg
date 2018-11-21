@@ -12,6 +12,7 @@ import static org.junit.Assert.assertThat;
 
 public class DynamicProgrammingTest {
 
+    Graph[][] graphs;
     @Before
     public void before() {
 
@@ -27,14 +28,16 @@ public class DynamicProgrammingTest {
         CreateSimulatedData createSimulatedData = new CreateSimulatedData(gd);
         TimeSeriesList timeSeriesList = TimeSeriesListImpl.fromDoubleArray(createSimulatedData.getSimulatedData());
 
-        Graph[][] graphs = GraphTableBuilder.TableFromTimeSeriesList(timeSeriesList);
+        graphs = GraphTableBuilder.TableFromTimeSeriesList(timeSeriesList);
 
-        assertThat(null, is(1));
     }
 
     @Test
     public void test() {
         DynamicProgramming dynamicProgramming = new DynamicProgramming();
+        dynamicProgramming.dynamicProgramming(graphs);
+        assertThat(null, is(1));
+
 
     }
 
