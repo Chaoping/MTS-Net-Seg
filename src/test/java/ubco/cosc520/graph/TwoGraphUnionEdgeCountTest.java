@@ -41,12 +41,12 @@ public class TwoGraphUnionEdgeCountTest {
     }
 
 
-    private void testMatrices(double[][] m1, double[][] m2, int result) {
+    private void testMatrices(double[][] m1, double[][] m2, double result) {
         Graph g1 = new UndirectedAdjacencyMatrixGraph(MatrixUtils.createRealMatrix(m1));
         Graph g2 = new UndirectedAdjacencyMatrixGraph(MatrixUtils.createRealMatrix(m2));
 
-        TwoGraphOperator<Integer> twoGraphUnionEdgeCount = new TwoGraphUnionEdgeCount();
-        Integer edgeNumOfUnion = twoGraphUnionEdgeCount.operate(g1, g2);
+        TwoGraphOperator<Double> twoGraphUnionEdgeCount = new TwoGraphUnionEdgeCount();
+        Double edgeNumOfUnion = twoGraphUnionEdgeCount.operate(g1, g2);
 
         assertThat(edgeNumOfUnion, is(result));
     }

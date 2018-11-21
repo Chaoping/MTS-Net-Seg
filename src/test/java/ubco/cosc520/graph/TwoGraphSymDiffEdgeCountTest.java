@@ -39,12 +39,12 @@ public class TwoGraphSymDiffEdgeCountTest {
         testMatrices(m1, m2, 3);
     }
 
-    private void testMatrices(double[][] m1, double[][] m2, int result) {
+    private void testMatrices(double[][] m1, double[][] m2, double result) {
         Graph g1 = new UndirectedAdjacencyMatrixGraph(MatrixUtils.createRealMatrix(m1));
         Graph g2 = new UndirectedAdjacencyMatrixGraph(MatrixUtils.createRealMatrix(m2));
 
-        TwoGraphOperator<Integer> twoGraphSymDiff = new TwoGraphSymDiffEdgeCount();
-        Integer edgeNumOfSymDiff = twoGraphSymDiff.operate(g1, g2);
+        TwoGraphOperator<Double> twoGraphSymDiff = new TwoGraphSymDiffEdgeCount();
+        Double edgeNumOfSymDiff = twoGraphSymDiff.operate(g1, g2);
 
         assertThat(edgeNumOfSymDiff, is(result));
     }
