@@ -11,20 +11,20 @@ public class TwoGraphSymDiffEdgeCountTest {
     @Test
     public void operate() {
         double[][] m1 = {
-                {0, 0, 1, 1},
-                {0, 0, 1, 1},
-                {1, 1, 0, 1},
+                {1, 0, 1, 1},
+                {0, 1, 1, 1},
+                {1, 1, 1, 1},
                 {0, 0, 0, 1}
         };
         double[][] m2 = {
-                {0, 0, 1, 1},
-                {0, 0, 1, 1},
-                {1, 1, 0, 1},
+                {1, 0, 1, 1},
+                {0, 1, 1, 1},
+                {1, 1, 1, 1},
                 {0, 0, 0, 1}
         };
 
-        Graph g1 = new AdjacencyMatrixGraph(MatrixUtils.createRealMatrix(m1));
-        Graph g2 = new AdjacencyMatrixGraph(MatrixUtils.createRealMatrix(m2));
+        Graph g1 = new UndirectedAdjacencyMatrixGraph(MatrixUtils.createRealMatrix(m1));
+        Graph g2 = new UndirectedAdjacencyMatrixGraph(MatrixUtils.createRealMatrix(m2));
 
         TwoGraphOperator<Integer> twoGraphSymDiff = new TwoGraphSymDiffEdgeCount();
         Integer edgeNumOfSymDiff = twoGraphSymDiff.operate(g1, g2);

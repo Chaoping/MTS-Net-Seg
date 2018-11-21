@@ -7,30 +7,30 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class AdjacencyMatrixGraphTest {
+public class UndirectedAdjacencyMatrixGraphTest {
 
     @Test
     public void validMatrixMakesGraph() {
         double[][] gd = {
-                {0, 0, 1},
-                {0, 0, 1},
-                {1, 1, 0}
+                {1, 0, 1},
+                {0, 1, 1},
+                {1, 1, 1}
         };
         RealMatrix g = MatrixUtils.createRealMatrix(gd);
 
-        new AdjacencyMatrixGraph(g);
+        new UndirectedAdjacencyMatrixGraph(g);
     }
 
     @Test
     public void testGetAdjacencyMatrix() {
         double[][] gd = {
-                {0, 0, 1},
-                {0, 0, 1},
-                {1, 1, 0}
+                {1, 0, 1},
+                {0, 1, 1},
+                {1, 1, 1}
         };
         RealMatrix g = MatrixUtils.createRealMatrix(gd);
 
-        Graph graph = new AdjacencyMatrixGraph(g);
+        Graph graph = new UndirectedAdjacencyMatrixGraph(g);
         assertThat(graph.getAdjacencyMatrix(), is(g));
     }
 
@@ -43,7 +43,7 @@ public class AdjacencyMatrixGraphTest {
                 {0, 0, 0}
         };
         RealMatrix g = MatrixUtils.createRealMatrix(gd);
-        new AdjacencyMatrixGraph(g);
+        new UndirectedAdjacencyMatrixGraph(g);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -54,7 +54,7 @@ public class AdjacencyMatrixGraphTest {
                 {1, 1, 0}
         };
         RealMatrix g = MatrixUtils.createRealMatrix(gd);
-        new AdjacencyMatrixGraph(g);
+        new UndirectedAdjacencyMatrixGraph(g);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -65,6 +65,18 @@ public class AdjacencyMatrixGraphTest {
                 {0, 0, 0}
         };
         RealMatrix g = MatrixUtils.createRealMatrix(gd);
-        new AdjacencyMatrixGraph(g);
+        new UndirectedAdjacencyMatrixGraph(g);
+    }
+
+
+    @Test(expected = IllegalArgumentException.class)
+    public void nonSymmetricMatrixThrowsError() {
+        double[][] gd = {
+                {1, 0, 1},
+                {0, 1, 0},
+                {0, 0, 1}
+        };
+        RealMatrix g = MatrixUtils.createRealMatrix(gd);
+        new UndirectedAdjacencyMatrixGraph(g);
     }
 }
