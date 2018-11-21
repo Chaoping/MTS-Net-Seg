@@ -18,18 +18,24 @@ public class DynamicProgramming {
         // OPT(0) = 0;
         dptable.get(0).set(0.0);
         dptable.get(0).path.add(0);
+        
+        // OPT(1) = 0;
+        dptable.get(1).set(0.0);
+        dptable.get(1).path.add(0);
+        dptable.get(1).path.add(1);
 
         // OPT(i) = max(weight of the last edge + OPT(before the last edge) - BP)
-        for (int i = 1; i < numTimePoints; i++) {
+        for (int i = 2; i < numTimePoints; i++) {
 
             // by default, no new segments
             double opt = dptable.get(i - 1).value;
             List<Integer> optPath = new ArrayList<>(dptable.get(i - 1).path);
+            optPath.set(optPath.size()-1, i); //
 
             // or there is a new segment
             for (int j = 0; j < i; j++) {
                 //opt_j + weight_ji+ bp
-                int lastSeg = dptable.get(j).path.get(dptable.get(j).path.size() - 1);
+                int lastSeg = dptable.get(j).path.get(dptable.get(j).path.size() - 2);
                 double newSegVal = dptable.get(j).value +
                         new TwoGraphDistance().operate(graphs[lastSeg][j], graphs[j + 1][i]) +
                         bp(1.0, dptable.get(j).path.size() - 1, numTimePoints - 2);
@@ -38,7 +44,7 @@ public class DynamicProgramming {
                 if (newSegVal > opt) {
                     opt = newSegVal;
                     optPath = new ArrayList<>(dptable.get(j).path);
-                    optPath.add(j + 1);
+                    optPath.add(i);
                 }
 
 
