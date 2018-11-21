@@ -5,7 +5,7 @@ import org.apache.commons.math3.linear.RealMatrix;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 public class MatrixAbsoluteValueTest {
 
@@ -13,15 +13,15 @@ public class MatrixAbsoluteValueTest {
     @Test
     public void testAbsoluteValue() {
         double[][] input = {
-                {1,0,-2,80},
-                {2,2,2,2},
-                {2,3,9,0}
+                {1, 0, -2, 80},
+                {2, 2, 2, 2},
+                {2, 3, 9, 0}
         };
 
         double[][] output = {
-                {1,0,2,80},
-                {2,2,2,2},
-                {2,3,9,0}
+                {1, 0, 2, 80},
+                {2, 2, 2, 2},
+                {2, 3, 9, 0}
         };
 
         RealMatrix rm = MatrixUtils.createRealMatrix(input);

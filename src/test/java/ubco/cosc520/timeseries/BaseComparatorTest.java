@@ -26,7 +26,7 @@ public abstract class BaseComparatorTest {
         timeSeriesList = new TimeSeriesListImpl();
         random = new Random();
 
-        for(int ds = 0; ds < testDataSetCount; ds++) {
+        for (int ds = 0; ds < testDataSetCount; ds++) {
             double[] d = getTestTimeSeriesOfSize(testDataLength);
             testData[ds] = d;
             timeSeriesList.add(d);
@@ -38,7 +38,7 @@ public abstract class BaseComparatorTest {
     @Test
     public void testGenerateCorrelationMatrix() {
         RealMatrix rm = timeSeriesListComparator.compare(timeSeriesList);
-        for(int row = 0; row < testDataSetCount; row++) {
+        for (int row = 0; row < testDataSetCount; row++) {
             for (int row2 = 0; row2 < testDataSetCount; row2++) {
                 assertThat(rm.getEntry(row, row2), is(greaterThanOrEqualTo(-1d)));
                 assertThat(rm.getEntry(row, row2), is(lessThanOrEqualTo(1d)));

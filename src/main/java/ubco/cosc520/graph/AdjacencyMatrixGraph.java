@@ -16,6 +16,7 @@ class AdjacencyMatrixGraph implements Graph {
      * Create the graph from a square inputMatrix of values {0,1}
      * 0 - represents no edge between nodes.
      * 1 - represents edge between nodes.
+     *
      * @param inputMatrix The adjacency matrix representation.
      */
     AdjacencyMatrixGraph(final RealMatrix inputMatrix) {

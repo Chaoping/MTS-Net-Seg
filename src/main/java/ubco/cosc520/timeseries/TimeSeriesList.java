@@ -10,19 +10,22 @@ import java.util.List;
 public interface TimeSeriesList {
     /**
      * Add another time series to the list.
-     * @param ts  The time series to add.
+     *
+     * @param ts The time series to add.
      */
     void add(double[] ts);
 
     /**
      * Retrieve the time series by index.
-     * @param idx  Index of the time series to be retrieved.
+     *
+     * @param idx Index of the time series to be retrieved.
      * @return The time series.
      */
     double[] getByIndex(int idx);
 
     /**
      * Get the full list of time series.
+     *
      * @return The time series list.
      */
     List<double[]> getList();
@@ -30,8 +33,9 @@ public interface TimeSeriesList {
     /**
      * Truncate every time series in the list
      * to be between {@code start} and {@code end}.
-     * @param start  Integer index to start at (inclusive)
-     * @param end Integer index to end at (exclusice)
+     *
+     * @param start Integer index to start at (inclusive)
+     * @param end   Integer index to end at (exclusice)
      * @return A new TimeSeriesList object with truncated timeseries.
      */
     TimeSeriesList truncate(int start, int end);
@@ -39,6 +43,7 @@ public interface TimeSeriesList {
     /**
      * Transposes and returns the time series list as a two-dimensional array.
      * Suitable for use with the Apache Math3 package.
+     *
      * @return The transposed time series list as a two-dimensional array.
      */
     double[][] toDoubleMatrix();

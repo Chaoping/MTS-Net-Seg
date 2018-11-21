@@ -11,6 +11,7 @@ public class CorrelationTimeSeriesListComparator
 
     /**
      * Produces the correlation matrix.
+     *
      * @param timeSeriesList The list of time series.
      * @return A similarity matrix.
      */

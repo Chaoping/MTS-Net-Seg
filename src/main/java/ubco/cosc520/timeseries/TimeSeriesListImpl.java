@@ -20,6 +20,7 @@ public class TimeSeriesListImpl implements TimeSeriesList {
 
     /**
      * Initialize a new TimeSeriesList from a list of doubles.
+     *
      * @param doubleList The list of doubles.
      * @return A new TimeSeriesList
      */
