@@ -6,10 +6,10 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
-public class TwoGraphSymDiffEdgeCountTest {
+public class TwoGraphUnionEdgeCountTest {
 
     @Test
-    public void testSameMatrixReturnsZero() {
+    public void testSameMatrixGivesEdgeCount() {
         double[][] m1 = {
                 {1, 0, 1},
                 {0, 1, 1},
@@ -24,9 +24,9 @@ public class TwoGraphSymDiffEdgeCountTest {
         Graph g1 = new UndirectedAdjacencyMatrixGraph(MatrixUtils.createRealMatrix(m1));
         Graph g2 = new UndirectedAdjacencyMatrixGraph(MatrixUtils.createRealMatrix(m2));
 
-        TwoGraphOperator<Integer> twoGraphSymDiff = new TwoGraphSymDiffEdgeCount();
-        Integer edgeNumOfSymDiff = twoGraphSymDiff.operate(g1, g2);
+        TwoGraphOperator<Integer> operator = new TwoGraphUnionEdgeCount();
+        Integer edgeNumOfSymDiff = operator.operate(g1, g2);
 
-        assertThat(edgeNumOfSymDiff, is(0));
+        assertThat(edgeNumOfSymDiff, is(2));
     }
 }
