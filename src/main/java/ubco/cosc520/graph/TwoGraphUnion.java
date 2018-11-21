@@ -3,8 +3,8 @@ package ubco.cosc520.graph;
 /**
  * Calculates the untion between two graphs.
  */
-public class TwoAdjacencyMatrixGraphUnion
-        implements TwoAdjacencyMatrixGraphOperator<Graph> {
+public class TwoGraphUnion
+        implements TwoGraphOperator<Graph> {
 
     /**
      * Calculates the union between two graphs.
@@ -14,8 +14,8 @@ public class TwoAdjacencyMatrixGraphUnion
      */
     @Override
     public Graph operate(
-            final AdjacencyMatrixGraph g,
-            final AdjacencyMatrixGraph h
+            final Graph g,
+            final Graph h
     ) {
         return g;
     }

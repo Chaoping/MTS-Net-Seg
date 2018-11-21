@@ -5,8 +5,8 @@ import org.apache.commons.math3.linear.RealMatrix;
 /**
  * Calculates the distance between two graphs.
  */
-public class TwoAdjacencyMatrixGraphDistance
-        implements TwoAdjacencyMatrixGraphOperator<Double> {
+public class TwoGraphDistance
+        implements TwoGraphOperator<Double> {
 
     /**
      * Calculates the distance between two graphs.
@@ -17,8 +17,8 @@ public class TwoAdjacencyMatrixGraphDistance
      */
     @Override
     public Double operate(
-            final AdjacencyMatrixGraph g,
-            final AdjacencyMatrixGraph h
+            final Graph g,
+            final Graph h
     ) {
         RealMatrix rmg = g.getAdjacencyMatrix();
         RealMatrix rmh = h.getAdjacencyMatrix();

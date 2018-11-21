@@ -3,8 +3,8 @@ package ubco.cosc520.graph;
 /**
  * Calculates the symmetric difference between two Graphs.
  */
-public class TwoAdjacencyMatrixGraphSymDiff
-        implements TwoAdjacencyMatrixGraphOperator<Graph> {
+public class TwoGraphSymDiff
+        implements TwoGraphOperator<Graph> {
 
     /**
      * Calculates the symmetric difference between two Graphs.
@@ -14,8 +14,8 @@ public class TwoAdjacencyMatrixGraphSymDiff
      */
     @Override
     public Graph operate(
-            final AdjacencyMatrixGraph g,
-            final AdjacencyMatrixGraph h
+            final Graph g,
+            final Graph h
     ) {
         return g;
     }

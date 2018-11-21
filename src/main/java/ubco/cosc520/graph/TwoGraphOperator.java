@@ -5,7 +5,7 @@ package ubco.cosc520.graph;
  * Operations which can be performed between 2 graphs.
  * @param <T> - The return type of the operation.
  */
-public interface TwoAdjacencyMatrixGraphOperator<T> {
+public interface TwoGraphOperator<T> {
 
     /**
      * Performs the operation on the two graphs.
@@ -13,6 +13,6 @@ public interface TwoAdjacencyMatrixGraphOperator<T> {
      * @param h The second graph
      * @return The result of the operation.
      */
-    T operate(AdjacencyMatrixGraph g, AdjacencyMatrixGraph h);
+    T operate(Graph g, Graph h);
 
 }

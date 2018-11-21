@@ -5,7 +5,7 @@ import ubco.cosc520.graph.Graph;
 import java.util.ArrayList;
 import java.util.List;
 
-import ubco.cosc520.graph.TwoAdjacencyMatrixGraphDistance;
+import ubco.cosc520.graph.TwoGraphDistance;
 
 public class DynamicProgramming {
     // this method
@@ -32,7 +32,7 @@ public class DynamicProgramming {
                 //opt_j + weight_ji+ bp
                 int lastSeg = dptable.get(j).path.get(dptable.get(j).path.size() - 1);
                 double newSegVal = dptable.get(j).value +
-                        new TwoAdjacencyMatrixGraphDistance().operate(graphs[lastSeg][j], graphs[j + 1][i]) +
+                        new TwoGraphDistance().operate(graphs[lastSeg][j], graphs[j + 1][i]) +
                         bp(1.0, dptable.get(j).path.size() - 1, numTimePoints - 2);
 
                 // if better value can be found with a better segmentation
