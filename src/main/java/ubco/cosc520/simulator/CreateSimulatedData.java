@@ -1,9 +1,10 @@
-package ubco.cosc520.graph;
+package ubco.cosc520.simulator;
 //package RAT2;
 
 import org.apache.commons.math3.linear.Array2DRowRealMatrix;
 import org.apache.commons.math3.linear.RealMatrix;
-import org.apache.commons.math3.stat.correlation.PearsonsCorrelation;
+import ubco.cosc520.matrix.MatrixOfDifferences;
+import ubco.cosc520.matrix.SingleMatrixOperator;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -13,19 +14,26 @@ import java.util.Random;
 
 public class CreateSimulatedData {
 
-    // assumet original dataset is a mtrix
-    // the create a new matrx;
+    // assume original dataset is a matrix
+    // the create a new matrix;
+    private RealMatrix simulatedData;
+    private RealMatrix D;
+    private RealMatrix rawData;
 
-    RealMatrix simulatedData;
-    RealMatrix D;
-    RealMatrix rawData;
+    private SingleMatrixOperator matrixOfDifferences = new MatrixOfDifferences();
 
-    public CreateSimulatedData(double[][] rawData) {
+    public CreateSimulatedData(double[][] inputData) {
         // TODO Auto-generated constructor stub
-        this.rawData = new Array2DRowRealMatrix(rawData);
+        this.rawData = new Array2DRowRealMatrix(inputData);
+        firstStep(this.rawData);
+        getSimulationColumn(simulatedData.getColumnDimension() - 1);
     }
 
-    public double[] getSimulationColumn(int columnIndex) {
+    public double[][] getSimulatedData() {
+        return simulatedData.getData();
+    }
+
+    private double[] getSimulationColumn(int columnIndex) {
         if (columnIndex == 0) {
             //the first column of the simulated datamatrix is simply the first column of
             //the rawdatamatrix
@@ -96,51 +104,15 @@ public class CreateSimulatedData {
 
     }
 
-    public void firstStep(RealMatrix inputM) {
+    private void firstStep(RealMatrix inputM) {
         //create difference matrix and empty simulated data matrix
         int numOfRow = inputM.getRowDimension();
         int numOfColumn = inputM.getColumnDimension();
         //given a m X n input matrix, we create a m X n-1 difference matrix
-        this.D = inputM.createMatrix(numOfRow, numOfColumn - 1);
         this.simulatedData = inputM.createMatrix(numOfRow, numOfColumn);
-
-        for (int i = 0; i < numOfColumn - 1; i++) {
-            double[] columnD = new double[numOfRow];
-            double[] current = inputM.getColumn(i);
-            double[] next = inputM.getColumn(i + 1);
-            for (int j = 0; j < current.length; j++)
-                columnD[j] = next[j] - current[j];
-            this.D.setColumn(i, columnD);
-        }
+        this.D = matrixOfDifferences.operate(inputM);
     }
 
-    static int isLinked(double[][] rawInput, int start, int end, int i, int j) {
-        //start and end inclusive
-        double[][] convertedMatrix = new double[end - start + 1][2];
-        if (end - start < 2) {
-            return 1;
-        } else {
-            for (int c = 0, s = start; c < end - start + 1; c++, s++) {
-                convertedMatrix[c][0] = rawInput[i][s];
-                convertedMatrix[c][1] = rawInput[j][s];
-            } // end of for of constructing converted matrix
-
-            PearsonsCorrelation pc = new PearsonsCorrelation(convertedMatrix);
-            RealMatrix cMatrix = pc.getCorrelationMatrix();
-            RealMatrix pMatrix = pc.getCorrelationPValues();
-
-            // test part,output the calculating result of correalation and correlation
-            // pvalue
-            System.out.println(pMatrix.getEntry(0, 1) + " " + pMatrix.getEntry(1, 0));
-            System.out.println(cMatrix.getEntry(0, 1) + " " + cMatrix.getEntry(1, 0));
-
-            // 0.01 is significance level
-            if (pMatrix.getEntry(0, 1) > 0.01)
-                return 0;
-            else
-                return 1;
-        }
-    }// end of isLInked
 
 }
 

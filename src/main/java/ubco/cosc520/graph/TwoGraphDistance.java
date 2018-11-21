@@ -20,16 +20,11 @@ public class TwoGraphDistance
             final Graph g,
             final Graph h
     ) {
-        RealMatrix rmg = g.getAdjacencyMatrix();
-        RealMatrix rmh = h.getAdjacencyMatrix();
+        Double symDiffEdgeCount = new TwoGraphSymDiffEdgeCount().operate(g, h);
+        Double unionEdgeCount = new TwoGraphUnionEdgeCount().operate(g, h);
 
-        int size = rmg.getColumn(0).length;
-        //calculate the total number of edges for symdiff graph of g and h
 
-        //TODO: Use the other functions to calculate the distance.
-        return 0d;
-
-        //return (double) edgeNumOfSymDiff / (double) edgeNumOfUnion;
+        return symDiffEdgeCount / unionEdgeCount;
 
     }
 }

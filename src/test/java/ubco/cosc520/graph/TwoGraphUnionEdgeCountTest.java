@@ -6,10 +6,10 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class TwoGraphSymDiffEdgeCountTest {
+public class TwoGraphUnionEdgeCountTest {
 
     @Test
-    public void testSameMatrixReturnsZero() {
+    public void testSameMatrixGivesEdgeCount() {
         double[][] m1 = {
                 {1, 0, 1},
                 {0, 1, 1},
@@ -21,11 +21,11 @@ public class TwoGraphSymDiffEdgeCountTest {
                 {1, 1, 1}
         };
 
-        testMatrices(m1, m2, 0);
+        testMatrices(m1, m2, 2);
     }
 
     @Test
-    public void testOppositeMatrixReturnsZero() {
+    public void testOppositeMatrixGivesZero() {
         double[][] m1 = {
                 {1, 0, 1},
                 {0, 1, 1},
@@ -36,16 +36,18 @@ public class TwoGraphSymDiffEdgeCountTest {
                 {1, 1, 0},
                 {0, 0, 1}
         };
+
         testMatrices(m1, m2, 3);
     }
+
 
     private void testMatrices(double[][] m1, double[][] m2, double result) {
         Graph g1 = new UndirectedAdjacencyMatrixGraph(MatrixUtils.createRealMatrix(m1));
         Graph g2 = new UndirectedAdjacencyMatrixGraph(MatrixUtils.createRealMatrix(m2));
 
-        TwoGraphOperator<Double> twoGraphSymDiff = new TwoGraphSymDiffEdgeCount();
-        Double edgeNumOfSymDiff = twoGraphSymDiff.operate(g1, g2);
+        TwoGraphOperator<Double> twoGraphUnionEdgeCount = new TwoGraphUnionEdgeCount();
+        Double edgeNumOfUnion = twoGraphUnionEdgeCount.operate(g1, g2);
 
-        assertThat(edgeNumOfSymDiff, is(result));
+        assertThat(edgeNumOfUnion, is(result));
     }
 }

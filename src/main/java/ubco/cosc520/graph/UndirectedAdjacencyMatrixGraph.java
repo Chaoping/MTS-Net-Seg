@@ -5,7 +5,7 @@ import org.apache.commons.math3.linear.RealMatrix;
 /**
  * A graph implementation representated as an adjacency matrix.
  */
-class AdjacencyMatrixGraph implements Graph {
+public class UndirectedAdjacencyMatrixGraph implements Graph {
 
     /**
      * Internal representation of graph - Adjacency Matrix.
@@ -19,7 +19,7 @@ class AdjacencyMatrixGraph implements Graph {
      *
      * @param inputMatrix The adjacency matrix representation.
      */
-    AdjacencyMatrixGraph(final RealMatrix inputMatrix) {
+    public UndirectedAdjacencyMatrixGraph(final RealMatrix inputMatrix) {
 
         if (inputMatrix.getRowDimension() != inputMatrix.getColumnDimension()) {
             throw new IllegalArgumentException("Input matrix must be square");
@@ -27,14 +27,27 @@ class AdjacencyMatrixGraph implements Graph {
 
         for (int row = 0; row < inputMatrix.getRowDimension(); row++) {
             for (int col = 0; col < inputMatrix.getColumnDimension(); col++) {
+                if (row == col && inputMatrix.getEntry(row, col) != 1d) {
+                    throw new IllegalArgumentException(
+                            "Diagonals of the matrix must be 1."
+                    );
+                }
                 if (inputMatrix.getEntry(row, col) != 0d
                         && inputMatrix.getEntry(row, col) != 1d) {
                     throw new IllegalArgumentException(
                             "Input matrix must contain only 0s or 1s"
                     );
                 }
+
+                if (inputMatrix.getEntry(row, col) != inputMatrix.getEntry(col, row)) {
+                    throw new IllegalArgumentException(
+                            "Input matrix must be symmetric."
+                    );
+                }
             }
         }
+
+
 
         this.adjacencyMatrix = inputMatrix;
     }

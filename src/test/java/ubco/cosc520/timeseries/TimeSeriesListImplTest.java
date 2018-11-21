@@ -49,8 +49,10 @@ public class TimeSeriesListImplTest {
         add();
         TimeSeriesList truncated = timeSeriesList.truncate(10, 20);
         assertThat(truncated.getList().size(), is(2));
-        assertThat(truncated.getByIndex(0), is(Arrays.copyOfRange(timeSeriesList.getByIndex(0), 10, 20)));
-        assertThat(truncated.getByIndex(1), is(Arrays.copyOfRange(timeSeriesList.getByIndex(1), 10, 20)));
+        assertThat(truncated.getByIndex(0).length, is(11));
+        assertThat(truncated.getByIndex(1).length, is(11));
+        assertThat(truncated.getByIndex(0), is(Arrays.copyOfRange(timeSeriesList.getByIndex(0), 10, 21)));
+        assertThat(truncated.getByIndex(1), is(Arrays.copyOfRange(timeSeriesList.getByIndex(1), 10, 21)));
     }
 
     @Test

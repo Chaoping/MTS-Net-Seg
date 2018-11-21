@@ -8,6 +8,7 @@ import java.util.List;
  * Time series data is expected and returned as an array of doubles.
  */
 public interface TimeSeriesList {
+
     /**
      * Add another time series to the list.
      *
@@ -35,7 +36,7 @@ public interface TimeSeriesList {
      * to be between {@code start} and {@code end}.
      *
      * @param start Integer index to start at (inclusive)
-     * @param end   Integer index to end at (exclusice)
+     * @param end   Integer index to end at (inclusive)
      * @return A new TimeSeriesList object with truncated timeseries.
      */
     TimeSeriesList truncate(int start, int end);
@@ -47,4 +48,8 @@ public interface TimeSeriesList {
      * @return The transposed time series list as a two-dimensional array.
      */
     double[][] toDoubleMatrix();
+
+    int getSeriesLength();
+
+    int getNumberOfSeries();
 }
