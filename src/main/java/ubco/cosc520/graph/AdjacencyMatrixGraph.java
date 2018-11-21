@@ -27,6 +27,11 @@ class AdjacencyMatrixGraph implements Graph {
 
         for (int row = 0; row < inputMatrix.getRowDimension(); row++) {
             for (int col = 0; col < inputMatrix.getColumnDimension(); col++) {
+                if (row == col && inputMatrix.getEntry(row, col) != 1d) {
+                    throw new IllegalArgumentException(
+                            "Diagonals of the matrix must be 1."
+                    );
+                }
                 if (inputMatrix.getEntry(row, col) != 0d
                         && inputMatrix.getEntry(row, col) != 1d) {
                     throw new IllegalArgumentException(
@@ -35,6 +40,8 @@ class AdjacencyMatrixGraph implements Graph {
                 }
             }
         }
+
+
 
         this.adjacencyMatrix = inputMatrix;
     }

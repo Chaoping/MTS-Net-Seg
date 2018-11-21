@@ -56,4 +56,15 @@ public class AdjacencyMatrixGraphTest {
         RealMatrix g = MatrixUtils.createRealMatrix(gd);
         new AdjacencyMatrixGraph(g);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void matrixWithZerosOnTheDiagonalThrowsError() {
+        double[][] gd = {
+                {1, 0, 0},
+                {0, 1, 0},
+                {0, 0, 0}
+        };
+        RealMatrix g = MatrixUtils.createRealMatrix(gd);
+        new AdjacencyMatrixGraph(g);
+    }
 }

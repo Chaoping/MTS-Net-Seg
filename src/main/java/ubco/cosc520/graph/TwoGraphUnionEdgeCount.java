@@ -33,7 +33,7 @@ public class TwoGraphUnionEdgeCount
                 if (j == i)
                     continue;
                 if ((rmg.getEntry(i, j) == 1 || rmh.getEntry(i, j) == 1))
-                    edgeNumOfSymDiff++;
+                    edgeNumOfUnion++;
             }
         }
         edgeNumOfUnion /= 2;
