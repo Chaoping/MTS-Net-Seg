@@ -48,4 +48,8 @@ public interface TimeSeriesList {
      * @return The transposed time series list as a two-dimensional array.
      */
     double[][] toDoubleMatrix();
+
+    int getSeriesLength();
+
+    int getNumberOfSeries();
 }

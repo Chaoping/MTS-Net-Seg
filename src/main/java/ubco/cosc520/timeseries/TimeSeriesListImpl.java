@@ -76,4 +76,15 @@ public class TimeSeriesListImpl implements TimeSeriesList {
         }
         return doubleArray;
     }
+
+    @Override
+    public int getSeriesLength() {
+        //TODO: Need to check if list is empty
+        return seriesList.get(0).length;
+    }
+
+    @Override
+    public int getNumberOfSeries() {
+        return seriesList.size();
+    }
 }

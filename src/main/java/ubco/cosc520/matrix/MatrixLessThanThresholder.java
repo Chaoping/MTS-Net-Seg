@@ -23,7 +23,7 @@ public class MatrixLessThanThresholder
     /**
      * @param g The matrix
      * @return A matrix with each cell replaced:
-     * 1 if the value of the cell is >= the threshold
+     * 1 if the value of the cell is <= the threshold
      * 0 otherwise.
      */
     @Override
