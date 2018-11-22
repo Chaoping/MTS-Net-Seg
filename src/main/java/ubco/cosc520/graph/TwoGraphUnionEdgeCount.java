@@ -32,7 +32,7 @@ public class TwoGraphUnionEdgeCount
                 //skip dignose line
                 if (j == i)
                     continue;
-                if ((rmg.getEntry(i, j) == 1 || rmh.getEntry(i, j) == 1))
+                if (rmg.getEntry(i, j) == 1 || rmh.getEntry(i, j) == 1)
                     edgeNumOfUnion++;
             }
         }

@@ -56,7 +56,7 @@ public class TimeSeriesListImpl implements TimeSeriesList {
     @Override
     public final TimeSeriesList truncate(final int start, final int end) {
         return TimeSeriesListImpl.fromDoubleList(seriesList.stream()
-                .map(doubles -> Arrays.copyOfRange(doubles, start, end+1))
+                .map(doubles -> Arrays.copyOfRange(doubles, start, end + 1))
                 .collect(Collectors.toList()));
     }
 

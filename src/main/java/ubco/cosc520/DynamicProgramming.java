@@ -35,7 +35,7 @@ public class DynamicProgramming {
             // by default, no new segments
             double opt = dptable.get(i - 1).getValue();
             List<Integer> optPath = new ArrayList<>(dptable.get(i - 1).getPath());
-            optPath.set(optPath.size()-1, i); //
+            optPath.set(optPath.size() - 1, i); //
 
             // or there is a new segment
             for (int j = 0; j < i; j++) {
@@ -58,7 +58,7 @@ public class DynamicProgramming {
             }
         }
 
-        return dptable.get(numTimePoints).getPath();
+        return dptable.get(numTimePoints - 1).getPath();
     }
 
     double bp(double v, int d_w, int n) {

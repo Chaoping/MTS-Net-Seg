@@ -1,13 +1,12 @@
 package ubco.cosc520.simulator;
 
 import org.junit.Test;
-import ubco.cosc520.simulator.CreateSimulatedData;
 
 public class CreateSimulatedDataTest {
 
     // TODO Auto-generated method stub
     @Test
-    public void test(){
+    public void test() {
         double[][] gd = {
                 {1, 5, 10},
                 {2, 10, 15},

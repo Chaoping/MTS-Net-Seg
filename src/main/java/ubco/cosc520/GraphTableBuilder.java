@@ -16,7 +16,7 @@ public class GraphTableBuilder {
         Graph[][] graphs = new Graph[timePoints][timePoints];
 
         for (int start = 0; start < timePoints; start++) {
-            for (int end = start + 1; end < timePoints; end++) {
+            for (int end = start; end < timePoints; end++) {
                 if (end - start < minLength) {
                     graphs[start][end] = GraphBuilder.makeEmptyGraph(timeSeriesList.getNumberOfSeries());
                 } else {
