@@ -7,7 +7,11 @@ import ubco.cosc520.simulator.CreateSimulatedData;
 import ubco.cosc520.timeseries.TimeSeriesList;
 import ubco.cosc520.timeseries.TimeSeriesListImpl;
 
+import java.util.List;
+
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.assertThat;
 
 public class DynamicProgrammingTest {
@@ -36,10 +40,9 @@ public class DynamicProgrammingTest {
     @Test
     public void test() {
         DynamicProgramming dynamicProgramming = new DynamicProgramming();
-        dynamicProgramming.dynamicProgramming(graphs);
-        assertThat(null, is(1));
-
-
+        List<Integer> path = dynamicProgramming.dynamicProgramming(graphs);
+        assertThat(path, is(notNullValue()));
+        assertThat(path.size(), is(greaterThan(1)));
     }
 
 }

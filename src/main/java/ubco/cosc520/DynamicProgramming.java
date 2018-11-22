@@ -58,7 +58,7 @@ public class DynamicProgramming {
             }
         }
 
-        return dptable.get(numTimePoints).getPath();
+        return dptable.get(numTimePoints - 1).getPath();
     }
 
     double bp(double v, int d_w, int n) {

@@ -1,5 +1,6 @@
 package ubco.cosc520.graph;
 
+import lombok.NonNull;
 import org.apache.commons.math3.linear.RealMatrix;
 
 /**
@@ -17,8 +18,8 @@ public class TwoGraphSymDiffEdgeCount
      */
     @Override
     public Double operate(
-            final Graph g,
-            final Graph h
+            @NonNull final Graph g,
+            @NonNull final Graph h
     ) {
         RealMatrix rmg = g.getAdjacencyMatrix();
         RealMatrix rmh = h.getAdjacencyMatrix();
