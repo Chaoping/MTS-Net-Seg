@@ -12,11 +12,13 @@ import ubco.cosc520.timeseries.TimeSeriesListComparator;
 
 public class GraphBuilder {
 
+    private static final double PVALUE_THRESHOLD = 0.01;
+
     public static Graph makeGraph(TimeSeriesList timeSeriesList) {
         TimeSeriesListComparator timeSeriesListComparator = new PValuesTimeSeriesListComparator();
         RealMatrix pvalueMatrix = timeSeriesListComparator.compare(timeSeriesList);
 
-        SingleMatrixOperator matrixThresholder = new MatrixLessThanThresholder(0.01);
+        SingleMatrixOperator matrixThresholder = new MatrixLessThanThresholder(PVALUE_THRESHOLD);
         RealMatrix adjacencyMatrix = matrixThresholder.operate(pvalueMatrix);
         return new UndirectedAdjacencyMatrixGraph(adjacencyMatrix);
     }

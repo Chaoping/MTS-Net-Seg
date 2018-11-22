@@ -57,7 +57,7 @@ public class CreateSimulatedData {
             double[] sortedPreceding = Arrays.copyOf(preceding, lengthOfPreceding);
             Arrays.sort(sortedPreceding);
             double range = sortedPreceding[lengthOfPreceding - 1] - sortedPreceding[0];
-            double interval = (range / numOfBins);
+            double interval = range / numOfBins;
             //put each element into corresponding bin from 0 to 14
             for (int i = 0; i < lengthOfPreceding; i++) {
                 for (double s = sortedPreceding[0], key = 0; s < sortedPreceding[lengthOfPreceding - 1]; key++, s += interval) {
@@ -82,7 +82,6 @@ public class CreateSimulatedData {
 //				double indexOfBin=-1;
                 LinkedList<Double> rightBin = null;
                 for (Entry<Integer, LinkedList<Double>> entry : bins.entrySet()) {
-                    int key = entry.getKey();
                     LinkedList<Double> list = entry.getValue();
                     if (list.contains(precedingValue)) {
 //				    	indexOfBin=key;

@@ -22,7 +22,8 @@ public class DynamicProgramming {
         // OPT(0) = 0;
         dptable.get(0).setValue(0.0);
         dptable.get(0).addToPath(0);
-
+        dptable.get(0).addToPath(0);
+        
         // OPT(1) = 0;
         dptable.get(1).setValue(0.0);
         dptable.get(1).addToPath(0);

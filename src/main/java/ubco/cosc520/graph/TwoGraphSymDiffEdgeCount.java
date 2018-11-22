@@ -29,10 +29,14 @@ public class TwoGraphSymDiffEdgeCount
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 //skip dignose line
-                if (j == i)
+                if (j == i) {
                     continue;
-                if ((rmg.getEntry(i, j) == 1 || rmh.getEntry(i, j) == 1) && (rmh.getEntry(i, j) != rmg.getEntry(i, j)))
+                }
+
+                if ((rmg.getEntry(i, j) == 1 || rmh.getEntry(i, j) == 1) && rmh.getEntry(i, j) != rmg.getEntry(i, j)) {
                     edgeNumOfSymDiff++;
+                }
+
             }
         }
         edgeNumOfSymDiff /= 2;
