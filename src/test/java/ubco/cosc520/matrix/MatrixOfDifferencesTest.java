@@ -5,7 +5,7 @@ import org.apache.commons.math3.linear.RealMatrix;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 public class MatrixOfDifferencesTest {
 

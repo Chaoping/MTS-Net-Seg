@@ -1,7 +1,5 @@
 package ubco.cosc520.graph;
 
-import org.apache.commons.math3.linear.RealMatrix;
-
 /**
  * Calculates the distance between two graphs.
  */

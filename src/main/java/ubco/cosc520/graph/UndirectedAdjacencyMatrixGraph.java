@@ -48,7 +48,6 @@ public class UndirectedAdjacencyMatrixGraph implements Graph {
         }
 
 
-
         this.adjacencyMatrix = inputMatrix;
     }
 

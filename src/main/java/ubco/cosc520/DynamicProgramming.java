@@ -22,7 +22,7 @@ public class DynamicProgramming {
         // OPT(0) = 0;
         dptable.get(0).setValue(0.0);
         dptable.get(0).addToPath(0);
-        
+
         // OPT(1) = 0;
         dptable.get(1).setValue(0.0);
         dptable.get(1).addToPath(0);
@@ -34,7 +34,7 @@ public class DynamicProgramming {
             // by default, no new segments
             double opt = dptable.get(i - 1).getValue();
             List<Integer> optPath = new ArrayList<>(dptable.get(i - 1).getPath());
-            optPath.set(optPath.size()-1, i); //
+            optPath.set(optPath.size() - 1, i); //
 
             // or there is a new segment
             for (int j = 0; j < i; j++) {

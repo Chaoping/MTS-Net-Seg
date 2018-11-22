@@ -13,6 +13,7 @@ import static org.junit.Assert.assertThat;
 public class DynamicProgrammingTest {
 
     Graph[][] graphs;
+
     @Before
     public void before() {
 
