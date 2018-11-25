@@ -12,19 +12,19 @@ import ubco.cosc520.timeseries.TimeSeriesListComparator;
 
 public class GraphBuilder {
 
-    private static final double PVALUE_THRESHOLD = 0.01;
+  private static final double PVALUE_THRESHOLD = 0.01;
 
-    public static Graph makeGraph(TimeSeriesList timeSeriesList) {
-        TimeSeriesListComparator timeSeriesListComparator = new PValuesTimeSeriesListComparator();
-        RealMatrix pvalueMatrix = timeSeriesListComparator.compare(timeSeriesList);
+  public static Graph makeGraph(TimeSeriesList timeSeriesList) {
+    TimeSeriesListComparator timeSeriesListComparator = new PValuesTimeSeriesListComparator();
+    RealMatrix pvalueMatrix = timeSeriesListComparator.compare(timeSeriesList);
 
-        SingleMatrixOperator matrixThresholder = new MatrixLessThanThresholder(PVALUE_THRESHOLD);
-        RealMatrix adjacencyMatrix = matrixThresholder.operate(pvalueMatrix);
-        return new UndirectedAdjacencyMatrixGraph(adjacencyMatrix);
-    }
+    SingleMatrixOperator matrixThresholder = new MatrixLessThanThresholder(PVALUE_THRESHOLD);
+    RealMatrix adjacencyMatrix = matrixThresholder.operate(pvalueMatrix);
+    return new UndirectedAdjacencyMatrixGraph(adjacencyMatrix);
+  }
 
-    public static Graph makeEmptyGraph(int numberOfNodes) {
-        RealMatrix realMatrix = MatrixUtils.createRealIdentityMatrix(numberOfNodes);
-        return new UndirectedAdjacencyMatrixGraph(realMatrix);
-    }
+  public static Graph makeEmptyGraph(int numberOfNodes) {
+    RealMatrix realMatrix = MatrixUtils.createRealIdentityMatrix(numberOfNodes);
+    return new UndirectedAdjacencyMatrixGraph(realMatrix);
+  }
 }

@@ -7,8 +7,8 @@ import org.apache.commons.math3.linear.RealMatrix;
  */
 public interface Graph {
 
-    /**
-     * @return The adjacency matrix representation of the graph.
-     */
-    RealMatrix getAdjacencyMatrix();
+  /**
+   * @return The adjacency matrix representation of the graph.
+   */
+  RealMatrix getAdjacencyMatrix();
 }

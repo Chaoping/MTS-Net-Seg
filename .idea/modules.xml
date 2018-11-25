@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MTS-Net-Seg.iml" filepath="$PROJECT_DIR$/MTS-Net-Seg.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MTS-Net-Seg_main.iml" filepath="$PROJECT_DIR$/.idea/modules/MTS-Net-Seg_main.iml" group="MTS-Net-Seg" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MTS-Net-Seg_test.iml" filepath="$PROJECT_DIR$/.idea/modules/MTS-Net-Seg_test.iml" group="MTS-Net-Seg" />
     </modules>
   </component>
 </project>

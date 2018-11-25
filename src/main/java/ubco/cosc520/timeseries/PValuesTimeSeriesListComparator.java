@@ -7,18 +7,18 @@ import org.apache.commons.math3.stat.correlation.PearsonsCorrelation;
  * Calculates the PValues matrix between two graphs.
  */
 public class PValuesTimeSeriesListComparator
-        implements TimeSeriesListComparator {
+    implements TimeSeriesListComparator {
 
-    /**
-     * Produces the PValues matrix.
-     *
-     * @param timeSeriesList The list of time series.
-     * @return A similarity matrix.
-     */
-    public RealMatrix compare(final TimeSeriesList timeSeriesList) {
-        double[][] doubleMatrix = timeSeriesList.toDoubleMatrix();
+  /**
+   * Produces the PValues matrix.
+   *
+   * @param timeSeriesList The list of time series.
+   * @return A similarity matrix.
+   */
+  public RealMatrix compare(final TimeSeriesList timeSeriesList) {
+    double[][] doubleMatrix = timeSeriesList.toDoubleMatrix();
 
-        PearsonsCorrelation pc = new PearsonsCorrelation(doubleMatrix);
-        return pc.getCorrelationPValues();
-    }
+    PearsonsCorrelation pc = new PearsonsCorrelation(doubleMatrix);
+    return pc.getCorrelationPValues();
+  }
 }
