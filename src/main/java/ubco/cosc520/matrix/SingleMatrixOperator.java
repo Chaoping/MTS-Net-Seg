@@ -8,12 +8,12 @@ import org.apache.commons.math3.linear.RealMatrix;
  */
 public interface SingleMatrixOperator {
 
-    /**
-     * Perform the operation on the matrix.
-     *
-     * @param g The matrix for the operation.
-     * @return A matrix with the operation applied.
-     */
-    RealMatrix operate(RealMatrix g);
+  /**
+   * Perform the operation on the matrix.
+   *
+   * @param g The matrix for the operation.
+   * @return A matrix with the operation applied.
+   */
+  RealMatrix operate(RealMatrix g);
 
 }

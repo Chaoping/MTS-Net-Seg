@@ -8,13 +8,13 @@ package ubco.cosc520.graph;
  */
 public interface TwoGraphOperator<T> {
 
-    /**
-     * Performs the operation on the two graphs.
-     *
-     * @param g The first graph
-     * @param h The second graph
-     * @return The result of the operation.
-     */
-    T operate(Graph g, Graph h);
+  /**
+   * Performs the operation on the two graphs.
+   *
+   * @param g The first graph
+   * @param h The second graph
+   * @return The result of the operation.
+   */
+  T operate(Graph g, Graph h);
 
 }

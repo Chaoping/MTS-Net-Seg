@@ -7,18 +7,18 @@ import org.apache.commons.math3.stat.correlation.PearsonsCorrelation;
  * Calculates the correlation matrix between two graphs.
  */
 public class CorrelationTimeSeriesListComparator
-        implements TimeSeriesListComparator {
+    implements TimeSeriesListComparator {
 
-    /**
-     * Produces the correlation matrix.
-     *
-     * @param timeSeriesList The list of time series.
-     * @return A similarity matrix.
-     */
-    public RealMatrix compare(final TimeSeriesList timeSeriesList) {
-        double[][] doubleMatrix = timeSeriesList.toDoubleMatrix();
+  /**
+   * Produces the correlation matrix.
+   *
+   * @param timeSeriesList The list of time series.
+   * @return A similarity matrix.
+   */
+  public RealMatrix compare(final TimeSeriesList timeSeriesList) {
+    double[][] doubleMatrix = timeSeriesList.toDoubleMatrix();
 
-        PearsonsCorrelation pc = new PearsonsCorrelation(doubleMatrix);
-        return pc.getCorrelationMatrix();
-    }
+    PearsonsCorrelation pc = new PearsonsCorrelation(doubleMatrix);
+    return pc.getCorrelationMatrix();
+  }
 }

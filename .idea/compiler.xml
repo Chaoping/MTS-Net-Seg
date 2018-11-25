@@ -12,6 +12,8 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="MTS-Net-Seg" target="1.8" />
+      <module name="MTS-Net-Seg_main" target="1.8" />
+      <module name="MTS-Net-Seg_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
