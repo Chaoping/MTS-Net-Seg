@@ -49,7 +49,8 @@ public class DynamicProgrammingTest {
 
     RealMatrix rm = MatrixUtils.createRealMatrix(gd);
     SingleMatrixOperator matrixDifferenceCalculator = new MatrixOfDifferences();
-    SingleMatrixOperator matrixRandomizer = new MatrixRandomizer(matrixDifferenceCalculator, random);
+    SingleMatrixOperator matrixRandomizer = new MatrixRandomizer(matrixDifferenceCalculator,
+        random);
     TimeSeriesList timeSeriesList = TimeSeriesListImpl
         .fromDoubleArray(matrixRandomizer.operate(rm).getData());
 

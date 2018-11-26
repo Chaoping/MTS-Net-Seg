@@ -1,5 +1,8 @@
 package ubco.cosc520.matrix;
 
+import static org.mockito.Mockito.anyInt;
+import static org.mockito.Mockito.when;
+
 import java.util.Random;
 import lombok.extern.java.Log;
 import org.apache.commons.math3.linear.MatrixUtils;
@@ -9,8 +12,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-
-import static org.mockito.Mockito.*;
 
 @Log
 @RunWith(MockitoJUnitRunner.class)

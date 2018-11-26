@@ -11,14 +11,12 @@ import org.apache.commons.math3.linear.RealMatrix;
 
 public class MatrixRandomizer implements SingleMatrixOperator {
 
+  private static final int NUMBER_OF_BINS = 15;
   private final SingleMatrixOperator differenceMatrixCalculator;
   private final Random random;
-
   private RealMatrix outputData;
   private RealMatrix differenceMatrix;
   private RealMatrix rawData;
-
-  private static final int NUMBER_OF_BINS = 15;
 
   @Inject
   public MatrixRandomizer(SingleMatrixOperator differenceMatrixCalculator, Random random) {
