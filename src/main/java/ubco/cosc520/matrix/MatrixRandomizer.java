@@ -12,6 +12,7 @@ import org.apache.commons.math3.linear.RealMatrix;
 public class MatrixRandomizer implements SingleMatrixOperator {
 
   private final SingleMatrixOperator differenceMatrixCalculator;
+  private final Random random;
 
   private RealMatrix outputData;
   private RealMatrix differenceMatrix;
@@ -20,8 +21,9 @@ public class MatrixRandomizer implements SingleMatrixOperator {
   private static final int NUMBER_OF_BINS = 15;
 
   @Inject
-  public MatrixRandomizer(SingleMatrixOperator differenceMatrixCalculator) {
+  public MatrixRandomizer(SingleMatrixOperator differenceMatrixCalculator, Random random) {
     this.differenceMatrixCalculator = differenceMatrixCalculator;
+    this.random = random;
   }
 
   @Override
@@ -101,8 +103,7 @@ public class MatrixRandomizer implements SingleMatrixOperator {
       }
 
       //random pick a value from the right bin and find its index in original column
-      Random rand = new Random();
-      double randomValue = rightBin.get(rand.nextInt(rightBin.size()));
+      double randomValue = rightBin.get(random.nextInt(rightBin.size()));
       int randomIndex = storage.get(randomValue);
       //find value from difference column
       double diffValue = diffColumn[randomIndex];

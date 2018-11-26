@@ -1,20 +1,30 @@
 package ubco.cosc520.matrix;
 
+import java.util.Random;
 import lombok.extern.java.Log;
 import org.apache.commons.math3.linear.MatrixUtils;
 import org.apache.commons.math3.linear.RealMatrix;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
+
+import static org.mockito.Mockito.*;
 
 @Log
+@RunWith(MockitoJUnitRunner.class)
 public class MatrixRandomizerTest {
 
   private SingleMatrixOperator matrixRandomizer;
 
+  @Mock
+  private Random random;
+
   @Before
   public void before() {
     SingleMatrixOperator matrixDifferenceCalculator = new MatrixOfDifferences();
-    matrixRandomizer = new MatrixRandomizer(matrixDifferenceCalculator);
+    matrixRandomizer = new MatrixRandomizer(matrixDifferenceCalculator, random);
   }
 
   @Test
@@ -30,6 +40,7 @@ public class MatrixRandomizerTest {
 
     RealMatrix rm = MatrixUtils.createRealMatrix(gd);
 
+    when(random.nextInt(anyInt())).thenReturn(0);
     log.info(matrixRandomizer.operate(rm).toString());
   }
 }
