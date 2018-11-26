@@ -11,10 +11,19 @@ import ubco.cosc520.timeseries.PValuesTimeSeriesListComparator;
 import ubco.cosc520.timeseries.TimeSeriesList;
 import ubco.cosc520.timeseries.TimeSeriesListComparator;
 
+/**
+ * Static helper functions for initializing Graphs.
+ */
 public class GraphBuilder {
 
   private static final double PVALUE_THRESHOLD = 0.01;
 
+  /**
+   * Performs Comparison and Thresholding on a {@link TimeSeriesList}
+   *     to turn it into a {@link Graph}.
+   * @param timeSeriesList The {@link TimeSeriesList} to turn into a graph.
+   * @return The resulting {@link Graph} object
+   */
   public static Graph makeGraph(@NonNull TimeSeriesList timeSeriesList) {
     TimeSeriesListComparator timeSeriesListComparator = new PValuesTimeSeriesListComparator();
     RealMatrix pvalueMatrix = timeSeriesListComparator.compare(timeSeriesList);
@@ -24,7 +33,12 @@ public class GraphBuilder {
     return new UndirectedAdjacencyMatrixGraph(adjacencyMatrix);
   }
 
-  public static Graph makeEmptyGraph(int numberOfNodes) {
+  /**
+   * Returns an unconnected graph with the specified number of nodes.
+   * @param numberOfNodes The number of nodes in the Graph.
+   * @return A {@link Graph} with the specified number of nodes and no edges.
+   */
+  public static Graph makeUnconnectedGraph(int numberOfNodes) {
     RealMatrix realMatrix = MatrixUtils.createRealIdentityMatrix(numberOfNodes);
     return new UndirectedAdjacencyMatrixGraph(realMatrix);
   }

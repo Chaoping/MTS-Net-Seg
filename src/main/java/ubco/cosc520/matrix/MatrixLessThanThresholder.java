@@ -15,6 +15,7 @@ public class MatrixLessThanThresholder
   private final double thresh;
 
   /**
+   * Initializes a new matrix thresholder with the threshold configured.
    * @param threshold The threshold to compare against.
    */
   public MatrixLessThanThresholder(final double threshold) {
@@ -22,9 +23,10 @@ public class MatrixLessThanThresholder
   }
 
   /**
+   * Performs the thresholding and returns the resulting matrix.
    * @param g The matrix
    * @return A matrix with each cell replaced: 1 if the value of the cell is <= the threshold 0
-   * otherwise.
+   *     otherwise.
    */
   @Override
   public RealMatrix operate(@NonNull final RealMatrix g) {

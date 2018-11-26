@@ -7,22 +7,37 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import lombok.NonNull;
 
-public class FileDataLoader {
+/**
+ * Loads a {@link TimeSeriesList} from a csv-formatted file.
+ * Records should be separated by newlines.
+ * Entries should be separated by commas.
+ * All entries should be the same length.
+ */
+public class ClasspathFileDataLoader {
 
+  private static final String NEWLINE_SEPARATOR = "\n";
+  private static final String ENTRY_SEPARATOR = ",";
+
+  /**
+   * Loads the data from the file.
+   * @param filename The filename to load from.  File should be on the classpath.
+   * @return The populated {@link TimeSeriesList}
+   */
   public static TimeSeriesList fromFile(@NonNull final String filename) {
 
     String data;
     try {
       Path path;
-      path = Paths.get(FileDataLoader.class.getClassLoader()
-          .getResource(filename).toURI());
+      path = Paths.get(Objects.requireNonNull(ClasspathFileDataLoader.class.getClassLoader()
+          .getResource(filename)).toURI());
 
       Stream<String> lines = Files.lines(path);
-      data = lines.collect(Collectors.joining("\n"));
+      data = lines.collect(Collectors.joining(NEWLINE_SEPARATOR));
       lines.close();
 
     } catch (URISyntaxException | IOException e) {
@@ -32,9 +47,9 @@ public class FileDataLoader {
 
     List<double[]> allTimeSeries = new ArrayList<>();
 
-    for (String line : data.split("\n")) {
+    for (String line : data.split(NEWLINE_SEPARATOR)) {
 
-      String[] stringValues = line.split(",");
+      String[] stringValues = line.split(ENTRY_SEPARATOR);
       double[] doubles = new double[stringValues.length];
       for (int i = 0; i < stringValues.length; i++) {
         doubles[i] = Double.parseDouble(stringValues[i]);

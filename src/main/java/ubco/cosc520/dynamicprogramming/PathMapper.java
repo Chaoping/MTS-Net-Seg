@@ -7,6 +7,9 @@ import lombok.NonNull;
 import ubco.cosc520.graph.Graph;
 import ubco.cosc520.graph.TwoGraphOperator;
 
+/**
+ * Produces the Dynamic Programming Path.
+ */
 public class PathMapper {
 
   private final TwoGraphOperator<Double> distanceCalculator;
@@ -16,7 +19,11 @@ public class PathMapper {
     this.distanceCalculator = distanceCalculator;
   }
 
-  // this method
+  /**
+   * Performs the dynamic programming algorithm on a table of {@link Graph} objects.
+   * @param graphs The table of {@link Graph} objects
+   * @return A {@link List} of {@link Integer}s representing the position of the splits.
+   */
   public List<Integer> dynamicProgramming(@NonNull Graph[][] graphs) {
 
     int numTimePoints = graphs.length;

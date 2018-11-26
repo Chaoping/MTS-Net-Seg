@@ -34,6 +34,9 @@ public class PathMapperTest {
 
   Graph[][] graphs;
 
+  /**
+   * Initialize required veriables before testing.
+   */
   @Before
   public void before() {
 

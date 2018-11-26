@@ -10,6 +10,9 @@ import org.apache.commons.math3.linear.RealMatrix;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * An abstract class useful for building tests for comparators of {@link TimeSeriesList}.
+ */
 public abstract class BaseComparatorTest {
 
   TimeSeriesListComparator timeSeriesListComparator;
@@ -19,6 +22,9 @@ public abstract class BaseComparatorTest {
   private int testDataSetCount = 10;
   private double[][] testData = new double[testDataSetCount][testDataLength];
 
+  /**
+   * Initialize required veriables before testing.
+   */
   @Before
   public void baseBefore() {
     timeSeriesList = new TimeSeriesListImpl();

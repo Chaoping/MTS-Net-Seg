@@ -10,6 +10,7 @@ public class MatrixAbsoluteValue
     extends BaseMatrixOperator implements SingleMatrixOperator {
 
   /**
+   * Performs the operation on the matrix and returns the result.
    * @param g The matrix
    * @return A matrix with the values replaced by absolute values.
    */
