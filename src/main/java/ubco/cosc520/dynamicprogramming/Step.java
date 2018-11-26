@@ -1,15 +1,16 @@
-package ubco.cosc520;
+package ubco.cosc520.dynamicprogramming;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import lombok.NonNull;
 
-public class OPT {
+public class Step {
 
   private double value = 0.0;
   private List<Integer> path = new ArrayList<>();
 
-  public void addToPath(Integer input) {
+  public void addToPath(@NonNull Integer input) {
     path.add(input);
   }
 
@@ -25,7 +26,7 @@ public class OPT {
     return Collections.unmodifiableList(path);
   }
 
-  public void setPath(List<Integer> path) {
+  public void setPath(@NonNull List<Integer> path) {
     this.path = path;
   }
 }

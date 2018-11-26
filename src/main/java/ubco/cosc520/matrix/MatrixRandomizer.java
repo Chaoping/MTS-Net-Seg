@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.Random;
 import javax.inject.Inject;
+import lombok.NonNull;
 import org.apache.commons.math3.linear.RealMatrix;
 
 public class MatrixRandomizer implements SingleMatrixOperator {
@@ -19,13 +20,13 @@ public class MatrixRandomizer implements SingleMatrixOperator {
   private RealMatrix rawData;
 
   @Inject
-  public MatrixRandomizer(SingleMatrixOperator differenceMatrixCalculator, Random random) {
+  public MatrixRandomizer(@NonNull SingleMatrixOperator differenceMatrixCalculator, Random random) {
     this.differenceMatrixCalculator = differenceMatrixCalculator;
     this.random = random;
   }
 
   @Override
-  public RealMatrix operate(RealMatrix inputData) {
+  public RealMatrix operate(@NonNull RealMatrix inputData) {
     rawData = inputData;
 
     int numOfRow = rawData.getRowDimension();
@@ -88,13 +89,13 @@ public class MatrixRandomizer implements SingleMatrixOperator {
     for (int i = 0; i < lengthOfPreceding; i++) {
       double[] diffColumn = differenceMatrix.getColumn(columnIndex - 1);
       double precedingValue = preceding[i];
-      //try to find the corresponding bin
-//				double indexOfBin=-1;
+      // try to find the corresponding bin
+      // double indexOfBin=-1;
       List<Double> rightBin = null;
       for (Entry<Integer, List<Double>> entry : bins.entrySet()) {
         List<Double> list = entry.getValue();
         if (list.contains(precedingValue)) {
-//				    	indexOfBin=key;
+          // indexOfBin=key;
           rightBin = list;
           break;
         }

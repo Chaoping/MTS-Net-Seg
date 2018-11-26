@@ -1,5 +1,7 @@
 package ubco.cosc520.graph;
 
+import lombok.NonNull;
+
 /**
  * Calculates the distance between two graphs.
  */
@@ -15,8 +17,8 @@ public class TwoGraphDistance
    */
   @Override
   public Double operate(
-      final Graph g,
-      final Graph h
+      @NonNull final Graph g,
+      @NonNull final Graph h
   ) {
     Double symDiffEdgeCount = new TwoGraphSymDiffEdgeCount().operate(g, h);
     Double unionEdgeCount = new TwoGraphUnionEdgeCount().operate(g, h);

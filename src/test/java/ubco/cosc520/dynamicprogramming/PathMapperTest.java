@@ -1,4 +1,4 @@
-package ubco.cosc520;
+package ubco.cosc520.dynamicprogramming;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -16,6 +16,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import ubco.cosc520.GraphTableBuilder;
 import ubco.cosc520.graph.Graph;
 import ubco.cosc520.graph.TwoGraphDistance;
 import ubco.cosc520.graph.TwoGraphOperator;
@@ -26,13 +27,16 @@ import ubco.cosc520.timeseries.TimeSeriesList;
 import ubco.cosc520.timeseries.TimeSeriesListImpl;
 
 @RunWith(MockitoJUnitRunner.class)
-public class DynamicProgrammingTest {
+public class PathMapperTest {
 
   @Mock
   Random random;
 
   Graph[][] graphs;
 
+  /**
+   * Initialize required veriables before testing.
+   */
   @Before
   public void before() {
 
@@ -54,7 +58,7 @@ public class DynamicProgrammingTest {
     TimeSeriesList timeSeriesList = TimeSeriesListImpl
         .fromDoubleArray(matrixRandomizer.operate(rm).getData());
 
-    graphs = GraphTableBuilder.TableFromTimeSeriesList(timeSeriesList);
+    graphs = GraphTableBuilder.tableFromTimeSeriesList(timeSeriesList);
 
 
   }
@@ -62,8 +66,8 @@ public class DynamicProgrammingTest {
   @Test
   public void test() {
     TwoGraphOperator<Double> distanceCalculator = new TwoGraphDistance();
-    DynamicProgramming dynamicProgramming = new DynamicProgramming(distanceCalculator);
-    List<Integer> path = dynamicProgramming.dynamicProgramming(graphs);
+    PathMapper pathMapper = new PathMapper(distanceCalculator);
+    List<Integer> path = pathMapper.dynamicProgramming(graphs);
     assertThat(path, is(notNullValue()));
     assertThat(path.size(), is(greaterThan(1)));
   }

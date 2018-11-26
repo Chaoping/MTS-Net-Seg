@@ -1,5 +1,6 @@
 package ubco.cosc520.matrix;
 
+import lombok.NonNull;
 import org.apache.commons.math3.linear.RealMatrix;
 
 /**
@@ -13,10 +14,10 @@ public class MatrixSizeComparator implements TwoMatrixOperator<Boolean> {
    * @param g The first matrix
    * @param h The second matrix
    * @return {@code true} if matrices have the same dimensions. {@code false} if matrices have
-   * different dimensions.
+   *     different dimensions.
    */
   @Override
-  public Boolean operate(final RealMatrix g, final RealMatrix h) {
+  public Boolean operate(@NonNull final RealMatrix g, @NonNull final RealMatrix h) {
     return g.getColumnDimension() == h.getColumnDimension()
         && g.getRowDimension() == h.getRowDimension();
   }
