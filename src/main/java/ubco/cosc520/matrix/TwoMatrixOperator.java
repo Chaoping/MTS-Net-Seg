@@ -1,6 +1,5 @@
 package ubco.cosc520.matrix;
 
-
 import lombok.NonNull;
 import org.apache.commons.math3.linear.RealMatrix;
 

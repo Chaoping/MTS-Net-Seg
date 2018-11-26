@@ -25,11 +25,12 @@ public class TimeSeriesListImplTest {
 
     int testSize = 40;
     double[] d = getTestTimeSeriesOfSize(testSize);
-    double[] d2 = getTestTimeSeriesOfSize(testSize);
+
     timeSeriesList.add(d);
     assertThat(timeSeriesList.getList().size(), is(1));
     assertThat(timeSeriesList.getList().get(0), is(d));
 
+    double[] d2 = getTestTimeSeriesOfSize(testSize);
     timeSeriesList.add(d2);
     assertThat(timeSeriesList.getList().size(), is(2));
     assertThat(timeSeriesList.getList().get(0), is(d));

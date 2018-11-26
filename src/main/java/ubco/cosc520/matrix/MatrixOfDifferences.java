@@ -10,7 +10,7 @@ public class MatrixOfDifferences implements SingleMatrixOperator {
   public RealMatrix operate(@NonNull RealMatrix g) {
     int numOfRow = g.getRowDimension();
     int numOfColumn = g.getColumnDimension();
-    RealMatrix D = g.createMatrix(numOfRow, numOfColumn - 1);
+    RealMatrix differenceMatrix = g.createMatrix(numOfRow, numOfColumn - 1);
 
     for (int i = 0; i < numOfColumn - 1; i++) {
       double[] columnD = new double[numOfRow];
@@ -19,9 +19,9 @@ public class MatrixOfDifferences implements SingleMatrixOperator {
       for (int j = 0; j < current.length; j++) {
         columnD[j] = next[j] - current[j];
       }
-      D.setColumn(i, columnD);
+      differenceMatrix.setColumn(i, columnD);
     }
 
-    return D;
+    return differenceMatrix;
   }
 }

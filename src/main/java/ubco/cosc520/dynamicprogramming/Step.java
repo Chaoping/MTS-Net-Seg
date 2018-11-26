@@ -1,11 +1,11 @@
-package ubco.cosc520;
+package ubco.cosc520.dynamicprogramming;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import lombok.NonNull;
 
-public class OPT {
+public class Step {
 
   private double value = 0.0;
   private List<Integer> path = new ArrayList<>();

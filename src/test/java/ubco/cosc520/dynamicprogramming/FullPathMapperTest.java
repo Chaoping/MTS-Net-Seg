@@ -1,10 +1,12 @@
-package ubco.cosc520;
+package ubco.cosc520.dynamicprogramming;
 
 import java.util.List;
 import lombok.extern.java.Log;
 import org.apache.commons.math3.linear.RealMatrix;
 import org.junit.Before;
 import org.junit.Test;
+import ubco.cosc520.DataLoader;
+import ubco.cosc520.GraphTableBuilder;
 import ubco.cosc520.graph.Graph;
 import ubco.cosc520.graph.TwoGraphDistance;
 import ubco.cosc520.graph.TwoGraphOperator;
@@ -13,9 +15,9 @@ import ubco.cosc520.timeseries.TimeSeriesList;
 import ubco.cosc520.timeseries.TimeSeriesListComparator;
 
 @Log
-public class test {
+public class FullPathMapperTest {
 
-  DynamicProgramming dynamicProgramming;
+  PathMapper pathMapper;
 
   TwoGraphOperator<Double> distanceCalculator;
 
@@ -26,7 +28,7 @@ public class test {
   @Before
   public void before() {
     distanceCalculator = new TwoGraphDistance();
-    dynamicProgramming = new DynamicProgramming(distanceCalculator);
+    pathMapper = new PathMapper(distanceCalculator);
     comparator = new PValuesTimeSeriesListComparator();
     timeSeriesList = DataLoader.fromFile("series.csv");
 
@@ -38,8 +40,8 @@ public class test {
 
     log.info(correlation.toString());
 
-    Graph[][] graphs = GraphTableBuilder.TableFromTimeSeriesList(timeSeriesList);
-    List<Integer> path = dynamicProgramming.dynamicProgramming(graphs);
+    Graph[][] graphs = GraphTableBuilder.tableFromTimeSeriesList(timeSeriesList);
+    List<Integer> path = pathMapper.dynamicProgramming(graphs);
 
     log.info(path.toString());
   }

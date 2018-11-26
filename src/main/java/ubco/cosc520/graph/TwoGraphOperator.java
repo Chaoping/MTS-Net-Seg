@@ -1,6 +1,5 @@
 package ubco.cosc520.graph;
 
-
 import lombok.NonNull;
 
 /**

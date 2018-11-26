@@ -89,13 +89,13 @@ public class MatrixRandomizer implements SingleMatrixOperator {
     for (int i = 0; i < lengthOfPreceding; i++) {
       double[] diffColumn = differenceMatrix.getColumn(columnIndex - 1);
       double precedingValue = preceding[i];
-      //try to find the corresponding bin
-//				double indexOfBin=-1;
+      // try to find the corresponding bin
+      // double indexOfBin=-1;
       List<Double> rightBin = null;
       for (Entry<Integer, List<Double>> entry : bins.entrySet()) {
         List<Double> list = entry.getValue();
         if (list.contains(precedingValue)) {
-//				    	indexOfBin=key;
+          // indexOfBin=key;
           rightBin = list;
           break;
         }

@@ -1,6 +1,5 @@
 package ubco.cosc520.matrix;
 
-
 import java.util.function.DoubleUnaryOperator;
 import lombok.NonNull;
 import org.apache.commons.math3.linear.RealMatrix;
