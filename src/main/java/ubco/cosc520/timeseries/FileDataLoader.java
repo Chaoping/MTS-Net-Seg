@@ -1,4 +1,4 @@
-package ubco.cosc520;
+package ubco.cosc520.timeseries;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -9,18 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import ubco.cosc520.timeseries.TimeSeriesList;
-import ubco.cosc520.timeseries.TimeSeriesListImpl;
+import lombok.NonNull;
 
-public class DataLoader {
+public class FileDataLoader {
 
-  public static TimeSeriesList fromFile(String filename) {
+  public static TimeSeriesList fromFile(@NonNull final String filename) {
 
     String data;
     try {
       Path path;
-      path = Paths.get(DataLoader.class.getClassLoader()
-          .getResource("series.csv").toURI());
+      path = Paths.get(FileDataLoader.class.getClassLoader()
+          .getResource(filename).toURI());
 
       Stream<String> lines = Files.lines(path);
       data = lines.collect(Collectors.joining("\n"));

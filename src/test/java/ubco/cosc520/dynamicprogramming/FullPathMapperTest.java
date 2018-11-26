@@ -5,11 +5,11 @@ import lombok.extern.java.Log;
 import org.apache.commons.math3.linear.RealMatrix;
 import org.junit.Before;
 import org.junit.Test;
-import ubco.cosc520.DataLoader;
 import ubco.cosc520.GraphTableBuilder;
 import ubco.cosc520.graph.Graph;
 import ubco.cosc520.graph.TwoGraphDistance;
 import ubco.cosc520.graph.TwoGraphOperator;
+import ubco.cosc520.timeseries.FileDataLoader;
 import ubco.cosc520.timeseries.PValuesTimeSeriesListComparator;
 import ubco.cosc520.timeseries.TimeSeriesList;
 import ubco.cosc520.timeseries.TimeSeriesListComparator;
@@ -30,7 +30,7 @@ public class FullPathMapperTest {
     distanceCalculator = new TwoGraphDistance();
     pathMapper = new PathMapper(distanceCalculator);
     comparator = new PValuesTimeSeriesListComparator();
-    timeSeriesList = DataLoader.fromFile("series.csv");
+    timeSeriesList = FileDataLoader.fromFile("series.csv");
 
   }
 
