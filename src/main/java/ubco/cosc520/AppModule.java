@@ -1,0 +1,22 @@
+package ubco.cosc520;
+
+import dagger.Module;
+import dagger.Provides;
+import ubco.cosc520.graph.TwoGraphDistance;
+import ubco.cosc520.graph.TwoGraphOperator;
+import ubco.cosc520.matrix.MatrixOfDifferences;
+import ubco.cosc520.matrix.SingleMatrixOperator;
+
+@Module
+public class AppModule {
+
+  @Provides
+  public TwoGraphOperator<Double> provideDistanceCalculator() {
+    return new TwoGraphDistance();
+  }
+
+  @Provides
+  public SingleMatrixOperator provideMatrixDifferenceCalculator() {
+     return new MatrixOfDifferences();
+  }
+}
