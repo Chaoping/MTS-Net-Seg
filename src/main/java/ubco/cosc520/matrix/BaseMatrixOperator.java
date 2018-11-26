@@ -2,6 +2,7 @@ package ubco.cosc520.matrix;
 
 
 import java.util.function.DoubleUnaryOperator;
+import lombok.NonNull;
 import org.apache.commons.math3.linear.RealMatrix;
 
 /**
@@ -16,7 +17,7 @@ abstract class BaseMatrixOperator {
    * @param operator The operator to be applied to each cell
    * @return The result of the operation.
    */
-  RealMatrix operate(final RealMatrix g, final DoubleUnaryOperator operator) {
+  RealMatrix operate(@NonNull final RealMatrix g, @NonNull final DoubleUnaryOperator operator) {
     RealMatrix r = g.copy();
     for (int row = 0; row < r.getRowDimension(); row++) {
       for (int col = 0; col < r.getColumnDimension(); col++) {

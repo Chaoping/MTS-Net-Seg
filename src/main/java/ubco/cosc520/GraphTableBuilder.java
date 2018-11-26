@@ -1,15 +1,16 @@
 package ubco.cosc520;
 
+import lombok.NonNull;
 import ubco.cosc520.graph.Graph;
 import ubco.cosc520.timeseries.TimeSeriesList;
 
 public class GraphTableBuilder {
 
-  public static Graph[][] TableFromTimeSeriesList(TimeSeriesList timeSeriesList) {
+  public static Graph[][] TableFromTimeSeriesList(@NonNull TimeSeriesList timeSeriesList) {
     return GraphTableBuilder.TableFromTimeSeriesList(timeSeriesList, 2);
   }
 
-  public static Graph[][] TableFromTimeSeriesList(TimeSeriesList timeSeriesList, int minLength) {
+  public static Graph[][] TableFromTimeSeriesList(@NonNull TimeSeriesList timeSeriesList, int minLength) {
 
     int timePoints = timeSeriesList.getSeriesLength();
 

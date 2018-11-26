@@ -1,6 +1,7 @@
 package ubco.cosc520.matrix;
 
 
+import lombok.NonNull;
 import org.apache.commons.math3.linear.RealMatrix;
 
 /**
@@ -17,6 +18,6 @@ public interface TwoMatrixOperator<T> {
    * @param h The second matrix for the operation.
    * @return A matrix with the operation applied.
    */
-  T operate(RealMatrix g, RealMatrix h);
+  T operate(@NonNull RealMatrix g, @NonNull RealMatrix h);
 
 }

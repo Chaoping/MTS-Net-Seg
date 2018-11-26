@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import lombok.NonNull;
 
 /**
  * A list of multiple time series data. All of the time series must be of the same length. Time
@@ -24,7 +25,7 @@ public class TimeSeriesListImpl implements TimeSeriesList {
    * @return A new TimeSeriesList
    */
   public static TimeSeriesList fromDoubleList(
-      final List<double[]> doubleList) {
+      @NonNull final List<double[]> doubleList) {
 
     TimeSeriesList ts = new TimeSeriesListImpl();
     doubleList.forEach(ts::add);
@@ -32,13 +33,13 @@ public class TimeSeriesListImpl implements TimeSeriesList {
   }
 
   public static TimeSeriesList fromDoubleArray(
-      final double[][] doubleArray) {
+      @NonNull final double[][] doubleArray) {
     List<double[]> doubleList = Arrays.asList(doubleArray);
     return fromDoubleList(doubleList);
   }
 
   @Override
-  public final void add(final double[] ts) {
+  public final void add(@NonNull final double[] ts) {
     seriesList.add(ts);
   }
 

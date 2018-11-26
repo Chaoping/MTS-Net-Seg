@@ -1,12 +1,13 @@
 package ubco.cosc520.matrix;
 
+import lombok.NonNull;
 import org.apache.commons.math3.linear.RealMatrix;
 
 public class MatrixOfDifferences implements SingleMatrixOperator {
 
 
   @Override
-  public RealMatrix operate(RealMatrix g) {
+  public RealMatrix operate(@NonNull RealMatrix g) {
     int numOfRow = g.getRowDimension();
     int numOfColumn = g.getColumnDimension();
     RealMatrix D = g.createMatrix(numOfRow, numOfColumn - 1);

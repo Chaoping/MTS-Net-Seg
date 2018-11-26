@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.Random;
 import javax.inject.Inject;
+import lombok.NonNull;
 import org.apache.commons.math3.linear.RealMatrix;
 
 public class MatrixRandomizer implements SingleMatrixOperator {
@@ -19,13 +20,13 @@ public class MatrixRandomizer implements SingleMatrixOperator {
   private RealMatrix rawData;
 
   @Inject
-  public MatrixRandomizer(SingleMatrixOperator differenceMatrixCalculator, Random random) {
+  public MatrixRandomizer(@NonNull SingleMatrixOperator differenceMatrixCalculator, Random random) {
     this.differenceMatrixCalculator = differenceMatrixCalculator;
     this.random = random;
   }
 
   @Override
-  public RealMatrix operate(RealMatrix inputData) {
+  public RealMatrix operate(@NonNull RealMatrix inputData) {
     rawData = inputData;
 
     int numOfRow = rawData.getRowDimension();

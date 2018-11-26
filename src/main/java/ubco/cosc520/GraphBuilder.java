@@ -1,5 +1,6 @@
 package ubco.cosc520;
 
+import lombok.NonNull;
 import org.apache.commons.math3.linear.MatrixUtils;
 import org.apache.commons.math3.linear.RealMatrix;
 import ubco.cosc520.graph.Graph;
@@ -14,7 +15,7 @@ public class GraphBuilder {
 
   private static final double PVALUE_THRESHOLD = 0.01;
 
-  public static Graph makeGraph(TimeSeriesList timeSeriesList) {
+  public static Graph makeGraph(@NonNull TimeSeriesList timeSeriesList) {
     TimeSeriesListComparator timeSeriesListComparator = new PValuesTimeSeriesListComparator();
     RealMatrix pvalueMatrix = timeSeriesListComparator.compare(timeSeriesList);
 

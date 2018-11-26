@@ -1,6 +1,7 @@
 package ubco.cosc520.matrix;
 
 
+import lombok.NonNull;
 import org.apache.commons.math3.linear.RealMatrix;
 
 /**
@@ -14,6 +15,6 @@ public interface SingleMatrixOperator {
    * @param g The matrix for the operation.
    * @return A matrix with the operation applied.
    */
-  RealMatrix operate(RealMatrix g);
+  RealMatrix operate(@NonNull RealMatrix g);
 
 }

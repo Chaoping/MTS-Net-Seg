@@ -1,5 +1,6 @@
 package ubco.cosc520.graph;
 
+import lombok.NonNull;
 import org.apache.commons.math3.linear.RealMatrix;
 
 /**
@@ -18,7 +19,7 @@ public class UndirectedAdjacencyMatrixGraph implements Graph {
    *
    * @param inputMatrix The adjacency matrix representation.
    */
-  public UndirectedAdjacencyMatrixGraph(final RealMatrix inputMatrix) {
+  public UndirectedAdjacencyMatrixGraph(@NonNull final RealMatrix inputMatrix) {
 
     if (inputMatrix.getRowDimension() != inputMatrix.getColumnDimension()) {
       throw new IllegalArgumentException("Input matrix must be square");

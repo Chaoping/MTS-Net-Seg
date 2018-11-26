@@ -1,6 +1,8 @@
 package ubco.cosc520.graph;
 
 
+import lombok.NonNull;
+
 /**
  * Operations which can be performed between 2 graphs.
  *
@@ -15,6 +17,6 @@ public interface TwoGraphOperator<T> {
    * @param h The second graph
    * @return The result of the operation.
    */
-  T operate(Graph g, Graph h);
+  T operate(@NonNull Graph g, @NonNull Graph h);
 
 }

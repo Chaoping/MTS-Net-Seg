@@ -3,6 +3,7 @@ package ubco.cosc520;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
+import lombok.NonNull;
 import ubco.cosc520.graph.Graph;
 import ubco.cosc520.graph.TwoGraphOperator;
 
@@ -11,12 +12,12 @@ public class DynamicProgramming {
   private final TwoGraphOperator<Double> distanceCalculator;
 
   @Inject
-  public DynamicProgramming(TwoGraphOperator<Double> distanceCalculator) {
+  public DynamicProgramming(@NonNull TwoGraphOperator<Double> distanceCalculator) {
     this.distanceCalculator = distanceCalculator;
   }
 
   // this method
-  public List<Integer> dynamicProgramming(Graph[][] graphs) {
+  public List<Integer> dynamicProgramming(@NonNull Graph[][] graphs) {
 
     int numTimePoints = graphs.length;
 
