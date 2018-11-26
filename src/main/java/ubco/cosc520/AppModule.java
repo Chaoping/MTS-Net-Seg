@@ -19,7 +19,7 @@ public class AppModule {
 
   @Provides
   public SingleMatrixOperator provideMatrixDifferenceCalculator() {
-     return new MatrixOfDifferences();
+    return new MatrixOfDifferences();
   }
 
   @Provides
