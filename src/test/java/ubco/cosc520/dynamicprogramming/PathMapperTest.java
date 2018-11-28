@@ -1,75 +1,51 @@
 package ubco.cosc520.dynamicprogramming;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.junit.Assert.assertThat;
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.Mockito.when;
-
 import java.util.List;
-import java.util.Random;
-import org.apache.commons.math3.linear.MatrixUtils;
+import lombok.extern.java.Log;
 import org.apache.commons.math3.linear.RealMatrix;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
 import ubco.cosc520.GraphTableBuilder;
 import ubco.cosc520.graph.Graph;
 import ubco.cosc520.graph.TwoGraphDistance;
 import ubco.cosc520.graph.TwoGraphOperator;
-import ubco.cosc520.matrix.MatrixOfDifferences;
-import ubco.cosc520.matrix.MatrixRandomizer;
-import ubco.cosc520.matrix.SingleMatrixOperator;
+import ubco.cosc520.timeseries.ClasspathFileDataLoader;
+import ubco.cosc520.timeseries.PValuesTimeSeriesListComparator;
 import ubco.cosc520.timeseries.TimeSeriesList;
-import ubco.cosc520.timeseries.TimeSeriesListImpl;
+import ubco.cosc520.timeseries.TimeSeriesListComparator;
 
-@RunWith(MockitoJUnitRunner.class)
+@Log
 public class PathMapperTest {
 
-  @Mock
-  Random random;
+  PathMapper pathMapper;
 
-  Graph[][] graphs;
+  TwoGraphOperator<Double> distanceCalculator;
+
+  TimeSeriesListComparator comparator;
+
+  private TimeSeriesList timeSeriesList;
 
   /**
    * Initialize required veriables before testing.
    */
   @Before
   public void before() {
-
-    double[][] gd = {
-        {1, 5, 10},
-        {2, 10, 15},
-        {3.5, 10, 17},
-        {3, 89, 20},
-        {4, 1000, 99},
-        {31, 90, 4}
-    };
-
-    when(random.nextInt(anyInt())).thenReturn(0);
-
-    RealMatrix rm = MatrixUtils.createRealMatrix(gd);
-    SingleMatrixOperator matrixDifferenceCalculator = new MatrixOfDifferences();
-    SingleMatrixOperator matrixRandomizer = new MatrixRandomizer(matrixDifferenceCalculator,
-        random);
-    TimeSeriesList timeSeriesList = TimeSeriesListImpl
-        .fromDoubleArray(matrixRandomizer.operate(rm).getData());
-
-    graphs = GraphTableBuilder.tableFromTimeSeriesList(timeSeriesList);
-
+    distanceCalculator = new TwoGraphDistance();
+    pathMapper = new PathMapper(distanceCalculator);
+    comparator = new PValuesTimeSeriesListComparator();
+    timeSeriesList = ClasspathFileDataLoader.fromFile("series.csv");
 
   }
 
   @Test
   public void test() {
-    TwoGraphOperator<Double> distanceCalculator = new TwoGraphDistance();
-    PathMapper pathMapper = new PathMapper(distanceCalculator);
-    List<Integer> path = pathMapper.dynamicProgramming(graphs);
-    assertThat(path, is(notNullValue()));
-    assertThat(path.size(), is(greaterThan(1)));
-  }
+    RealMatrix correlation = comparator.compare(timeSeriesList);
 
+    log.info(correlation.toString());
+
+    Graph[][] graphs = GraphTableBuilder.tableFromTimeSeriesList(timeSeriesList);
+    List<Integer> path = pathMapper.dynamicProgramming(graphs);
+
+    log.info(path.toString());
+  }
 }
