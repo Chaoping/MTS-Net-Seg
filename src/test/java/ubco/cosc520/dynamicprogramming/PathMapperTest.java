@@ -29,7 +29,7 @@ public class PathMapperTest {
   @Before
   public void before() {
     distanceCalculator = new TwoGraphDistance();
-    breakpointPenalty = new ExponentialBreakpointPenalty(1);
+    breakpointPenalty = new NormalizedExponentialBreakpointPenalty(1);
     pathMapper = new PathMapper(distanceCalculator, breakpointPenalty);
     comparator = new PValuesTimeSeriesListComparator();
     timeSeriesList = ClasspathFileDataLoader.fromFile("series.csv");

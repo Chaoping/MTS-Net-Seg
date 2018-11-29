@@ -13,14 +13,14 @@ import ubco.cosc520.graph.TwoGraphOperator;
 public class PathMapper {
 
   private final TwoGraphOperator<Double> distanceCalculator;
-  private final BreakpointPenalty exponentialBreakpointPenalty;
+  private final BreakpointPenalty breakpointPenalty;
 
-  private static final int MIN_LENGTH = 10;
+  private static final int MIN_LENGTH = 5;
 
   @Inject
-  public PathMapper(@NonNull TwoGraphOperator<Double> distanceCalculator, BreakpointPenalty exponentialBreakpointPenalty) {
+  public PathMapper(@NonNull TwoGraphOperator<Double> distanceCalculator, BreakpointPenalty breakpointPenalty) {
     this.distanceCalculator = distanceCalculator;
-    this.exponentialBreakpointPenalty = exponentialBreakpointPenalty;
+    this.breakpointPenalty = breakpointPenalty;
   }
 
   /**
@@ -46,8 +46,7 @@ public class PathMapper {
 
         double newSegVal = lastStep.getValue()
             + distanceCalculator.operate(graphs[lastInterval.getStart()][lastInterval.getEnd()], graphs[j + 1][i])
-            - exponentialBreakpointPenalty
-            .getPenalty(dptable.get(j).getPath().size(), numTimePoints - 2);
+            - breakpointPenalty.getPenalty(lastPath.size(), numTimePoints / (MIN_LENGTH*2) );
 
         // if better value can be found with a better segmentation
         if (newSegVal > currentStep.getValue()) {
