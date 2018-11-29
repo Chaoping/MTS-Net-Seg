@@ -17,18 +17,8 @@ public class Table {
     dptable = new ArrayList<>(size);
 
     for (int i = 0; i < size; i++) {
-      dptable.add(new Step());
+      dptable.add(new Step(0, i));
     }
-
-    // Step(0) = 0;
-    dptable.get(0).setValue(0.0);
-    dptable.get(0).addToPath(0);
-    dptable.get(0).addToPath(0);
-
-    // Step(1) = 0;
-    dptable.get(1).setValue(0.0);
-    dptable.get(1).addToPath(0);
-    dptable.get(1).addToPath(1);
   }
 
   public Step get(int idx) {

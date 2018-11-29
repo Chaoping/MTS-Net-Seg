@@ -1,6 +1,7 @@
 package ubco.cosc520.dynamicprogramming;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import javax.inject.Inject;
 import lombok.NonNull;
@@ -32,32 +33,24 @@ public class PathMapper {
 
     Table dptable = new Table(numTimePoints);
 
-    // Step(i) = max(weight of the last edge + Step(before the last edge) - BP)
-    for (int i = 2; i < numTimePoints; i++) {
+    for (int i = 4; i < numTimePoints; i++) {
 
-      // by default, no new segments
-      double step = dptable.get(i - 1).getValue();
-      List<Integer> path = new ArrayList<>(dptable.get(i - 1).getPath());
-      path.set(path.size() - 1, i); //
+      Step step = dptable.get(i);
 
-      // or there is a new segment
-      for (int j = 0; j < i; j++) {
+      for (int j = 2; j < i-2; j++) {
 
-        int lastSeg = dptable.get(j).getPath().get(dptable.get(j).getPath().size() - 2);
+        int lastSeg = dptable.get(j).getPath().get(dptable.get(j).getPath().size() - 1);
 
         double newSegVal = dptable.get(j).getValue()
             + distanceCalculator.operate(graphs[lastSeg][j], graphs[j + 1][i])
             - breakpointPenalty.getPenalty(dptable.get(j).getPath().size() - 1, numTimePoints - 2);
 
         // if better value can be found with a better segmentation
-        if (newSegVal > step) {
-          step = newSegVal;
-          path = new ArrayList<>(dptable.get(j).getPath());
-          path.add(i);
+        if (newSegVal > step.getValue()) {
+          step.setValue(newSegVal);
+          step.setPath(new ArrayList<>(dptable.get(j).getPath()));
+          step.addToPath(i);
         }
-
-        dptable.get(i).setValue(step);
-        dptable.get(i).setPath(path);
       }
     }
 

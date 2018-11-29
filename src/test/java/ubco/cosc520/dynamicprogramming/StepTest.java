@@ -11,21 +11,21 @@ public class StepTest {
 
   @Test
   public void testInitialization() {
-    Step step = new Step();
+    Step step = new Step(0, 0);
     assertThat(step.getValue(), is(0.0));
-    assertThat(step.getPath().size(), is(0));
+    assertThat(step.getPath().size(), is(1));
   }
 
   @Test
   public void testSetValue() {
-    Step step = new Step();
+    Step step = new Step(0, 0);
     step.setValue(10.1);
     assertThat(step.getValue(), is(10.1));
   }
 
   @Test
   public void testAddToPath() {
-    Step step = new Step();
+    Step step = new Step(0,0);
     step.addToPath(1);
     assertThat(step.getPath().size(), is(1));
     assertThat(step.getPath().get(0), is(1));
@@ -37,7 +37,7 @@ public class StepTest {
 
   @Test
   public void testSetPathAfterInitialization() {
-    Step step = new Step();
+    Step step = new Step(0,0);
     List<Integer> path = new ArrayList<>();
     path.add(1);
     path.add(2);
@@ -48,7 +48,7 @@ public class StepTest {
 
   @Test
   public void testSetPathAfterPathIsPopulated() {
-    Step step = new Step();
+    Step step = new Step(0,0);
     List<Integer> path = new ArrayList<>();
     path.add(1);
     path.add(2);

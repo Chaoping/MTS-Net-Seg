@@ -10,6 +10,12 @@ public class Step {
   private double value = 0.0;
   private List<Integer> path = new ArrayList<>();
 
+  public Step(int initialValue, int pathEnd) {
+    this.value = initialValue;
+    this.path.add(0);
+    this.path.add(pathEnd);
+  }
+
   public void addToPath(@NonNull Integer input) {
     path.add(input);
   }

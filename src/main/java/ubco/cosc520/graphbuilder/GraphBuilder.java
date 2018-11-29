@@ -1,4 +1,4 @@
-package ubco.cosc520;
+package ubco.cosc520.graphbuilder;
 
 import lombok.NonNull;
 import org.apache.commons.math3.linear.MatrixUtils;

@@ -9,7 +9,7 @@ public class BreakpointPenalty {
   }
 
   public double getPenalty(int depth, int maximumPossibleCuts) {
-      return Math.exp(v * depth / maximumPossibleCuts);
+      return v * depth / maximumPossibleCuts;
   }
 
 }

@@ -1,4 +1,4 @@
-package ubco.cosc520;
+package ubco.cosc520.graphbuilder;
 
 import lombok.NonNull;
 import ubco.cosc520.graph.Graph;

@@ -5,7 +5,7 @@ import lombok.extern.java.Log;
 import org.apache.commons.math3.linear.RealMatrix;
 import org.junit.Before;
 import org.junit.Test;
-import ubco.cosc520.GraphTableBuilder;
+import ubco.cosc520.graphbuilder.GraphTableBuilder;
 import ubco.cosc520.graph.Graph;
 import ubco.cosc520.graph.TwoGraphDistance;
 import ubco.cosc520.graph.TwoGraphOperator;
@@ -29,7 +29,7 @@ public class PathMapperTest {
   @Before
   public void before() {
     distanceCalculator = new TwoGraphDistance();
-    breakpointPenalty = new BreakpointPenalty(0);
+    breakpointPenalty = new BreakpointPenalty(1);
     pathMapper = new PathMapper(distanceCalculator, breakpointPenalty);
     comparator = new PValuesTimeSeriesListComparator();
     timeSeriesList = ClasspathFileDataLoader.fromFile("series.csv");
