@@ -1,6 +1,7 @@
 package ubco.cosc520.graph;
 
 import lombok.NonNull;
+import org.apache.commons.math3.linear.MatrixUtils;
 import org.apache.commons.math3.linear.RealMatrix;
 
 /**
@@ -12,6 +13,10 @@ public class UndirectedAdjacencyMatrixGraph implements Graph {
    * Internal representation of graph - Adjacency Matrix.
    */
   private final RealMatrix adjacencyMatrix;
+
+  public UndirectedAdjacencyMatrixGraph(@NonNull double[][] doubles) {
+    this(MatrixUtils.createRealMatrix(doubles));
+  }
 
   /**
    * Create the graph from a square inputMatrix of values {0,1} 0 - represents no edge between

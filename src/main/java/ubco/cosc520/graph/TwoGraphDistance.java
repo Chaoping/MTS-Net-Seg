@@ -23,6 +23,10 @@ public class TwoGraphDistance
     Double symDiffEdgeCount = new TwoGraphSymDiffEdgeCount().operate(g, h);
     Double unionEdgeCount = new TwoGraphUnionEdgeCount().operate(g, h);
 
+    if (unionEdgeCount == 0) {
+      return 0d;
+    }
+
     return symDiffEdgeCount / unionEdgeCount;
 
   }

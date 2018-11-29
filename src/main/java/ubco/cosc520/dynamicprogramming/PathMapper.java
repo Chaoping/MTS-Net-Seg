@@ -13,10 +13,12 @@ import ubco.cosc520.graph.TwoGraphOperator;
 public class PathMapper {
 
   private final TwoGraphOperator<Double> distanceCalculator;
+  private final BreakpointPenalty breakpointPenalty;
 
   @Inject
-  public PathMapper(@NonNull TwoGraphOperator<Double> distanceCalculator) {
+  public PathMapper(@NonNull TwoGraphOperator<Double> distanceCalculator, BreakpointPenalty breakpointPenalty) {
     this.distanceCalculator = distanceCalculator;
+    this.breakpointPenalty = breakpointPenalty;
   }
 
   /**
@@ -28,22 +30,7 @@ public class PathMapper {
 
     int numTimePoints = graphs.length;
 
-    // Dynamic programming table stores Step(w), the maximum value up to w
-    List<Step> dptable = new ArrayList<>();
-
-    for (int i = 0; i < numTimePoints; i++) {
-      dptable.add(new Step());
-    }
-
-    // Step(0) = 0;
-    dptable.get(0).setValue(0.0);
-    dptable.get(0).addToPath(0);
-    dptable.get(0).addToPath(0);
-
-    // Step(1) = 0;
-    dptable.get(1).setValue(0.0);
-    dptable.get(1).addToPath(0);
-    dptable.get(1).addToPath(1);
+    Table dptable = new Table(numTimePoints);
 
     // Step(i) = max(weight of the last edge + Step(before the last edge) - BP)
     for (int i = 2; i < numTimePoints; i++) {
@@ -55,11 +42,12 @@ public class PathMapper {
 
       // or there is a new segment
       for (int j = 0; j < i; j++) {
-        //opt_j + weight_ji+ bp
-        int lastSeg = dptable.get(j).getPath().get(dptable.get(j).getPath().size() - 2)+1;
+
+        int lastSeg = dptable.get(j).getPath().get(dptable.get(j).getPath().size() - 2);
+
         double newSegVal = dptable.get(j).getValue()
             + distanceCalculator.operate(graphs[lastSeg][j], graphs[j + 1][i])
-            + bp(1.0, dptable.get(j).getPath().size() - 1, numTimePoints - 2);
+            - breakpointPenalty.getPenalty(dptable.get(j).getPath().size() - 1, numTimePoints - 2);
 
         // if better value can be found with a better segmentation
         if (newSegVal > step) {
@@ -76,7 +64,5 @@ public class PathMapper {
     return dptable.get(numTimePoints - 1).getPath();
   }
 
-  private double bp(double v, int difference, int n) {
-    return Math.exp(v * difference / n);
-  }
+
 }

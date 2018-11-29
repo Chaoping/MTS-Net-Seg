@@ -17,13 +17,11 @@ import ubco.cosc520.timeseries.TimeSeriesListComparator;
 @Log
 public class PathMapperTest {
 
-  PathMapper pathMapper;
-
-  TwoGraphOperator<Double> distanceCalculator;
-
-  TimeSeriesListComparator comparator;
-
+  private PathMapper pathMapper;
+  private TwoGraphOperator<Double> distanceCalculator;
+  private TimeSeriesListComparator comparator;
   private TimeSeriesList timeSeriesList;
+  private BreakpointPenalty breakpointPenalty;
 
   /**
    * Initialize required veriables before testing.
@@ -31,7 +29,8 @@ public class PathMapperTest {
   @Before
   public void before() {
     distanceCalculator = new TwoGraphDistance();
-    pathMapper = new PathMapper(distanceCalculator);
+    breakpointPenalty = new BreakpointPenalty(0);
+    pathMapper = new PathMapper(distanceCalculator, breakpointPenalty);
     comparator = new PValuesTimeSeriesListComparator();
     timeSeriesList = ClasspathFileDataLoader.fromFile("series.csv");
 
