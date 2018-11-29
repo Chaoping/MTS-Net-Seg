@@ -38,7 +38,7 @@ public class GraphTableBuilder {
       for (int end = start; end < timePoints; end++) {
         if (end - start < minLength) {
           graphs[start][end] = GraphBuilder
-              .makeUnconnectedGraph(timeSeriesList.getNumberOfSeries());
+              .makeFullyConnectedGraph(timeSeriesList.getNumberOfSeries());
         } else {
           graphs[start][end] = GraphBuilder.makeGraph(timeSeriesList.truncate(start, end));
         }

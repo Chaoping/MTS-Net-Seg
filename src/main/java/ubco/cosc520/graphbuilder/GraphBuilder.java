@@ -42,4 +42,15 @@ public class GraphBuilder {
     RealMatrix realMatrix = MatrixUtils.createRealIdentityMatrix(numberOfNodes);
     return new UndirectedAdjacencyMatrixGraph(realMatrix);
   }
+
+  /**
+   * Returns a fully-connected graph with the specified number of nodes.
+   * @param numberOfNodes The number of nodes in the Graph.
+   * @return A {@link Graph} with the specified number of nodes and no edges.
+   */
+  public static Graph makeFullyConnectedGraph(int numberOfNodes) {
+    RealMatrix realMatrix = MatrixUtils.createRealIdentityMatrix(numberOfNodes);
+    MatrixLessThanThresholder thresholder = new MatrixLessThanThresholder(1000);
+    return new UndirectedAdjacencyMatrixGraph(thresholder.operate(realMatrix));
+  }
 }

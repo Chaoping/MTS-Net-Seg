@@ -29,7 +29,7 @@ public class PathMapper {
    * @param graphs The table of {@link Graph} objects
    * @return A {@link List} of {@link Integer}s representing the position of the splits.
    */
-  public List<Integer> dynamicProgramming(@NonNull Graph[][] graphs) {
+  public List<Interval> dynamicProgramming(@NonNull Graph[][] graphs) {
 
     int numTimePoints = graphs.length;
 
@@ -41,17 +41,17 @@ public class PathMapper {
 
       for (int j = MIN_LENGTH; j < i-MIN_LENGTH; j++) {
 
-        int lastSeg = dptable.get(j).getPath().get(dptable.get(j).getPath().size() - 1);
+        Interval lastInterval = dptable.get(j).getPath().get(dptable.get(j).getPath().size()-1);
 
         double newSegVal = dptable.get(j).getValue()
-            + distanceCalculator.operate(graphs[lastSeg][j], graphs[j + 1][i])
+            + distanceCalculator.operate(graphs[lastInterval.getStart()][lastInterval.getEnd()], graphs[j + 1][i])
             - breakpointPenalty.getPenalty(dptable.get(j).getPath().size(), numTimePoints - 2);
 
         // if better value can be found with a better segmentation
         if (newSegVal > step.getValue()) {
           step.setValue(newSegVal);
           step.setPath(new ArrayList<>(dptable.get(j).getPath()));
-          step.addToPath(i);
+          step.addToPath(new Interval(j+1, i));
         }
       }
     }

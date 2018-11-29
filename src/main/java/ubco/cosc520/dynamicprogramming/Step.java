@@ -7,19 +7,17 @@ import lombok.NonNull;
 
 public class Step {
 
-  private double value = 0.0;
-  private List<Integer> path = new ArrayList<>();
+  private double value;
+  private List<Interval> path = new ArrayList<>();
 
   public Step(int initialValue, int pathEnd) {
     this.value = initialValue;
-    this.path.add(0);
-    if (pathEnd != 0) {
-      this.path.add(pathEnd);
-    }
+    Interval interval = new Interval(0, pathEnd);
+    this.path.add(interval);
   }
 
-  public void addToPath(@NonNull Integer input) {
-    path.add(input);
+  public void addToPath(@NonNull Interval interval) {
+    path.add(interval);
   }
 
   public double getValue() {
@@ -30,11 +28,11 @@ public class Step {
     this.value = value;
   }
 
-  public List<Integer> getPath() {
+  public List<Interval> getPath() {
     return Collections.unmodifiableList(path);
   }
 
-  public void setPath(@NonNull List<Integer> path) {
+  public void setPath(@NonNull List<Interval> path) {
     this.path = path;
   }
 }

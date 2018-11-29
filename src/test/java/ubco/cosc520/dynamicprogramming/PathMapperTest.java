@@ -43,7 +43,7 @@ public class PathMapperTest {
     log.info(correlation.toString());
 
     Graph[][] graphs = GraphTableBuilder.tableFromTimeSeriesList(timeSeriesList);
-    List<Integer> path = pathMapper.dynamicProgramming(graphs);
+    List<Interval> path = pathMapper.dynamicProgramming(graphs);
 
     log.info(path.toString());
   }
