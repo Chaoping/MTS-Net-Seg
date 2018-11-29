@@ -56,7 +56,7 @@ public class PathMapper {
       // or there is a new segment
       for (int j = 0; j < i; j++) {
         //opt_j + weight_ji+ bp
-        int lastSeg = dptable.get(j).getPath().get(dptable.get(j).getPath().size() - 2);
+        int lastSeg = dptable.get(j).getPath().get(dptable.get(j).getPath().size() - 2)+1;
         double newSegVal = dptable.get(j).getValue()
             + distanceCalculator.operate(graphs[lastSeg][j], graphs[j + 1][i])
             + bp(1.0, dptable.get(j).getPath().size() - 1, numTimePoints - 2);
