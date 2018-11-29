@@ -5,6 +5,7 @@ import dagger.Provides;
 import java.util.Random;
 import javax.inject.Singleton;
 import ubco.cosc520.dynamicprogramming.BreakpointPenalty;
+import ubco.cosc520.dynamicprogramming.ExponentialBreakpointPenalty;
 import ubco.cosc520.graph.TwoGraphDistance;
 import ubco.cosc520.graph.TwoGraphOperator;
 import ubco.cosc520.matrix.MatrixOfDifferences;
@@ -31,6 +32,6 @@ public class AppModule {
 
   @Provides
   public BreakpointPenalty provideBreakpointPenalty() {
-    return new BreakpointPenalty(1.0);
+    return new ExponentialBreakpointPenalty(1.0);
   }
 }
