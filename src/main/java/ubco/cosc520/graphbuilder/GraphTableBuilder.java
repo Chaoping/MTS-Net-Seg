@@ -1,4 +1,4 @@
-package ubco.cosc520;
+package ubco.cosc520.graphbuilder;
 
 import lombok.NonNull;
 import ubco.cosc520.graph.Graph;
@@ -38,7 +38,7 @@ public class GraphTableBuilder {
       for (int end = start; end < timePoints; end++) {
         if (end - start < minLength) {
           graphs[start][end] = GraphBuilder
-              .makeUnconnectedGraph(timeSeriesList.getNumberOfSeries());
+              .makeFullyConnectedGraph(timeSeriesList.getNumberOfSeries());
         } else {
           graphs[start][end] = GraphBuilder.makeGraph(timeSeriesList.truncate(start, end));
         }
