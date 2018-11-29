@@ -8,6 +8,7 @@ import lombok.NonNull;
 public class OPT {
 
   private double value = 0.0;
+  private double netValue = 0.0;
   private List<Interval> path = new ArrayList<>();
 
   public void addToPath(@NonNull Interval input) {
@@ -17,9 +18,17 @@ public class OPT {
   public double getValue() {
     return value;
   }
+  
+  public double getNetValue() {
+	  return netValue;
+  }
 
   public void setValue(double value) {
     this.value = value;
+  }
+  
+  public void setNetValue(double netValue) {
+	  this.netValue = netValue;
   }
 
   public List<Interval> getPath() {

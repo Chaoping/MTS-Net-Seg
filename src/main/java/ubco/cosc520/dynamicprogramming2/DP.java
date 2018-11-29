@@ -43,24 +43,29 @@ public class DP {
 		  
 		  //default
 		  double val = 0;
+		  double netVal = 0;
 		  List<Interval> path = new ArrayList<Interval>();
 		  path.add(new Interval(0,i));
 		  
 		  
 		  for(int j = 0; j < i; j++) {
 			  Interval lastInterval = dptable.get(j).getPath().get(dptable.get(j).getPath().size()-1);
-			  double newSegVal = dptable.get(j).getValue() + 
+			  double newSegVal = dptable.get(j).getNetValue() + 
 					  distanceCalculator.operate(graphs[lastInterval.start][lastInterval.end], graphs[j + 1][i])+
 					  bp(1.0, dptable.get(j).getPath().size() + 1, numTimePoints - 2);
 			  
 			  if(newSegVal > val) {
 				  val = newSegVal;
-				  path = path = new ArrayList<>(dptable.get(j).getPath());
+				  netVal = dptable.get(j).getNetValue() + 
+						  distanceCalculator.operate(graphs[lastInterval.start][lastInterval.end], graphs[j + 1][i]);
+				  path = new ArrayList<>(dptable.get(j).getPath());
 		          path.add(new Interval(j+1, i));
 			  }
 					  
 		  }
-		  
+		  dptable.get(i).setPath(path);
+		  dptable.get(i).setValue(val);
+		  dptable.get(i).setNetValue(netVal);;
 		  
 	  }
 	  
