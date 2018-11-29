@@ -1,14 +1,15 @@
-package ubco.cosc520.matrix;
+package ubco.cosc520.simulationBuilder;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Random;
 import javax.inject.Inject;
 import lombok.NonNull;
 import org.apache.commons.math3.linear.RealMatrix;
+import ubco.cosc520.matrix.SingleMatrixOperator;
 
 public class MatrixRandomizer implements SingleMatrixOperator {
 
@@ -20,7 +21,7 @@ public class MatrixRandomizer implements SingleMatrixOperator {
   private RealMatrix rawData;
 
   @Inject
-  public MatrixRandomizer(@NonNull SingleMatrixOperator differenceMatrixCalculator, Random random) {
+  public MatrixRandomizer(@NonNull SingleMatrixOperator differenceMatrixCalculator, @NonNull Random random) {
     this.differenceMatrixCalculator = differenceMatrixCalculator;
     this.random = random;
   }
@@ -41,6 +42,7 @@ public class MatrixRandomizer implements SingleMatrixOperator {
 
   private double[] getSimulationColumn(int columnIndex) {
 
+    //Break
     if (columnIndex == 0) {
       //the first column of the simulated datamatrix is simply the first column of
       //the rawdatamatrix
@@ -48,7 +50,7 @@ public class MatrixRandomizer implements SingleMatrixOperator {
       return outputData.getColumn(0);
     }
 
-    //ǰһ�е�����
+    //Initialization
     double[] preceding = getSimulationColumn(columnIndex - 1);
     int lengthOfPreceding = preceding.length;
     //create hashmap to store the value in the preceding column and its index
@@ -60,7 +62,7 @@ public class MatrixRandomizer implements SingleMatrixOperator {
     //create bins
     HashMap<Integer, List<Double>> bins = new HashMap<>();
     for (int i = 0; i < NUMBER_OF_BINS; i++) {
-      bins.put(i, new LinkedList<>());
+      bins.put(i, new ArrayList<>());
     }
 
     //sort the preceding column and calculate range
@@ -85,6 +87,7 @@ public class MatrixRandomizer implements SingleMatrixOperator {
       }
     }
 
+    // Construct the next column
     double[] current = new double[lengthOfPreceding];
     for (int i = 0; i < lengthOfPreceding; i++) {
       double[] diffColumn = differenceMatrix.getColumn(columnIndex - 1);

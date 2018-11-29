@@ -1,4 +1,4 @@
-package ubco.cosc520.matrix;
+package ubco.cosc520.simulationBuilder;
 
 import static org.mockito.Mockito.anyInt;
 import static org.mockito.Mockito.when;
@@ -12,6 +12,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import ubco.cosc520.matrix.SingleMatrixOperator;
+import ubco.cosc520.matrix.MatrixOfDifferences;
 
 @Log
 @RunWith(MockitoJUnitRunner.class)
