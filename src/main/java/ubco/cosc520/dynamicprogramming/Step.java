@@ -3,12 +3,19 @@ package ubco.cosc520.dynamicprogramming;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import lombok.Getter;
 import lombok.NonNull;
+import lombok.Setter;
+import ubco.cosc520.graph.Graph;
 
 public class Step {
 
   private double value;
   private List<Interval> path = new ArrayList<>();
+
+  @Getter
+  @Setter
+  private Graph graph;
 
   public Step(int initialValue, int pathEnd) {
     this.value = initialValue;
