@@ -27,12 +27,12 @@ public class StepTest {
   public void testAddToPath() {
     Step step = new Step(0,0);
     step.addToPath(1);
-    assertThat(step.getPath().size(), is(1));
-    assertThat(step.getPath().get(0), is(1));
+    assertThat(step.getPath().size(), is(2));
+    assertThat(step.getPath().get(1), is(1));
 
     step.addToPath(2);
-    assertThat(step.getPath().size(), is(2));
-    assertThat(step.getPath().get(1), is(2));
+    assertThat(step.getPath().size(), is(3));
+    assertThat(step.getPath().get(2), is(2));
   }
 
   @Test

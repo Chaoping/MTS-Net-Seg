@@ -8,8 +8,8 @@ public class BreakpointPenalty {
     this.v = v;
   }
 
-  public double getPenalty(int depth, int maximumPossibleCuts) {
-      return v * depth / maximumPossibleCuts;
+  public double getPenalty(int currentCuts, int maximumPossibleCuts) {
+      return Math.exp(v * currentCuts / maximumPossibleCuts) - 1;
   }
 
 }

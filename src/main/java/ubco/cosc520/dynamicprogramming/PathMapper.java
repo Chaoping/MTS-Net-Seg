@@ -16,6 +16,8 @@ public class PathMapper {
   private final TwoGraphOperator<Double> distanceCalculator;
   private final BreakpointPenalty breakpointPenalty;
 
+  private static final int MIN_LENGTH = 5;
+
   @Inject
   public PathMapper(@NonNull TwoGraphOperator<Double> distanceCalculator, BreakpointPenalty breakpointPenalty) {
     this.distanceCalculator = distanceCalculator;
@@ -33,17 +35,17 @@ public class PathMapper {
 
     Table dptable = new Table(numTimePoints);
 
-    for (int i = 4; i < numTimePoints; i++) {
+    for (int i = MIN_LENGTH; i < numTimePoints; i++) {
 
       Step step = dptable.get(i);
 
-      for (int j = 2; j < i-2; j++) {
+      for (int j = MIN_LENGTH; j < i-MIN_LENGTH; j++) {
 
         int lastSeg = dptable.get(j).getPath().get(dptable.get(j).getPath().size() - 1);
 
         double newSegVal = dptable.get(j).getValue()
             + distanceCalculator.operate(graphs[lastSeg][j], graphs[j + 1][i])
-            - breakpointPenalty.getPenalty(dptable.get(j).getPath().size() - 1, numTimePoints - 2);
+            - breakpointPenalty.getPenalty(dptable.get(j).getPath().size(), numTimePoints - 2);
 
         // if better value can be found with a better segmentation
         if (newSegVal > step.getValue()) {

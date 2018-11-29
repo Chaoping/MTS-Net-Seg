@@ -13,7 +13,9 @@ public class Step {
   public Step(int initialValue, int pathEnd) {
     this.value = initialValue;
     this.path.add(0);
-    this.path.add(pathEnd);
+    if (pathEnd != 0) {
+      this.path.add(pathEnd);
+    }
   }
 
   public void addToPath(@NonNull Integer input) {
