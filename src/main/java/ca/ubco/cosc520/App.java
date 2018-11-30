@@ -14,6 +14,7 @@ import ca.ubco.cosc520.graph.Graph;
 import ca.ubco.cosc520.graph.TwoGraphDistance;
 import ca.ubco.cosc520.graph.TwoGraphModifiedDistance;
 import ca.ubco.cosc520.graph.TwoGraphOperator;
+import ca.ubco.cosc520.graphbuilder.CutValueTableBuilder;
 import ca.ubco.cosc520.graphbuilder.GraphBuilder;
 import ca.ubco.cosc520.graphbuilder.GraphTableBuilder;
 import ca.ubco.cosc520.matrix.MatrixAbsoluteValueGreaterThanThresholder;
@@ -65,8 +66,6 @@ public class App {
         args.getComparatorV()
     );
 
-    PathMapper pathMapper = new PathMapper(distanceCalculator, breakpointPenalty);
-
     // Load the file and truncate if necessary
     TimeSeriesList timeSeriesList = new FileDataLoader().load(args.getFile());
 
@@ -82,7 +81,14 @@ public class App {
     GraphBuilder graphBuilder = new GraphBuilder(comparator, matrixThresholder);
     GraphTableBuilder graphTableBuilder = new GraphTableBuilder(graphBuilder);
     Graph[][] graphs = graphTableBuilder.tableFromTimeSeriesList( timeSeriesList);
-    List<Interval> path = pathMapper.dynamicProgramming(graphs);
+
+    CutValueTableBuilder cutValueTableBuilder = new CutValueTableBuilder(distanceCalculator);
+
+    double[][][] cutValues = cutValueTableBuilder.getCutValues(graphs);
+
+    PathMapper pathMapper = new PathMapper(breakpointPenalty);
+
+    List<Interval> path = pathMapper.dynamicProgramming(cutValues);
 
     System.out.println(IntervalListToCSV.fromInterval(path));
   }

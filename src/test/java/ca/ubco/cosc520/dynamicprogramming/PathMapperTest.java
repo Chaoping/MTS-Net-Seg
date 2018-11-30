@@ -3,6 +3,7 @@ package ca.ubco.cosc520.dynamicprogramming;
 import ca.ubco.cosc520.graph.Graph;
 import ca.ubco.cosc520.graph.TwoGraphModifiedDistance;
 import ca.ubco.cosc520.graph.TwoGraphOperator;
+import ca.ubco.cosc520.graphbuilder.CutValueTableBuilder;
 import ca.ubco.cosc520.graphbuilder.GraphBuilder;
 import ca.ubco.cosc520.graphbuilder.GraphTableBuilder;
 import ca.ubco.cosc520.matrix.MatrixLessThanThresholder;
@@ -33,7 +34,7 @@ public class PathMapperTest {
   public void before() {
     distanceCalculator = new TwoGraphModifiedDistance();
     breakpointPenalty = new NormalizedExponentialBreakpointPenalty(1);
-    pathMapper = new PathMapper(distanceCalculator, breakpointPenalty);
+    pathMapper = new PathMapper(breakpointPenalty);
     comparator = new PValuesTimeSeriesListComparator();
     timeSeriesList = new ClasspathFileDataLoader().load("series.csv");
 
@@ -50,7 +51,10 @@ public class PathMapperTest {
     GraphBuilder graphBuilder = new GraphBuilder(pValueComparator, matrixThresholder);
     GraphTableBuilder graphTableBuilder = new GraphTableBuilder(graphBuilder);
     Graph[][] graphs = graphTableBuilder.tableFromTimeSeriesList( timeSeriesList);
-    List<Interval> path = pathMapper.dynamicProgramming(graphs);
+    CutValueTableBuilder cutValueTableBuilder = new CutValueTableBuilder(distanceCalculator);
+    double[][][] cutValues = cutValueTableBuilder.getCutValues(graphs);
+
+    List<Interval> path = pathMapper.dynamicProgramming(cutValues);
 
     log.info(path.toString());
   }
