@@ -6,8 +6,6 @@ import static org.junit.Assert.assertThat;
 import org.apache.commons.math3.linear.MatrixUtils;
 import org.apache.commons.math3.linear.RealMatrix;
 import org.junit.Test;
-import ca.ubco.cosc520.matrix.SingleMatrixOperator;
-import ca.ubco.cosc520.matrix.MatrixOfDifferences;
 
 public class MatrixOfDifferencesTest {
 

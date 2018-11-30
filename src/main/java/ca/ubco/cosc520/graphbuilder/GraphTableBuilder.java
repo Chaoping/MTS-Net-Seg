@@ -1,8 +1,8 @@
 package ca.ubco.cosc520.graphbuilder;
 
-import lombok.NonNull;
 import ca.ubco.cosc520.graph.Graph;
 import ca.ubco.cosc520.timeseries.TimeSeriesList;
+import lombok.NonNull;
 
 /**
  * Iterates over all possible {@code start} and {@code end} combinations in a {@link TimeSeriesList}
@@ -12,6 +12,7 @@ public class GraphTableBuilder {
 
   /**
    * Produce the {@link Graph} table using a default {@code minLength}.
+   *
    * @param timeSeriesList The {@link TimeSeriesList} to be turned into a Graph table.
    * @return The {@link Graph} table.
    */
@@ -24,10 +25,11 @@ public class GraphTableBuilder {
 
   /**
    * Produce the {@link Graph} table using.
+   *
    * @param timeSeriesList The {@link TimeSeriesList} to be turned into a Graph table.
-   * @param minLength  The minimum length of the {@link TimeSeriesList} to be processed.
-   *     {@code start} and {@code end} combinations producing entries less than this length
-   *     result in an empty Graph.
+   * @param minLength The minimum length of the {@link TimeSeriesList} to be processed. {@code
+   * start} and {@code end} combinations producing entries less than this length result in an empty
+   * Graph.
    * @return The {@link Graph} table.
    */
   public static Graph[][] tableFromTimeSeriesList(

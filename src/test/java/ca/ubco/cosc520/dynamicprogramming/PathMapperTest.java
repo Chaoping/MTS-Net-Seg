@@ -1,12 +1,6 @@
 package ca.ubco.cosc520.dynamicprogramming;
 
-import java.util.List;
-import lombok.extern.java.Log;
-import org.apache.commons.math3.linear.RealMatrix;
-import org.junit.Before;
-import org.junit.Test;
 import ca.ubco.cosc520.graph.Graph;
-import ca.ubco.cosc520.graph.SingleGraphOperator;
 import ca.ubco.cosc520.graph.TwoGraphModifiedDistance;
 import ca.ubco.cosc520.graph.TwoGraphOperator;
 import ca.ubco.cosc520.graphbuilder.GraphBuilder;
@@ -17,6 +11,11 @@ import ca.ubco.cosc520.timeseries.ClasspathFileDataLoader;
 import ca.ubco.cosc520.timeseries.PValuesTimeSeriesListComparator;
 import ca.ubco.cosc520.timeseries.TimeSeriesList;
 import ca.ubco.cosc520.timeseries.TimeSeriesListComparator;
+import java.util.List;
+import lombok.extern.java.Log;
+import org.apache.commons.math3.linear.RealMatrix;
+import org.junit.Before;
+import org.junit.Test;
 
 @Log
 public class PathMapperTest {

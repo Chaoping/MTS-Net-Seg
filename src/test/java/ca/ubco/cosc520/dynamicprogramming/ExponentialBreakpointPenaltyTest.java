@@ -1,7 +1,7 @@
 package ca.ubco.cosc520.dynamicprogramming;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -27,14 +27,14 @@ public class ExponentialBreakpointPenaltyTest {
   @Test
   public void testCurrentCutsMatchesMaximumCuts() {
     ExponentialBreakpointPenalty exponentialBreakpointPenalty = new ExponentialBreakpointPenalty(v);
-    double penalty = exponentialBreakpointPenalty.getPenalty(1,1);
+    double penalty = exponentialBreakpointPenalty.getPenalty(1, 1);
     assertThat(penalty, is(Math.exp(v)));
   }
 
   @Test
   public void testNoCurrentCuts() {
     ExponentialBreakpointPenalty exponentialBreakpointPenalty = new ExponentialBreakpointPenalty(v);
-    double penalty = exponentialBreakpointPenalty.getPenalty(0,1);
+    double penalty = exponentialBreakpointPenalty.getPenalty(0, 1);
     assertThat(penalty, is(1.0));
   }
 }

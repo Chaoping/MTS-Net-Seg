@@ -9,7 +9,7 @@ public class ConstantBreakpointPenalty implements BreakpointPenalty {
   }
 
   public double getPenalty(int currentCuts, int maximumPossibleCuts) {
-      return v;
+    return v;
   }
 
 }

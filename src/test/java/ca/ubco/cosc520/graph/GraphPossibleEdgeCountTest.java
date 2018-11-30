@@ -42,7 +42,7 @@ public class GraphPossibleEdgeCountTest {
 
     Double distance = possibleEdgeCounter.operate(g1);
 
-    assertThat(distance, is((double)expectedAnswer));
+    assertThat(distance, is((double) expectedAnswer));
   }
 
 }

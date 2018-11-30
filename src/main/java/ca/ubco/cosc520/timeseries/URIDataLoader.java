@@ -13,10 +13,8 @@ import java.util.stream.Stream;
 import lombok.NonNull;
 
 /**
- * Loads a {@link TimeSeriesList} from a URI.
- * Records should be separated by newlines.
- * Entries should be separated by commas.
- * All entries should be the same length.
+ * Loads a {@link TimeSeriesList} from a URI. Records should be separated by newlines. Entries
+ * should be separated by commas. All entries should be the same length.
  */
 public class URIDataLoader implements DataLoader<URI> {
 
@@ -25,6 +23,7 @@ public class URIDataLoader implements DataLoader<URI> {
 
   /**
    * Loads the data from the file.
+   *
    * @param uri The {@link URI} to load from.
    * @return The populated {@link TimeSeriesList}
    */

@@ -1,10 +1,11 @@
 package ca.ubco.cosc520;
 
+import ca.ubco.cosc520.dynamicprogramming.Interval;
 import java.util.List;
 import lombok.NonNull;
-import ca.ubco.cosc520.dynamicprogramming.Interval;
 
 public class IntervalListToCSV {
+
   public static String fromInterval(@NonNull List<Interval> intervalList) {
     StringBuilder sb = new StringBuilder("0,");
     intervalList.stream().forEach(interval -> {
