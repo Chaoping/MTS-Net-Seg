@@ -48,7 +48,8 @@ public class PathMapperTest {
     SingleMatrixOperator matrixThresholder = new MatrixLessThanThresholder(0.01);
     TimeSeriesListComparator pValueComparator = new PValuesTimeSeriesListComparator();
     GraphBuilder graphBuilder = new GraphBuilder(pValueComparator, matrixThresholder);
-    Graph[][] graphs = GraphTableBuilder.tableFromTimeSeriesList(graphBuilder, timeSeriesList);
+    GraphTableBuilder graphTableBuilder = new GraphTableBuilder(graphBuilder);
+    Graph[][] graphs = graphTableBuilder.tableFromTimeSeriesList( timeSeriesList);
     List<Interval> path = pathMapper.dynamicProgramming(graphs);
 
     log.info(path.toString());

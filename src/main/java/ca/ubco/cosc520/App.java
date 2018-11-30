@@ -80,7 +80,8 @@ public class App {
 
     // Operate
     GraphBuilder graphBuilder = new GraphBuilder(comparator, matrixThresholder);
-    Graph[][] graphs = GraphTableBuilder.tableFromTimeSeriesList(graphBuilder, timeSeriesList);
+    GraphTableBuilder graphTableBuilder = new GraphTableBuilder(graphBuilder);
+    Graph[][] graphs = graphTableBuilder.tableFromTimeSeriesList( timeSeriesList);
     List<Interval> path = pathMapper.dynamicProgramming(graphs);
 
     System.out.println(IntervalListToCSV.fromInterval(path));

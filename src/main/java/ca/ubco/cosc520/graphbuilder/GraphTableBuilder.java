@@ -10,17 +10,20 @@ import lombok.NonNull;
  */
 public class GraphTableBuilder {
 
+  private final GraphBuilder graphBuilder;
+
+  public GraphTableBuilder(GraphBuilder graphBuilder) {
+    this.graphBuilder = graphBuilder;
+  }
+
   /**
    * Produce the {@link Graph} table using a default {@code minLength}.
    *
    * @param timeSeriesList The {@link TimeSeriesList} to be turned into a Graph table.
    * @return The {@link Graph} table.
    */
-  public static Graph[][] tableFromTimeSeriesList(
-      @NonNull GraphBuilder graphBuilder,
-      @NonNull TimeSeriesList timeSeriesList
-  ) {
-    return GraphTableBuilder.tableFromTimeSeriesList(graphBuilder, timeSeriesList, 2);
+  public Graph[][] tableFromTimeSeriesList(@NonNull TimeSeriesList timeSeriesList) {
+    return this.tableFromTimeSeriesList(timeSeriesList, 2);
   }
 
   /**
@@ -32,10 +35,7 @@ public class GraphTableBuilder {
    * Graph.
    * @return The {@link Graph} table.
    */
-  public static Graph[][] tableFromTimeSeriesList(
-      @NonNull GraphBuilder graphBuilder,
-      @NonNull TimeSeriesList timeSeriesList,
-      int minLength) {
+  public Graph[][] tableFromTimeSeriesList(@NonNull TimeSeriesList timeSeriesList, int minLength) {
 
     int timePoints = timeSeriesList.getSeriesLength();
 
