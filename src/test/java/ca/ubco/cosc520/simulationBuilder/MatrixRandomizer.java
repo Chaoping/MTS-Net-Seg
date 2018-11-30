@@ -1,5 +1,6 @@
 package ca.ubco.cosc520.simulationBuilder;
 
+import ca.ubco.cosc520.matrix.SingleMatrixOperator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -8,7 +9,6 @@ import java.util.Map.Entry;
 import java.util.Random;
 import lombok.NonNull;
 import org.apache.commons.math3.linear.RealMatrix;
-import ca.ubco.cosc520.matrix.SingleMatrixOperator;
 
 public class MatrixRandomizer implements SingleMatrixOperator {
 
@@ -19,7 +19,8 @@ public class MatrixRandomizer implements SingleMatrixOperator {
   private RealMatrix differenceMatrix;
   private RealMatrix rawData;
 
-  public MatrixRandomizer(@NonNull SingleMatrixOperator differenceMatrixCalculator, @NonNull Random random) {
+  public MatrixRandomizer(@NonNull SingleMatrixOperator differenceMatrixCalculator,
+      @NonNull Random random) {
     this.differenceMatrixCalculator = differenceMatrixCalculator;
     this.random = random;
   }

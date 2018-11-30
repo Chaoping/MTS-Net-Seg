@@ -9,6 +9,7 @@ public interface Graph {
 
   /**
    * Gives the adjacency matrix representation of the graph.
+   *
    * @return The adjacency matrix representation of the graph.
    */
   RealMatrix getAdjacencyMatrix();

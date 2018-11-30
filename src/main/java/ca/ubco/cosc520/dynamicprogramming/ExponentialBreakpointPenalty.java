@@ -9,7 +9,7 @@ public class ExponentialBreakpointPenalty implements BreakpointPenalty {
   }
 
   public double getPenalty(int currentCuts, int maximumPossibleCuts) {
-      return Math.exp(v * currentCuts / maximumPossibleCuts);
+    return Math.exp(v * currentCuts / maximumPossibleCuts);
   }
 
 }

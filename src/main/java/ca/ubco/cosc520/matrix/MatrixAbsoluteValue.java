@@ -11,6 +11,7 @@ public class MatrixAbsoluteValue
 
   /**
    * Performs the operation on the matrix and returns the result.
+   *
    * @param g The matrix
    * @return A matrix with the values replaced by absolute values.
    */

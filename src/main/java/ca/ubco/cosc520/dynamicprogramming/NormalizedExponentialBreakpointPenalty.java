@@ -10,7 +10,7 @@ public class NormalizedExponentialBreakpointPenalty extends ExponentialBreakpoin
   }
 
   public double getPenalty(int currentCuts, int maximumPossibleCuts) {
-      return super.getPenalty(currentCuts, maximumPossibleCuts) - 1;
+    return super.getPenalty(currentCuts, maximumPossibleCuts) - 1;
   }
 
 }

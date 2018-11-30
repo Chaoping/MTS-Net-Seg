@@ -3,6 +3,8 @@ package ca.ubco.cosc520.simulationBuilder;
 import static org.mockito.Mockito.anyInt;
 import static org.mockito.Mockito.when;
 
+import ca.ubco.cosc520.matrix.MatrixOfDifferences;
+import ca.ubco.cosc520.matrix.SingleMatrixOperator;
 import java.util.Random;
 import lombok.extern.java.Log;
 import org.apache.commons.math3.linear.MatrixUtils;
@@ -12,8 +14,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import ca.ubco.cosc520.matrix.SingleMatrixOperator;
-import ca.ubco.cosc520.matrix.MatrixOfDifferences;
 
 @Log
 @RunWith(MockitoJUnitRunner.class)

@@ -1,9 +1,5 @@
 package ca.ubco.cosc520;
 
-import com.beust.jcommander.JCommander;
-import com.beust.jcommander.ParameterException;
-import java.util.List;
-import lombok.extern.java.Log;
 import ca.ubco.cosc520.dynamicprogramming.BreakpointPenalty;
 import ca.ubco.cosc520.dynamicprogramming.Interval;
 import ca.ubco.cosc520.dynamicprogramming.NormalizedExponentialBreakpointPenalty;
@@ -19,6 +15,10 @@ import ca.ubco.cosc520.timeseries.FileDataLoader;
 import ca.ubco.cosc520.timeseries.PValuesTimeSeriesListComparator;
 import ca.ubco.cosc520.timeseries.TimeSeriesList;
 import ca.ubco.cosc520.timeseries.TimeSeriesListComparator;
+import com.beust.jcommander.JCommander;
+import com.beust.jcommander.ParameterException;
+import java.util.List;
+import lombok.extern.java.Log;
 
 @Log
 public class App {

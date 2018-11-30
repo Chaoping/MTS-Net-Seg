@@ -3,6 +3,7 @@ package ca.ubco.cosc520.graph;
 import lombok.NonNull;
 import org.apache.commons.math3.linear.RealMatrix;
 import org.apache.commons.math3.util.CombinatoricsUtils;
+
 /**
  * Calculates the symmetric difference between two Graphs.
  */

@@ -3,9 +3,9 @@ package ca.ubco.cosc520.graphbuilder;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+import ca.ubco.cosc520.graph.Graph;
 import org.apache.commons.math3.linear.RealMatrix;
 import org.junit.Test;
-import ca.ubco.cosc520.graph.Graph;
 
 public class GraphBuilderTest {
 

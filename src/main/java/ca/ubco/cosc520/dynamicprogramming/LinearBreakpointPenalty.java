@@ -9,7 +9,7 @@ public class LinearBreakpointPenalty implements BreakpointPenalty {
   }
 
   public double getPenalty(int currentCuts, int maximumPossibleCuts) {
-      return v * currentCuts / maximumPossibleCuts;
+    return v * currentCuts / maximumPossibleCuts;
   }
 
 }

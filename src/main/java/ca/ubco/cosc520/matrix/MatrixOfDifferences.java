@@ -2,7 +2,6 @@ package ca.ubco.cosc520.matrix;
 
 import lombok.NonNull;
 import org.apache.commons.math3.linear.RealMatrix;
-import ca.ubco.cosc520.matrix.SingleMatrixOperator;
 
 public class MatrixOfDifferences implements SingleMatrixOperator {
 
