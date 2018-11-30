@@ -6,9 +6,13 @@ import org.apache.commons.math3.linear.RealMatrix;
 import org.junit.Before;
 import org.junit.Test;
 import ubco.cosc520.graph.Graph;
+import ubco.cosc520.graph.SingleGraphOperator;
 import ubco.cosc520.graph.TwoGraphModifiedDistance;
 import ubco.cosc520.graph.TwoGraphOperator;
+import ubco.cosc520.graphbuilder.GraphBuilder;
 import ubco.cosc520.graphbuilder.GraphTableBuilder;
+import ubco.cosc520.matrix.MatrixLessThanThresholder;
+import ubco.cosc520.matrix.SingleMatrixOperator;
 import ubco.cosc520.timeseries.ClasspathFileDataLoader;
 import ubco.cosc520.timeseries.PValuesTimeSeriesListComparator;
 import ubco.cosc520.timeseries.TimeSeriesList;
@@ -32,7 +36,7 @@ public class PathMapperTest {
     breakpointPenalty = new NormalizedExponentialBreakpointPenalty(1);
     pathMapper = new PathMapper(distanceCalculator, breakpointPenalty);
     comparator = new PValuesTimeSeriesListComparator();
-    timeSeriesList = ClasspathFileDataLoader.fromFile("series.csv");
+    timeSeriesList = new ClasspathFileDataLoader().load("series.csv");
 
   }
 
@@ -42,7 +46,10 @@ public class PathMapperTest {
 
     log.info(correlation.toString());
 
-    Graph[][] graphs = GraphTableBuilder.tableFromTimeSeriesList(timeSeriesList);
+    SingleMatrixOperator matrixThresholder = new MatrixLessThanThresholder(0.01);
+    TimeSeriesListComparator pValueComparator = new PValuesTimeSeriesListComparator();
+    GraphBuilder graphBuilder = new GraphBuilder(pValueComparator, matrixThresholder);
+    Graph[][] graphs = GraphTableBuilder.tableFromTimeSeriesList(graphBuilder, timeSeriesList);
     List<Interval> path = pathMapper.dynamicProgramming(graphs);
 
     log.info(path.toString());

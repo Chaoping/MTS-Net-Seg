@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Random;
-import javax.inject.Inject;
 import lombok.NonNull;
 import org.apache.commons.math3.linear.RealMatrix;
 import ubco.cosc520.matrix.SingleMatrixOperator;
@@ -20,7 +19,6 @@ public class MatrixRandomizer implements SingleMatrixOperator {
   private RealMatrix differenceMatrix;
   private RealMatrix rawData;
 
-  @Inject
   public MatrixRandomizer(@NonNull SingleMatrixOperator differenceMatrixCalculator, @NonNull Random random) {
     this.differenceMatrixCalculator = differenceMatrixCalculator;
     this.random = random;

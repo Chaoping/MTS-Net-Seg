@@ -16,7 +16,16 @@ import ubco.cosc520.timeseries.TimeSeriesListComparator;
  */
 public class GraphBuilder {
 
-  private static final double PVALUE_THRESHOLD = 0.01;
+  private final TimeSeriesListComparator timeSeriesListComparator;
+  private final SingleMatrixOperator matrixToGraphOperator;
+
+  public GraphBuilder(
+      TimeSeriesListComparator timeSeriesListComparator,
+      SingleMatrixOperator matrixToGraphOperator
+  ) {
+    this.timeSeriesListComparator = timeSeriesListComparator;
+    this.matrixToGraphOperator = matrixToGraphOperator;
+  }
 
   /**
    * Performs Comparison and Thresholding on a {@link TimeSeriesList}
@@ -24,12 +33,9 @@ public class GraphBuilder {
    * @param timeSeriesList The {@link TimeSeriesList} to turn into a graph.
    * @return The resulting {@link Graph} object
    */
-  public static Graph makeGraph(@NonNull TimeSeriesList timeSeriesList) {
-    TimeSeriesListComparator timeSeriesListComparator = new PValuesTimeSeriesListComparator();
-    RealMatrix pvalueMatrix = timeSeriesListComparator.compare(timeSeriesList);
-
-    SingleMatrixOperator matrixThresholder = new MatrixLessThanThresholder(PVALUE_THRESHOLD);
-    RealMatrix adjacencyMatrix = matrixThresholder.operate(pvalueMatrix);
+  public Graph makeGraph(@NonNull TimeSeriesList timeSeriesList) {
+    RealMatrix matrix = timeSeriesListComparator.compare(timeSeriesList);
+    RealMatrix adjacencyMatrix = matrixToGraphOperator.operate(matrix);
     return new UndirectedAdjacencyMatrixGraph(adjacencyMatrix);
   }
 

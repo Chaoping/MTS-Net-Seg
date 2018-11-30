@@ -15,8 +15,11 @@ public class GraphTableBuilder {
    * @param timeSeriesList The {@link TimeSeriesList} to be turned into a Graph table.
    * @return The {@link Graph} table.
    */
-  public static Graph[][] tableFromTimeSeriesList(@NonNull TimeSeriesList timeSeriesList) {
-    return GraphTableBuilder.tableFromTimeSeriesList(timeSeriesList, 2);
+  public static Graph[][] tableFromTimeSeriesList(
+      @NonNull GraphBuilder graphBuilder,
+      @NonNull TimeSeriesList timeSeriesList
+  ) {
+    return GraphTableBuilder.tableFromTimeSeriesList(graphBuilder, timeSeriesList, 2);
   }
 
   /**
@@ -27,7 +30,9 @@ public class GraphTableBuilder {
    *     result in an empty Graph.
    * @return The {@link Graph} table.
    */
-  public static Graph[][] tableFromTimeSeriesList(@NonNull TimeSeriesList timeSeriesList,
+  public static Graph[][] tableFromTimeSeriesList(
+      @NonNull GraphBuilder graphBuilder,
+      @NonNull TimeSeriesList timeSeriesList,
       int minLength) {
 
     int timePoints = timeSeriesList.getSeriesLength();
@@ -37,7 +42,7 @@ public class GraphTableBuilder {
     for (int start = 0; start < timePoints; start++) {
       for (int end = start; end < timePoints; end++) {
         if (end - start > minLength) {
-          graphs[start][end] = GraphBuilder.makeGraph(timeSeriesList.truncate(start, end));
+          graphs[start][end] = graphBuilder.makeGraph(timeSeriesList.truncate(start, end));
         }
       }
     }

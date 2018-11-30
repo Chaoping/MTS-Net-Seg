@@ -2,7 +2,6 @@ package ubco.cosc520.dynamicprogramming;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.inject.Inject;
 import lombok.NonNull;
 import ubco.cosc520.graph.Graph;
 import ubco.cosc520.graph.TwoGraphOperator;
@@ -17,7 +16,6 @@ public class PathMapper {
 
   private static final int MIN_LENGTH = 5;
 
-  @Inject
   public PathMapper(@NonNull TwoGraphOperator<Double> distanceCalculator, BreakpointPenalty breakpointPenalty) {
     this.distanceCalculator = distanceCalculator;
     this.breakpointPenalty = breakpointPenalty;
