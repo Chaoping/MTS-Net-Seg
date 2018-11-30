@@ -47,7 +47,13 @@ public interface TimeSeriesList {
    */
   double[][] toDoubleMatrix();
 
+  /**
+   * @return the number of points in the timeseries
+   */
   int getSeriesLength();
 
+  /**
+   * @return the number of timeseries in the list
+   */
   int getNumberOfSeries();
 }
