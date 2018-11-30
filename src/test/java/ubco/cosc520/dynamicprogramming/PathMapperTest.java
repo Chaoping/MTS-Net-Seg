@@ -5,10 +5,10 @@ import lombok.extern.java.Log;
 import org.apache.commons.math3.linear.RealMatrix;
 import org.junit.Before;
 import org.junit.Test;
-import ubco.cosc520.graphbuilder.GraphTableBuilder;
 import ubco.cosc520.graph.Graph;
-import ubco.cosc520.graph.TwoGraphDistance;
+import ubco.cosc520.graph.TwoGraphModifiedDistance;
 import ubco.cosc520.graph.TwoGraphOperator;
+import ubco.cosc520.graphbuilder.GraphTableBuilder;
 import ubco.cosc520.timeseries.ClasspathFileDataLoader;
 import ubco.cosc520.timeseries.PValuesTimeSeriesListComparator;
 import ubco.cosc520.timeseries.TimeSeriesList;
@@ -28,7 +28,7 @@ public class PathMapperTest {
    */
   @Before
   public void before() {
-    distanceCalculator = new TwoGraphDistance();
+    distanceCalculator = new TwoGraphModifiedDistance();
     breakpointPenalty = new NormalizedExponentialBreakpointPenalty(1);
     pathMapper = new PathMapper(distanceCalculator, breakpointPenalty);
     comparator = new PValuesTimeSeriesListComparator();

@@ -3,11 +3,9 @@ package ubco.cosc520.graph;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
-import lombok.extern.java.Log;
 import org.junit.Test;
 
-@Log
-public class TwoGraphDistanceTest {
+public class TwoGraphModifiedDistanceTest {
 
   @Test
   public void testEmptyGraphsGiveZero() {
@@ -24,7 +22,7 @@ public class TwoGraphDistanceTest {
     Graph g1 = new UndirectedAdjacencyMatrixGraph(d1);
     Graph g2 = new UndirectedAdjacencyMatrixGraph(d2);
 
-    TwoGraphOperator<Double> distanceCalculator = new TwoGraphDistance();
+    TwoGraphOperator<Double> distanceCalculator = new TwoGraphModifiedDistance();
 
     Double distance = distanceCalculator.operate(g1, g2);
 
@@ -33,7 +31,7 @@ public class TwoGraphDistanceTest {
   }
 
   @Test
-  public void testOneEdgeSubtractedGivesOne() {
+  public void testOneEdgeSubtractedGivesOneThird() {
     double[][] d1 = {
         {1,0,1},
         {0,1,0},
@@ -49,15 +47,15 @@ public class TwoGraphDistanceTest {
     Graph g1 = new UndirectedAdjacencyMatrixGraph(d1);
     Graph g2 = new UndirectedAdjacencyMatrixGraph(d2);
 
-    TwoGraphOperator<Double> distanceCalculator = new TwoGraphDistance();
+    TwoGraphOperator<Double> distanceCalculator = new TwoGraphModifiedDistance();
 
     Double distance = distanceCalculator.operate(g1, g2);
 
-    assertThat(distance, is(1.0));
+    assertThat(distance, is(1.0/3.0));
   }
 
   @Test
-  public void testOneEdgeSubtractedOneKeptGivesOneHalf() {
+  public void testOneEdgeSubtractedOneKeptGivesOneThird() {
     double[][] d1 = {
         {1,1,1},
         {1,1,0},
@@ -73,11 +71,11 @@ public class TwoGraphDistanceTest {
     Graph g1 = new UndirectedAdjacencyMatrixGraph(d1);
     Graph g2 = new UndirectedAdjacencyMatrixGraph(d2);
 
-    TwoGraphOperator<Double> distanceCalculator = new TwoGraphDistance();
+    TwoGraphOperator<Double> distanceCalculator = new TwoGraphModifiedDistance();
 
     Double distance = distanceCalculator.operate(g1, g2);
 
-    assertThat(distance, is(0.5));
+    assertThat(distance, is(1.0/3.0));
   }
 
 }

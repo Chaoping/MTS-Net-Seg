@@ -46,7 +46,7 @@ public class PathMapper {
 
         double newSegVal = lastStep.getValue()
             + distanceCalculator.operate(graphs[lastInterval.getStart()][lastInterval.getEnd()], graphs[j + 1][i])
-            - breakpointPenalty.getPenalty(lastPath.size(), numTimePoints / (MIN_LENGTH*2) );
+            - breakpointPenalty.getPenalty(lastPath.size(), numTimePoints / MIN_LENGTH );
 
         // if better value can be found with a better segmentation
         if (newSegVal > currentStep.getValue()) {

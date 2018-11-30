@@ -17,7 +17,7 @@ public class Table {
     dptable = new ArrayList<>(size);
 
     for (int i = 0; i < size; i++) {
-      dptable.add(new Step(Integer.MIN_VALUE, i));
+      dptable.add(new Step(0, i));
     }
   }
 

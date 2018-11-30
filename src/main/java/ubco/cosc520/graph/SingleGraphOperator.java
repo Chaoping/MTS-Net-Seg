@@ -3,19 +3,18 @@ package ubco.cosc520.graph;
 import lombok.NonNull;
 
 /**
- * Operations which can be performed between 2 {@link Graph}s.
+ * Operations which can be performed on a single {@link Graph}.
  *
  * @param <T> - The return type of the operation.
  */
-public interface TwoGraphOperator<T> {
+public interface SingleGraphOperator<T> {
 
   /**
    * Performs the operation on the two graphs.
    *
-   * @param g The first graph
-   * @param h The second graph
+   * @param g The  graph
    * @return The result of the operation.
    */
-  T operate(@NonNull Graph g, @NonNull Graph h);
+  T operate(@NonNull Graph g);
 
 }
