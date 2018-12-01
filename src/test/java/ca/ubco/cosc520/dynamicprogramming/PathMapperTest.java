@@ -3,11 +3,12 @@ package ca.ubco.cosc520.dynamicprogramming;
 import ca.ubco.cosc520.graph.Graph;
 import ca.ubco.cosc520.graph.TwoGraphModifiedDistance;
 import ca.ubco.cosc520.graph.TwoGraphOperator;
+import ca.ubco.cosc520.graphbuilder.CutValueTableBuilder;
 import ca.ubco.cosc520.graphbuilder.GraphBuilder;
 import ca.ubco.cosc520.graphbuilder.GraphTableBuilder;
 import ca.ubco.cosc520.matrix.MatrixLessThanThresholder;
 import ca.ubco.cosc520.matrix.SingleMatrixOperator;
-import ca.ubco.cosc520.timeseries.ClasspathFileDataLoader;
+import ca.ubco.cosc520.timeseries.ClasspathFileTimeSeriesDataLoader;
 import ca.ubco.cosc520.timeseries.PValuesTimeSeriesListComparator;
 import ca.ubco.cosc520.timeseries.TimeSeriesList;
 import ca.ubco.cosc520.timeseries.TimeSeriesListComparator;
@@ -33,9 +34,9 @@ public class PathMapperTest {
   public void before() {
     distanceCalculator = new TwoGraphModifiedDistance();
     breakpointPenalty = new NormalizedExponentialBreakpointPenalty(1);
-    pathMapper = new PathMapper(distanceCalculator, breakpointPenalty);
+    pathMapper = new PathMapper(breakpointPenalty);
     comparator = new PValuesTimeSeriesListComparator();
-    timeSeriesList = new ClasspathFileDataLoader().load("series.csv");
+    timeSeriesList = new ClasspathFileTimeSeriesDataLoader().load("series.csv");
 
   }
 
@@ -46,10 +47,14 @@ public class PathMapperTest {
     log.info(correlation.toString());
 
     SingleMatrixOperator matrixThresholder = new MatrixLessThanThresholder(0.01);
-    TimeSeriesListComparator pValueComparator = new PValuesTimeSeriesListComparator();
-    GraphBuilder graphBuilder = new GraphBuilder(pValueComparator, matrixThresholder);
-    Graph[][] graphs = GraphTableBuilder.tableFromTimeSeriesList(graphBuilder, timeSeriesList);
-    List<Interval> path = pathMapper.dynamicProgramming(graphs);
+    TimeSeriesListComparator comparator = new PValuesTimeSeriesListComparator();
+    GraphBuilder graphBuilder = new GraphBuilder(comparator, matrixThresholder);
+    GraphTableBuilder graphTableBuilder = new GraphTableBuilder(graphBuilder);
+    Graph[][] graphs = graphTableBuilder.tableFromTimeSeriesList(timeSeriesList);
+    CutValueTableBuilder cutValueTableBuilder = new CutValueTableBuilder(distanceCalculator);
+    double[][][] cutValues = cutValueTableBuilder.getCutValues(graphs);
+
+    List<Interval> path = pathMapper.dynamicProgramming(cutValues);
 
     log.info(path.toString());
   }

@@ -1,13 +1,14 @@
 package ca.ubco.cosc520.matrix;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 import org.apache.commons.math3.linear.MatrixUtils;
 import org.apache.commons.math3.linear.RealMatrix;
 import org.junit.Test;
 
 public class MatrixAbsoluteValueGreaterThanThresholderTest {
+
   @Test
   public void testThreshold() {
     double[][] input = {
