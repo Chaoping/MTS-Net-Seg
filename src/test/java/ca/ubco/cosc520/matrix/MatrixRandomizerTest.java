@@ -72,8 +72,10 @@ public class MatrixRandomizerTest {
   public void testOnFullSeries() {
     TimeSeriesList timeSeriesList = new ClasspathFileTimeSeriesDataLoader().load("series.csv");
 
-    timeSeriesList = timeSeriesList.truncate(0, 2);
-    double[][] data = timeSeriesList.getList().subList(0,6).toArray(new double[0][0]);
+    //We have to truncate here because of the all-zero bug case identified above
+    timeSeriesList = timeSeriesList.truncate(1, timeSeriesList.getSeriesLength());
+
+    double[][] data = timeSeriesList.getList().toArray(new double[0][0]);
     RealMatrix rm = MatrixUtils.createRealMatrix(data);
 
     when(random.nextInt(anyInt())).thenReturn(0);
