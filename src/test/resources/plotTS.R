@@ -1,6 +1,7 @@
-TS = t(read.csv("aq_short.csv", header = F))
+TS = t(read.csv("aq_full.csv", header = F))
+TS = TS[1:500,]
 rownames(TS) = NULL
-Seg = t(read.csv("aq_short_seg.csv", header = F))
+Seg = t(read.csv("aq_full_seg.csv", header = F))
 require(reshape2)
 require(ggplot2)
 meltdf = melt(TS)
