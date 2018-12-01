@@ -1,8 +1,5 @@
 package ca.ubco.cosc520;
 
-import ca.ubco.cosc520.Args.BREAKPOINT_STRATEGY;
-import ca.ubco.cosc520.Args.COMPARATOR_STRATEGY;
-import ca.ubco.cosc520.Args.DIFFERENCE_STRATEGY;
 import ca.ubco.cosc520.dynamicprogramming.BreakpointPenalty;
 import ca.ubco.cosc520.dynamicprogramming.ConstantBreakpointPenalty;
 import ca.ubco.cosc520.dynamicprogramming.ExponentialBreakpointPenalty;
@@ -38,19 +35,18 @@ public class App {
 
     Args args = new Args();
 
-    JCommander jCommander = JCommander.newBuilder()
+    JCommander jcommander = JCommander.newBuilder()
         .addObject(args)
         .programName("MTS-Net-Seg")
         .build();
 
     try {
-      jCommander.parse(argv);
+      jcommander.parse(argv);
     } catch (ParameterException e) {
       JCommander jct = e.getJCommander();
       jct.usage();
       return;
     }
-
 
     // Calculate the required parameters from args
     TwoGraphOperator<Double> distanceCalculator =
@@ -69,7 +65,7 @@ public class App {
     // Load the file and truncate if necessary
     TimeSeriesList timeSeriesList = new FileDataLoader().load(args.getFile());
 
-    if (args.getStart() != null && args.getEnd() != null ) {
+    if (args.getStart() != null && args.getEnd() != null) {
       timeSeriesList.truncate(args.getStart(), args.getEnd());
     } else if (args.getStart() != null && args.getStart() > 0) {
       timeSeriesList = timeSeriesList.truncate(args.getStart(), timeSeriesList.getSeriesLength());
@@ -80,7 +76,7 @@ public class App {
     // Operate
     GraphBuilder graphBuilder = new GraphBuilder(comparator, matrixThresholder);
     GraphTableBuilder graphTableBuilder = new GraphTableBuilder(graphBuilder);
-    Graph[][] graphs = graphTableBuilder.tableFromTimeSeriesList( timeSeriesList);
+    Graph[][] graphs = graphTableBuilder.tableFromTimeSeriesList(timeSeriesList);
 
     CutValueTableBuilder cutValueTableBuilder = new CutValueTableBuilder(distanceCalculator);
 
@@ -90,11 +86,11 @@ public class App {
 
     List<Interval> path = pathMapper.dynamicProgramming(cutValues);
 
-    System.out.println(IntervalListToCSV.fromInterval(path));
+    System.out.println(IntervalListToCsv.fromInterval(path));
   }
 
   private static BreakpointPenalty getBreakpointPenalty(
-      @NonNull BREAKPOINT_STRATEGY breakpointStrategy,
+      @NonNull Args.BreakpointStrategy breakpointStrategy,
       double breakpointV
   ) {
     switch (breakpointStrategy) {
@@ -112,9 +108,9 @@ public class App {
   }
 
   private static TwoGraphOperator<Double> getDistanceCalculator(
-      @NonNull DIFFERENCE_STRATEGY difference_strategy
+      @NonNull Args.DifferenceStrategy differenceStrategy
   ) {
-    switch (difference_strategy) {
+    switch (differenceStrategy) {
       case POSSIBLE_EDGE_DENOMINATOR:
         return new TwoGraphModifiedDistance();
       case UNION_DENOMINATOR:
@@ -125,10 +121,10 @@ public class App {
   }
 
   private static SingleMatrixOperator getMatrixThresholder(
-      @NonNull COMPARATOR_STRATEGY comparator_strategy,
+      @NonNull Args.ComparatorStrategy comparatorStrategy,
       double comparatorV
   ) {
-    switch (comparator_strategy) {
+    switch (comparatorStrategy) {
       case CORRELATION:
         return new MatrixAbsoluteValueGreaterThanThresholder(comparatorV);
       case PVALUE:
@@ -139,9 +135,9 @@ public class App {
   }
 
   private static TimeSeriesListComparator getComparator(
-      @NonNull COMPARATOR_STRATEGY comparator_strategy
+      @NonNull Args.ComparatorStrategy comparatorStrategy
   ) {
-    switch (comparator_strategy) {
+    switch (comparatorStrategy) {
       case CORRELATION:
         return new CorrelationTimeSeriesListComparator();
       case PVALUE:

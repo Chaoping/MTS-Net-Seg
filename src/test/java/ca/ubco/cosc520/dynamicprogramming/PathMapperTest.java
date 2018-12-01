@@ -50,7 +50,7 @@ public class PathMapperTest {
     TimeSeriesListComparator pValueComparator = new PValuesTimeSeriesListComparator();
     GraphBuilder graphBuilder = new GraphBuilder(pValueComparator, matrixThresholder);
     GraphTableBuilder graphTableBuilder = new GraphTableBuilder(graphBuilder);
-    Graph[][] graphs = graphTableBuilder.tableFromTimeSeriesList( timeSeriesList);
+    Graph[][] graphs = graphTableBuilder.tableFromTimeSeriesList(timeSeriesList);
     CutValueTableBuilder cutValueTableBuilder = new CutValueTableBuilder(distanceCalculator);
     double[][][] cutValues = cutValueTableBuilder.getCutValues(graphs);
 

@@ -33,7 +33,7 @@ public class MatrixAbsoluteValueGreaterThanThresholder
   @Override
   public RealMatrix operate(@NonNull final RealMatrix g) {
     return this.operate(g, (double d) -> {
-      if ( Math.abs(d) >= thresh) {
+      if (Math.abs(d) >= thresh) {
         return 1d;
       } else {
         return 0d;

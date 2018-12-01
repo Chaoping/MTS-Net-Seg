@@ -20,10 +20,9 @@ public class PathMapper {
   /**
    * Performs the dynamic programming algorithm on a table of {@link Graph} objects.
    *
-   * @param cutValues Three dimensional array representing cutValues.
-   * First element in array indicates start of first interval
-   * Second element in array indicates cut point (end of first interval, 1 before start of second)
-   * Thirs element in array indicates end of second interval
+   * @param cutValues Three dimensional array representing cutValues. First element in array
+   * indicates start of first interval Second element in array indicates cut point (end of first
+   * interval, 1 before start of second) Thirs element in array indicates end of second interval
    * @return A {@link List} of {@link Integer}s representing the position of the splits.
    */
   public List<Interval> dynamicProgramming(double[][][] cutValues) {
@@ -37,11 +36,11 @@ public class PathMapper {
 
         Step currentStep = dptable.get(cut, end);
 
-        for (int j = 0; j < cut; j ++) {
+        for (int j = 0; j < cut; j++) {
           Step step = dptable.get(j, cut);
 
-          double newVal = step.getValue() + cutValues[j+1][cut][end]
-              - breakpointPenalty.getPenalty(step.getPath().size() + 1,numPoints / MIN_LENGTH);
+          double newVal = step.getValue() + cutValues[j + 1][cut][end]
+              - breakpointPenalty.getPenalty(step.getPath().size() + 1, numPoints / MIN_LENGTH);
 
           // if better value can be found with a better segmentation
           if (newVal > step.getValue()) {

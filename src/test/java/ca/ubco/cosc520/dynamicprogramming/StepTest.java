@@ -50,7 +50,7 @@ public class StepTest {
 
   @Test
   public void testSetPathAfterPathIsPopulated() {
-    Step step = new Step(0, 0,1 );
+    Step step = new Step(0, 0, 1);
     List<Interval> path = new ArrayList<>();
     path.add(new Interval(0, 1));
     path.add(new Interval(0, 2));
