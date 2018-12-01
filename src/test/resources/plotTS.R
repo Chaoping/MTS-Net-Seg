@@ -14,4 +14,4 @@ for(i in Seg){
                                       color = "blue", size=0.5)
 }
 
-ts_plot
+ggsave(filename="myPlot.pdf", plot=ts_plot)
