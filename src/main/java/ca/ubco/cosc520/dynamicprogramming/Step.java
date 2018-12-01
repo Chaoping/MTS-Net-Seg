@@ -1,25 +1,18 @@
 package ca.ubco.cosc520.dynamicprogramming;
 
-import ca.ubco.cosc520.graph.Graph;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import lombok.Getter;
 import lombok.NonNull;
-import lombok.Setter;
 
 public class Step {
 
   private double value;
   private List<Interval> path = new ArrayList<>();
 
-  @Getter
-  @Setter
-  private Graph graph;
-
-  public Step(int initialValue, int pathEnd) {
+  public Step(int initialValue, int pathCut, int pathEnd) {
     this.value = initialValue;
-    Interval interval = new Interval(0, pathEnd);
+    Interval interval = new Interval(pathCut, pathEnd);
     this.path.add(interval);
   }
 
