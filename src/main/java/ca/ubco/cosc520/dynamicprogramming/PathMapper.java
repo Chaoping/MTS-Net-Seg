@@ -1,6 +1,7 @@
 package ca.ubco.cosc520.dynamicprogramming;
 
 import ca.ubco.cosc520.graph.Graph;
+import java.util.ArrayList;
 import java.util.List;
 import lombok.NonNull;
 
@@ -43,9 +44,11 @@ public class PathMapper {
               - breakpointPenalty.getPenalty(step.getPath().size() + 1,numPoints / MIN_LENGTH);
 
           // if better value can be found with a better segmentation
-          if (newVal > currentStep.getValue()) {
+          if (newVal > step.getValue()) {
             currentStep.setValue(newVal);
-            currentStep.addToPath(new Interval(cut,j));
+            List<Interval> newIntervalPath = new ArrayList<>(step.getPath());
+            newIntervalPath.add(new Interval(cut, end));
+            currentStep.setPath(newIntervalPath);
           }
         }
       }
@@ -54,11 +57,13 @@ public class PathMapper {
 
     double maxVal = Double.MIN_VALUE;
     List<Interval> bestPath = null;
-    for (int cut = 0; cut < numPoints - MIN_LENGTH; cut++) {
+    for (int cut = MIN_LENGTH; cut < numPoints - MIN_LENGTH; cut++) {
       Step curStep = dptable.get(cut, numPoints - 1);
+
       if (curStep.getValue() > maxVal) {
         bestPath = curStep.getPath();
       }
+
     }
 
     return bestPath;
