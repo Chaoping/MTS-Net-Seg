@@ -1,4 +1,4 @@
-package ca.ubco.cosc520.simulationBuilder;
+package ca.ubco.cosc520.simulationbuilder;
 
 import static org.mockito.Mockito.anyInt;
 import static org.mockito.Mockito.when;

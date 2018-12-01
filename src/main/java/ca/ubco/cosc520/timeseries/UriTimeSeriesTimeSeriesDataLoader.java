@@ -16,7 +16,7 @@ import lombok.NonNull;
  * Loads a {@link TimeSeriesList} from a URI. Records should be separated by newlines. Entries
  * should be separated by commas. All entries should be the same length.
  */
-public class URIDataLoader implements DataLoader<URI> {
+public class UriTimeSeriesTimeSeriesDataLoader implements TimeSeriesDataLoader<URI> {
 
   private static final String NEWLINE_SEPARATOR = "\n";
   private static final String ENTRY_SEPARATOR = ",";

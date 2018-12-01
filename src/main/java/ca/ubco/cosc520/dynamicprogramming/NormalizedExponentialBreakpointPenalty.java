@@ -2,11 +2,11 @@ package ca.ubco.cosc520.dynamicprogramming;
 
 public class NormalizedExponentialBreakpointPenalty extends ExponentialBreakpointPenalty {
 
-  private final double v;
+  private final double tuningParameter;
 
-  public NormalizedExponentialBreakpointPenalty(double v) {
-    super(v);
-    this.v = v;
+  public NormalizedExponentialBreakpointPenalty(double tuningParameter) {
+    super(tuningParameter);
+    this.tuningParameter = tuningParameter;
   }
 
   public double getPenalty(int currentCuts, int maximumPossibleCuts) {

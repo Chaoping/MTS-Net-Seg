@@ -1,4 +1,4 @@
-package ca.ubco.cosc520.simulationBuilder;
+package ca.ubco.cosc520.simulationbuilder;
 
 import ca.ubco.cosc520.matrix.SingleMatrixOperator;
 import java.util.ArrayList;

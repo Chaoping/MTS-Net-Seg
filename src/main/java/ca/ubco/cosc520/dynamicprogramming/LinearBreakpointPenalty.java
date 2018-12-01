@@ -2,14 +2,14 @@ package ca.ubco.cosc520.dynamicprogramming;
 
 public class LinearBreakpointPenalty implements BreakpointPenalty {
 
-  private final double v;
+  private final double tuningParameter;
 
-  public LinearBreakpointPenalty(double v) {
-    this.v = v;
+  public LinearBreakpointPenalty(double tuningParameter) {
+    this.tuningParameter = tuningParameter;
   }
 
   public double getPenalty(int currentCuts, int maximumPossibleCuts) {
-    return v * currentCuts / maximumPossibleCuts;
+    return tuningParameter * currentCuts / maximumPossibleCuts;
   }
 
 }

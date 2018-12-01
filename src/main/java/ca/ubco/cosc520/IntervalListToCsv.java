@@ -4,7 +4,7 @@ import ca.ubco.cosc520.dynamicprogramming.Interval;
 import java.util.List;
 import lombok.NonNull;
 
-public class IntervalListToCSV {
+public class IntervalListToCsv {
 
   public static String fromInterval(@NonNull List<Interval> intervalList) {
     StringBuilder sb = new StringBuilder("0,");

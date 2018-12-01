@@ -9,9 +9,9 @@ import lombok.extern.java.Log;
  * newlines. Entries should be separated by commas. All entries should be the same length.
  */
 @Log
-public class FileDataLoader implements DataLoader<File> {
+public class FileTimeSeriesDataLoader implements TimeSeriesDataLoader<File> {
 
   public TimeSeriesList load(@NonNull File file) {
-    return new URIDataLoader().load(file.toURI());
+    return new UriTimeSeriesTimeSeriesDataLoader().load(file.toURI());
   }
 }

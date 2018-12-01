@@ -27,8 +27,8 @@ public class MatrixLessThanThresholder
    * Performs the thresholding and returns the resulting matrix.
    *
    * @param g The matrix
-   * @return A matrix with each cell replaced: 1 if the value of the cell is >= the threshold,
-   * 0 otherwise.
+   * @return A matrix with each cell replaced: 1 if the value of the cell is >= the threshold, 0
+   * otherwise.
    */
   @Override
   public RealMatrix operate(@NonNull final RealMatrix g) {
