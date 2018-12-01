@@ -52,6 +52,23 @@ public class MatrixRandomizerTest {
   }
 
   @Test
+  public void testStartingAtZero() {
+    double[][] gd = {
+        {0, 5, 10},
+        {0, 10, 15},
+        {0, 10, 17},
+        {0, 89, 20},
+        {0, 1000, 99},
+        {0, 90, 4}
+    };
+
+    RealMatrix rm = MatrixUtils.createRealMatrix(gd);
+
+    when(random.nextInt(anyInt())).thenReturn(0);
+    log.info(matrixRandomizer.operate(rm).toString());
+  }
+
+  @Test
   public void testOnFullSeries() {
     TimeSeriesList timeSeriesList = new ClasspathFileTimeSeriesDataLoader().load("series.csv");
 
