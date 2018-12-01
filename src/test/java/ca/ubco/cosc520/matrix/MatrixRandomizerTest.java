@@ -1,10 +1,14 @@
-package ca.ubco.cosc520.simulationbuilder;
+package ca.ubco.cosc520.matrix;
 
 import static org.mockito.Mockito.anyInt;
 import static org.mockito.Mockito.when;
 
 import ca.ubco.cosc520.matrix.MatrixOfDifferences;
+import ca.ubco.cosc520.matrix.MatrixRandomizer;
 import ca.ubco.cosc520.matrix.SingleMatrixOperator;
+import ca.ubco.cosc520.timeseries.ClasspathFileTimeSeriesDataLoader;
+import ca.ubco.cosc520.timeseries.TimeSeriesList;
+import ca.ubco.cosc520.timeseries.TimeSeriesListImpl;
 import java.util.Random;
 import lombok.extern.java.Log;
 import org.apache.commons.math3.linear.MatrixUtils;
@@ -42,6 +46,18 @@ public class MatrixRandomizerTest {
     };
 
     RealMatrix rm = MatrixUtils.createRealMatrix(gd);
+
+    when(random.nextInt(anyInt())).thenReturn(0);
+    log.info(matrixRandomizer.operate(rm).toString());
+  }
+
+  @Test
+  public void testOnFullSeries() {
+    TimeSeriesList timeSeriesList = new ClasspathFileTimeSeriesDataLoader().load("series.csv");
+
+    timeSeriesList = timeSeriesList.truncate(0, 2);
+    double[][] data = timeSeriesList.getList().subList(0,6).toArray(new double[0][0]);
+    RealMatrix rm = MatrixUtils.createRealMatrix(data);
 
     when(random.nextInt(anyInt())).thenReturn(0);
     log.info(matrixRandomizer.operate(rm).toString());

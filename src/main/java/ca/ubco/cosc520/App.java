@@ -16,6 +16,8 @@ import ca.ubco.cosc520.graphbuilder.GraphBuilder;
 import ca.ubco.cosc520.graphbuilder.GraphTableBuilder;
 import ca.ubco.cosc520.matrix.MatrixAbsoluteValueGreaterThanThresholder;
 import ca.ubco.cosc520.matrix.MatrixLessThanThresholder;
+import ca.ubco.cosc520.matrix.MatrixOfDifferences;
+import ca.ubco.cosc520.matrix.MatrixRandomizer;
 import ca.ubco.cosc520.matrix.SingleMatrixOperator;
 import ca.ubco.cosc520.timeseries.CorrelationTimeSeriesListComparator;
 import ca.ubco.cosc520.timeseries.FileTimeSeriesDataLoader;
@@ -25,6 +27,7 @@ import ca.ubco.cosc520.timeseries.TimeSeriesListComparator;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.ParameterException;
 import java.util.List;
+import java.util.Random;
 import lombok.NonNull;
 import lombok.extern.java.Log;
 
@@ -71,6 +74,13 @@ public class App {
       timeSeriesList = timeSeriesList.truncate(args.getStart(), timeSeriesList.getSeriesLength());
     } else if (args.getEnd() != null && args.getEnd() < timeSeriesList.getSeriesLength()) {
       timeSeriesList = timeSeriesList.truncate(0, args.getEnd());
+    }
+
+    if (args.isShuffle()) {
+      Random random = new Random();
+      SingleMatrixOperator differenceCalculator = new MatrixOfDifferences();
+      SingleMatrixOperator shuffler = new MatrixRandomizer(differenceCalculator, random);
+      timeSeriesList = timeSeriesList.operateOnMatrix(shuffler);
     }
 
     // Operate
