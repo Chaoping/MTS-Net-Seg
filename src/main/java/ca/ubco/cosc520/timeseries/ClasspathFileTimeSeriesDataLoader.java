@@ -10,14 +10,14 @@ import lombok.extern.java.Log;
  * newlines. Entries should be separated by commas. All entries should be the same length.
  */
 @Log
-public class ClasspathFileDataLoader implements DataLoader<String> {
+public class ClasspathFileTimeSeriesDataLoader implements TimeSeriesDataLoader<String> {
 
   public TimeSeriesList load(@NonNull String filename) {
 
     try {
-      URI uri = ClasspathFileDataLoader.class.getClassLoader()
+      URI uri = ClasspathFileTimeSeriesDataLoader.class.getClassLoader()
           .getResource(filename).toURI();
-      return new URIDataLoader().load(uri);
+      return new UriTimeSeriesTimeSeriesDataLoader().load(uri);
     } catch (URISyntaxException e) {
       log.severe(e.getMessage());
       throw new RuntimeException(e);

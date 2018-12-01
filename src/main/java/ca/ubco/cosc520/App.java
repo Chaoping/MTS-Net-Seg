@@ -18,7 +18,7 @@ import ca.ubco.cosc520.matrix.MatrixAbsoluteValueGreaterThanThresholder;
 import ca.ubco.cosc520.matrix.MatrixLessThanThresholder;
 import ca.ubco.cosc520.matrix.SingleMatrixOperator;
 import ca.ubco.cosc520.timeseries.CorrelationTimeSeriesListComparator;
-import ca.ubco.cosc520.timeseries.FileDataLoader;
+import ca.ubco.cosc520.timeseries.FileTimeSeriesDataLoader;
 import ca.ubco.cosc520.timeseries.PValuesTimeSeriesListComparator;
 import ca.ubco.cosc520.timeseries.TimeSeriesList;
 import ca.ubco.cosc520.timeseries.TimeSeriesListComparator;
@@ -63,7 +63,7 @@ public class App {
     );
 
     // Load the file and truncate if necessary
-    TimeSeriesList timeSeriesList = new FileDataLoader().load(args.getFile());
+    TimeSeriesList timeSeriesList = new FileTimeSeriesDataLoader().load(args.getFile());
 
     if (args.getStart() != null && args.getEnd() != null) {
       timeSeriesList.truncate(args.getStart(), args.getEnd());
