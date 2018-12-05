@@ -70,7 +70,8 @@ public class Args {
     LINEAR,
     CONSTANT,
     EXPONENTIAL,
-    NORMALIZED_EXPONENTIAL
+    NORMALIZED_EXPONENTIAL,
+    K_SEGMENT
   }
 
   public enum ComparatorStrategy {

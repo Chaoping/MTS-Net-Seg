@@ -4,6 +4,7 @@ import ca.ubco.cosc520.dynamicprogramming.BreakpointPenalty;
 import ca.ubco.cosc520.dynamicprogramming.ConstantBreakpointPenalty;
 import ca.ubco.cosc520.dynamicprogramming.ExponentialBreakpointPenalty;
 import ca.ubco.cosc520.dynamicprogramming.Interval;
+import ca.ubco.cosc520.dynamicprogramming.KSegmentBreakpointPenalty;
 import ca.ubco.cosc520.dynamicprogramming.LinearBreakpointPenalty;
 import ca.ubco.cosc520.dynamicprogramming.NormalizedExponentialBreakpointPenalty;
 import ca.ubco.cosc520.dynamicprogramming.PathMapper;
@@ -112,6 +113,8 @@ public class App {
         return new ConstantBreakpointPenalty(breakpointV);
       case EXPONENTIAL:
         return new ExponentialBreakpointPenalty(breakpointV);
+      case K_SEGMENT:
+        return new KSegmentBreakpointPenalty(breakpointV);
       default:
         throw new ParameterException("Breakpoint strategy not defined.");
     }
