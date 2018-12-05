@@ -37,17 +37,17 @@ public class PathMapper {
 
         Step currentStep = dptable.get(cut, end);
 
-        for (int j = 0; j < cut; j++) {
-          Step step = dptable.get(j, cut);
+        for (int start = 0; start < cut; start++) {
+          Step step = dptable.get(start, cut);
 
-          double newVal = step.getValue() + cutValues[j + 1][cut][end]
+          double newVal = step.getValue() + cutValues[start + 1][cut][end]
               - breakpointPenalty.getPenalty(step.getPath().size() + 1, numPoints / MIN_LENGTH);
 
           // if better value can be found with a better segmentation
           if (newVal > step.getValue()) {
             currentStep.setValue(newVal);
             List<Interval> newIntervalPath = new ArrayList<>(step.getPath());
-            newIntervalPath.add(new Interval(cut, end));
+            newIntervalPath.add(new Interval(cut+1, end));
             currentStep.setPath(newIntervalPath);
           }
         }
