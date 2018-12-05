@@ -2,6 +2,7 @@ package ca.ubco.cosc520.dynamicprogramming;
 
 import ca.ubco.cosc520.graph.Graph;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import lombok.NonNull;
 
@@ -55,7 +56,7 @@ public class PathMapper {
     }
 
     double maxVal = Double.MIN_VALUE;
-    List<Interval> bestPath = null;
+    List<Interval> bestPath = Collections.singletonList(new Interval(0, numPoints - 1));
     for (int cut = MIN_LENGTH; cut < numPoints - MIN_LENGTH; cut++) {
       Step curStep = dptable.get(cut, numPoints - 1);
 

@@ -1,5 +1,6 @@
 package ca.ubco.cosc520.timeseries;
 
+import ca.ubco.cosc520.matrix.SingleMatrixOperator;
 import java.util.List;
 
 /**
@@ -56,4 +57,10 @@ public interface TimeSeriesList {
    * @return the number of timeseries in the list
    */
   int getNumberOfSeries();
+
+  /**
+   * Applies the {@link SingleMatrixOperator} on the underlying matrix.
+   * @return A new {@link TimeSeriesList} with the matrix operator applied.
+   */
+  TimeSeriesList operateOnMatrix(SingleMatrixOperator matrixOperator);
 }

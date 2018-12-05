@@ -37,7 +37,6 @@ public class PathMapperTest {
     pathMapper = new PathMapper(breakpointPenalty);
     comparator = new PValuesTimeSeriesListComparator();
     timeSeriesList = new ClasspathFileTimeSeriesDataLoader().load("series.csv");
-
   }
 
   @Test

@@ -58,12 +58,20 @@ public class Args {
   )
   @Getter
   private Integer end;
+  @Parameter (
+      names = "-shuffle",
+      description = "Shuffles the timeseries before applying segmentation algorithm"
+  )
+  @Getter
+  private boolean shuffle;
+
 
   public enum BreakpointStrategy {
     LINEAR,
     CONSTANT,
     EXPONENTIAL,
-    NORMALIZED_EXPONENTIAL
+    NORMALIZED_EXPONENTIAL,
+    K_SEGMENT
   }
 
   public enum ComparatorStrategy {

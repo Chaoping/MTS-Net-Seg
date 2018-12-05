@@ -73,3 +73,7 @@ fabric.properties
 
 Rplots.pdf
 venv/
+
+*.jar
+*.pdf
+*_seg.csv

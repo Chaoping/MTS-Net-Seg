@@ -1,11 +1,14 @@
 package ca.ubco.cosc520.timeseries;
 
+import ca.ubco.cosc520.matrix.SingleMatrixOperator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.NonNull;
+import org.apache.commons.math3.linear.MatrixUtils;
+import org.apache.commons.math3.linear.RealMatrix;
 
 /**
  * A list of multiple time series data. All of the time series must be of the same length. Time
@@ -86,5 +89,14 @@ public class TimeSeriesListImpl implements TimeSeriesList {
   @Override
   public int getNumberOfSeries() {
     return seriesList.size();
+  }
+
+  @Override
+  public TimeSeriesList operateOnMatrix(SingleMatrixOperator matrixOperator) {
+    double[][] doubles = new double[getNumberOfSeries()][getSeriesLength()];
+    doubles = seriesList.toArray(doubles);
+    RealMatrix rm = MatrixUtils.createRealMatrix(doubles);
+    rm = matrixOperator.operate(rm);
+    return TimeSeriesListImpl.fromDoubleArray(rm.getData());
   }
 }

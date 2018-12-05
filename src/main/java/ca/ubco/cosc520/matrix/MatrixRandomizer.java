@@ -1,6 +1,5 @@
-package ca.ubco.cosc520.simulationbuilder;
+package ca.ubco.cosc520.matrix;
 
-import ca.ubco.cosc520.matrix.SingleMatrixOperator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
